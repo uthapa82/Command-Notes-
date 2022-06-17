@@ -1,0 +1,1765 @@
+|0000000000|BdsDxe: loading Boot0002 "UEFI QEMU HARDDISK QM00005 " from PciRoot(0x0)/Pci(0xA,0x0)/Sata(0x0,0xFFFF,0x0)
+|0000001702|BdsDxe: starting Boot0002 "UEFI QEMU HARDDISK QM00005 " from PciRoot(0x0)/Pci(0xA,0x0)/Sata(0x0,0xFFFF,0x0)
+|0000001802|Sysconf checksum failed. Using default values
+|0000001802|WARNING:  No BIOS Info found 
+|0000001802|Sysconf checksum failed. Using default values
+|0000001802|Sysconf checksum failed. Using default values
+|0000001802|Sysconf checksum failed. Using default values
+|0000001802|ATE0Q1&D2&C1S0=1
+
+|0000003806|Standalone chassis 
+|0000003806|check_bootmode: grub2pxe: grub failed, launch ipxe
+|0000003806|Trying to load ipxe 
+|0000003806|Loading Application: 
+|0000003806|/Vendor(429bdb26-48a6-47bd-664c-801204061400)/UnknownMedia(6)/EndEntire
+|0000003806|cannot load imageFailed to launch ipxe 
+|0000003806|Came back to grub, now load efi shell
+|0000003806|Trying to load efishell 
+|0000003806|Loading Application: 
+|0000003806|/Vendor(429bdb26-48a6-47bd-664c-801204061400)/UnknownMedia(6)/EndEntire
+|0000003806|cannot load imageFailed to launch shell
+|0000003806|Trying to read config file /boot/grub/menu.lst.local from (hd0,4) 
+|0000003806| Filesystem type is ext2fs, partition type 0x83
+|0000003806|Trying to read config file /boot/grub/menu.lst.local from (hd0,5) 
+|0000003806| Filesystem type is ext2fs, partition type 0x83
+|0000003906|Sysconf checksum failed. Using default values
+|0000003906|console (dumb)
+|0000003906|
+|0000003906|Booting nxos.9.3.6.bin...
+|0000003906|Booting nxos.9.3.6.bin 
+|0000003906|Trying diskboot 
+|0000003906| Filesystem type is ext2fs, partition type 0x83
+|0000028899|Image valid
+|0000028899|
+|0000028899|
+|0000028899|Image Signature verification for Nexus9000v is not performed.
+|0000028899|
+|0000028899|Boot Time: 6/17/2022  0:33:50
+|0000038218|Installing klm_card_index
+|0000038218|done
+|0000039923|Linking n9k flash devices
+|0000039923|creating flash devices BOOT_DEV= sda
+|0000040323|Replacing inittab for N9Kv pEoR node - peorhost
+|0000040424|
+INIT: version 2.88 booting
+
+|0000040424|
+INIT: /etc/inittab[77]: duplicate ID field "S0"
+
+|0000041225|rm: cannot remove '/etc/rc.d/rcS.d/S08prefetch-image': No such file or directory
+|0000041225|Setting up sysV scripts for host node
+|0000041927|Installing ata_piix module ... cgroups initialized
+|0000042027|done.
+|0000042227|Starting OpenBSD Secure Shell server: sshd ... done.
+|0000042828|Unsquashing rootfs ...
+|0000045738|Not Micron SSD...
+|0000049247|Checking rpmstore swap in host context.
+|0000049247|tune2fs 1.42.9 (28-Dec-2013)
+|0000049247|Setting reserved blocks percentage to 0% (0 blocks)
+|0000049347|
+|0000049347|Checking all filesystems.Not Micron SSD...
+|0000050254|is_lxc: is_titan_eor:y is_stby: suffix: klm_ftrace: /isanboot/lib/modules/klm_ftrace.o
+|0000050254|Installing ftrace in lxc 0 mode done
+|0000050554|
+INIT: Entering runlevel: 3
+
+|0000051156|cat: /sys/module/klm_cctrli*/parameters/cctrl_hw_rev_maj*: No such file or directory
+|0000051957|cp: cannot stat '/nxos/tmp/vdc_1_sup1': No such file or directory
+|0000053160|rm: cannot remove '/isan/bin/bios_imgs/*': No such file or directory
+|0000053160|rm: cannot remove '/isan/lib/libtahusdcli.so': No such file or directory
+|0000053460|
+
+|0000053962|Linking n9k flash devices
+|0000053962|creating flash devices BOOT_DEV= sda
+|0000053962|mknod: '/dev/sda7': File exists
+|0000054162|Replacing inittab for N9Kv pEoR node - vsup
+|0000054162|
+INIT: version 2.88 booting
+
+|0000055365|Unsquashing rootfs ...
+|0000055365|Total size needed in bootflash is 108720
+|0000055365|check bootflash : OK
+|0000055465|Total size needed in bootflash is 41104
+|0000055465|check bootflash : OK
+|0000056366|No TOR virtual chassis
+|0000056967|Enabling 8250 serial driver spurious INTs workaround
+|0000056967|Installing isan procfs isan_proc_name=isan26... done.
+|0000059572|
+|0000059572|Saving Primary metadata
+|0000059572|Saving file lists metadata
+|0000059572|Saving other metadata
+|0000061776|Installing SSE module with card index 21090 and vslot ID 26 ... done.
+|0000061776|Creating SSE device node 247 ... done.
+|0000062077|cg controllers already mounted at /var/cgroup
+|0000062077|is_lxc: is_titan_eor:y is_stby:0 suffix: klm_ftrace: /isanboot/lib/modules/klm_ftrace.o
+|0000062077|Inserting kernel_services module ... done.
+|0000062077|Making kernel_services character devices
+|0000062077|klm_ftrace already loaded. skip.
+|0000063379|Loading I2C driver ... done.
+|0000063379|Loading MEM scrub driver ... done.
+|0000063379|Installing CCTRL driver for card_type 29 in vslot ID 26 on a VM without NEED_GEM ... done.
+|0000063479|33.51: Interrupt throttling disabled. No cctrl irq detected.
+|0000063679|Loading IGB driver ... done.
+|0000064180|
+|0000064180|Checking all filesystems.Warning: switch is starting up with default configuration
+|0000078410|
+|0000078711|Installing SPROM driver ... 21090 Extracting rpms from image...
+|0000078811|IS_N9K done.
+|0000078811|CORTINA-SUPInstalling pfmsvcs module ...done.
+|0000079412|Installing nvram module ... done.
+|0000079712|Installing if_index module with port mode 6 ... done.
+|0000080614|Installing fcfwd
+|0000080614|Installing RNI lcnd ... done
+|0000080614|Installing LC netdev container_id=0 is_standby=0 ... done
+|0000081315|Installing psdev module ... done.
+|0000081315|Installing veobc module ... done.
+|0000082117|Checking SR card
+|0000082117|Card Index is 21090
+|0000082117|Inserting eMMC module ... 
+|0000082117|Inserting mtdphysmap module...[   52.210376] Error: Could not find mtd devices 
+|0000082117|Inserting OBFL module ... done.
+|0000082217|Making OBFL character devices
+|0000082217|mounting plog for N9k!
+|0000083320|Fri Jun 17 00:34:45 UTC 2022::Starting Nexus 9000v initial VNIC deposit into vnicBank
+|0000083721|Trying to mount cdrom...
+|0000083721|
+|0000083721|Mounted /dev/scd0 on /mnt/cdrom
+|0000083721|Detected dynamic environment properties (bootstrap CLI) on nxos_config.txt
+|0000083721|Copying nxos_config.txt ...
+|0000084423|Fri Jun 17 00:34:46 UTC 2022::Done with Nexus 9000v initial VNIC deposit into vnicBank
+|0000204091|Extracting 32 bit python
+|0000213510| Removing any system startup links for cgroups-init ...
+|0000213510| Adding system startup for /etc/init.d/cgroups-init.
+|0000214011| Removing any system startup links for docker ...
+|0000214011|Running groupadd commands...
+|0000214011|NOTE: docker: Performing groupadd with [ -r docker]
+|0000214011|Running useradd commands...
+|0000214011|NOTE: docker: Performing useradd with [ -r -U -s /bin/false dockremap]
+|0000215313|update-alternatives: Linking /bin/vi to /usr/bin/vim.vim
+|0000215413|update-alternatives: Linking /usr/bin/vim to /usr/bin/vim.vim
+|0000218523|Starting portmap daemon...
+|0000218924|creating NFS state directory: done
+|0000219024|starting 8 nfsd kernel threads: Starting OpenBSD Secure Shell server: sshd ... done
+|0000219024|starting mountd: done
+|0000219024|starting statd: done
+|0000219124|exit code: 1
+|0000221229|done.
+|0000234572|tune2fs 1.42.9 (28-Dec-2013)
+|0000234572|Setting reserved blocks percentage to 0% (0 blocks)
+|0000234975|Saving image for img-sync ...
+|0000235577|Not Micron SSD...
+|0000235577|Loading system software
+|0000236077|Installing local RPMS
+|0000266738|Patch Repository Setup completed successfully
+|0000268240|Creating /dev/mcelog
+|0000268240|Starting mcelog daemon
+|0000270145|
+INIT: Entering runlevel: 3
+
+|0000271147|Running S93thirdparty-script...
+|0000271449|
+
+|0000282468|done
+|0000283470|Netbroker support IS present in the kernel.
+|0000283470|done
+|0000283470|Disabling cisco netbroker hooks ... done
+|0000285177|Skipping EMON in vmachine...
+|0000286279|Executing Prune clis.
+|0000286279|ethernet switching mode Fri Jun 17 00:38:08 UTC 2022
+|0000287281|Warning: Permanently added '[127.1.1.254]:1922' (ECDSA) to the list of known hosts.
+
+|0000287381|Outbound-ReKey for 127.1.1.254:1922
+
+|0000287381|Inbound-ReKey for 127.1.1.254:1922
+
+|0000290788|Jun 17 00:38:12 %FW_APP-2-FIRMWARE_IMAGE_LOAD_SUCCESS No Firmware needed for Non SR card.
+
+|0000294697|2022 Jun 17 00:38:16  %$ VDC-1 %$  %USER-2-SYSTEM_MSG: <<%USBHSD-2-MOUNT>> logflash: online  - usbhsd
+
+|0000297804|2022 Jun 17 00:38:19  %$ VDC-1 %$ netstack: Registration with cli server complete
+
+|0000312547|2022 Jun 17 00:38:34  %$ VDC-1 %$ %USER-2-SYSTEM_MSG: ssnmgr_app_init called on ssnmgr up - aclmgr
+
+|0000320950|2022 Jun 17 00:38:42  %$ VDC-1 %$ %USER-0-SYSTEM_MSG: end of default policer - copp
+
+|0000320950|2022 Jun 17 00:38:42  %$ VDC-1 %$ %COPP-2-COPP_NO_POLICY: Control-plane is unprotected.
+
+|0000324311|2022 Jun 17 00:38:46  %$ VDC-1 %$ %CARDCLIENT-2-FPGA_BOOT_GOLDEN: IOFPGA booted from Golden
+
+|0000325213|2022 Jun 17 00:38:46  %$ VDC-1 %$ %PLATFORM-2-MOD_PRESENT: Detected the presence of Module 1
+
+|0000325815|2022 Jun 17 00:38:47  %$ VDC-1 %$ %VDC_MGR-2-VDC_ONLINE: vdc 1 has come online 
+
+|0000327818|2022 Jun 17 00:38:49 switch %$ VDC-1 %$ %PLATFORM-2-MOD_INSERTED: Module 1 inserted (Nexus 9000v 64 port Ethernet Module), 7 VNICs mapped
+
+|0000328620|The bootstrap config is waiting for Nexus 9000v ethernet module up
+|0000334892|[  304.948791] pci_rescan_init: 
+|0000334892|[  304.950088] pci_rescan_proc_init: 
+|0000336023|2022 Jun 17 00:38:56 switch %$ VDC-1 %$ %KERN-0-SYSTEM_MSG: [  304.948791] pci_rescan_init:  - kernel
+
+|0000336023|2022 Jun 17 00:38:56 switch %$ VDC-1 %$ %KERN-0-SYSTEM_MSG: [  304.950088] pci_rescan_proc_init:  - kernel
+
+|0000349226|The bootstrap config is waiting for Nexus 9000v ethernet module up
+|0000360553|2022 Jun 17 00:39:21 switch %$ VDC-1 %$ %PLATFORM-2-MOD_DETECT: Module 1 detected (Serial number 9AL0ALDUR50) Module-Type Nexus 9000v 64 port Ethernet Module Model N9K-X9564v
+
+|0000360553|2022 Jun 17 00:39:21 switch %$ VDC-1 %$ %PLATFORM-2-MOD_PWRUP: Module 1 powered up (Serial number 9AL0ALDUR50)
+
+|0000369802|The bootstrap config is waiting for Nexus 9000v ethernet module up
+|0000390237|The bootstrap config is waiting for Nexus 9000v ethernet module up
+|0000403562|2022 Jun 17 00:40:03 switch %$ VDC-1 %$ %ASCII-CFG-2-CONF_CONTROL: System ready
+
+|0000410983|Applying bootstrap configuration...
+|0000412186|warning: password for user:admin not set. S/he may not be able to login
+|0000412186|
+|0000412186|WARNING: Minimum recommended length of 8 characters.
+|0000412186|WARNING: Password should contain characters from at least three of the following classes: lower case letters, upper case letters, digits and special characters.
+|0000412186|WARNING: it is too short
+|0000412186|WARNING: Configuration accepted because password strength check is disabled
+|0000412387|WARNING: DES is a weak encryption algorithm and currently the default. This will be deprecated and AES128 will be made default in an upcoming release. 
+|0000412387|
+|0000412688|warning: password for user:cisco not set. S/he may not be able to login
+|0000412688|
+|0000412688|WARNING: Minimum recommended length of 8 characters.
+|0000412688|WARNING: Password should contain characters from at least three of the following classes: lower case letters, upper case letters, digits and special characters.
+|0000412688|WARNING: it is too short
+|0000412688|WARNING: Configuration accepted because password strength check is disabled
+|0000412788|WARNING: DES is a weak encryption algorithm and currently the default. This will be deprecated and AES128 will be made default in an upcoming release. 
+|0000412788|
+|0000413790|Copy complete, now saving to disk (please wait)...
+|0000414092|Copy complete.
+|0000414593|
+[#                                       ]   1%
+[#                                       ]   2%
+[##                                      ]   3%
+[##                                      ]   4%
+[###                                     ]   5%
+[###                                     ]   6%
+[###                                     ]   7%
+[####                                    ]   8%
+[####                                    ]   9%
+[#####                                   ]  10%
+[#####                                   ]  11%
+[#####                                   ]  12%
+[######                                  ]  13%
+[######                                  ]  14%
+[#######                                 ]  15%
+[#######                                 ]  16%
+[#######                                 ]  17%
+[########                                ]  18%
+[########                                ]  19%
+[#########                               ]  20%
+[#########                               ]  21%
+[#########                               ]  22%
+[##########                              ]  23%
+[##########                              ]  24%
+[###########                             ]  25%
+[###########                             ]  26%
+[###########                             ]  27%
+[############                            ]  28%
+[############                            ]  29%
+[#############                           ]  30%
+[#############                           ]  31%
+[#############                           ]  32%
+[##############                          ]  33%
+[##############                          ]  34%
+[###############                         ]  35%
+[###############                         ]  36%
+[###############                         ]  37%
+[################                        ]  38%
+[################                        ]  39%
+[#################                       ]  40%
+[#################                       ]  41%
+[#################                       ]  42%
+[##################                      ]  43%
+[##################                      ]  44%
+[###################                     ]  45%
+[###################                     ]  46%
+[###################                     ]  47%
+[####################                    ]  48%
+[#####################                   ]  50%
+[#####################                   ]  51%
+[#####################                   ]  52%
+[######################                  ]  53%
+[######################                  ]  54%
+[#######################                 ]  55%
+[#######################                 ]  56%
+[#######################                 ]  57%
+[########################                ]  58%
+[########################                ]  59%
+[#########################               ]  60%
+[#########################               ]  61%
+[#########################               ]  62%
+[##########################              ]  63%
+[##########################              ]  64%
+[###########################             ]  65%
+[###########################             ]  66%
+[###########################             ]  67%
+[############################            ]  68%
+[############################            ]  69%
+[#############################           ]  70%
+[#############################           ]  71%
+[#############################           ]  72%
+[##############################          ]  73%
+[##############################          ]  74%
+[###############################         ]  75%
+[###############################         ]  76%
+[###############################         ]  77%
+[################################        ]  78%
+[################################        ]  79%
+[#################################       ]  80%
+[#################################       ]  81%
+[#################################       ]  82%
+[##################################      ]  83%
+[##################################      ]  84%
+[###################################     ]  85%
+[###################################     ]  86%
+[###################################     ]  87%
+[####################################    ]  88%
+[####################################    ]  89%
+[#####################################   ]  90%
+[#####################################   ]  91%
+[#####################################   ]  92%
+[######################################  ]  93%
+[######################################  ]  94%
+[####################################### ]  95%
+[####################################### ]  96%
+[####################################### ]  97%
+[########################################]  98%
+[########################################] 100%
+|0000420309|Copy complete, now saving to disk (please wait)...
+|0000420711|Copy complete.
+|0000420711|The bootstrap configure is applied successfully
+|0000420811|
+
+|0000422614|
+
+|0000422614|User Access Verification
+|0000422614| login: cisco
+
+|0000465796|Password: 
+|0000467299|
+|0000467800|Cisco NX-OS Software
+|0000467800|Copyright (c) 2002-2020, Cisco Systems, Inc. All rights reserved.
+|0000467800|Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+|0000467800|files or other reference materials ("Documentation") are
+|0000467800|the proprietary property and confidential information of Cisco
+|0000467800|Systems, Inc. ("Cisco") and are protected, without limitation,
+|0000467800|pursuant to United States and International copyright and trademark
+|0000467800|laws in the applicable jurisdiction which provide civil and criminal
+|0000467800|penalties for copying or distribution without Cisco's authorization.
+|0000467800|
+|0000467800|Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+|0000467800|or Documentation to any third party for any purposes is expressly
+|0000467800|prohibited except as otherwise authorized by Cisco in writing.
+|0000467800|The copyrights to certain works contained herein are owned by other
+|0000467800|third parties and are used and distributed under license. Some parts
+|0000467800|of this software may be covered under the GNU Public License or the
+|0000467800|GNU Lesser General Public License. A copy of each such license is
+|0000467800|available at
+|0000467800|http://www.gnu.org/licenses/gpl.html and
+|0000467800|http://www.gnu.org/licenses/lgpl.html
+|0000467800|***************************************************************************
+|0000467800|*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+|0000467800|*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+|0000467800|*  the Nexus 9000v Software or Documentation to any third party for any   *
+|0000467800|*  purposes is expressly prohibited except as otherwise authorized by     *
+|0000467800|*  Cisco in writing.                                                      *
+|0000467800|***************************************************************************
+|0000467800|
+switch# conf t
+
+|0000470305|Enter configuration commands, one per line. End with CNTL/Z.
+|0000470305|
+switch(config)# hostname N7K-2
+
+|0000476916|
+N7K-2(config)# 
+
+|0000477317|
+N7K-2(config)# fea[18D[J
+N7K-2(config)# fea
+
+|0000610762|feature       feature-set   
+
+|0000610762|[J
+N7K-2(config)# feature vp[25D[J
+N7K-2(config)# feature vp[Jc 
+
+|0000613967|
+|0000614969|
+N7K-2(config)# 
+
+|0000614969|
+N7K-2(config)# vpc domain 1
+
+|0000692303|
+N7K-2(config-vpc-domain)# 
+
+|0000693004|
+N7K-2(config-vpc-domain)# 2022 Jun 17 00:44:52 N7K-2 %$ VDC-1 %$ %STP-2-VPC_PEERSWITCH_CONFIG_DISABLED: vPC peer-switch configuration is disabled. Please make sure to change spanning tree "bridge" priority as per the recommended guidelines.
+
+|0000694206|
+
+|0000694206|
+N7K-2(config-vpc-domain)# end
+
+|0000755416|
+N7K-2# sh vpc b[15D[J
+N7K-2# sh vpc b[Jrief [J[J[J[J[J[Jne[16D[J
+N7K-2# sh vpc ne[16D[J
+N7K-2# sh vpc ne[16D[J
+N7K-2# sh vpc nei[17D[J
+N7K-2# sh vpc nei[J[J[J[J[J[J[Jcdp me[J[J[J[J n[J[Jp ne[16D[J
+N7K-2# sh cdp ne[Jighbors 
+
+|0000787773|Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+|0000787773|                  S - Switch, H - Host, I - IGMP, r - Repeater,
+|0000787773|                  V - VoIP-Phone, D - Remotely-Managed-Device,
+|0000787773|                  s - Supports-STP-Dispute
+|0000787773|
+|0000787773|Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+|0000787773|N7K-1(9RKP8CWHUX7)
+|0000787773|                    mgmt0          145    R S s     N9K-C9500v    mgmt0         
+|0000787873|
+|0000787873|Total entries displayed: 1
+|0000787873|
+N7K-2# 
+
+|0000902186|
+N7K-2# 
+
+|0000902286|
+N7K-2# conf 
+
+|0000903889|Enter configuration commands, one per line. End with CNTL/Z.
+|0000903889|
+N7K-2(config)# int ma[Jgmt [J0
+
+|0000908096|
+N7K-2(config-if)# ip add[24D[J
+N7K-2(config-if)# ip add[Jress 172.16.100.2/24
+
+|0000915513|
+N7K-2(config-if)# end
+
+|0000917817|
+N7K-2# sh vrf int[17D[J
+N7K-2# sh vrf int[Jerface 
+
+|0000922025|Interface                 VRF-Name                        VRF-ID  Site-of-Origin
+|0000922025|Ethernet1/1               default                              1  --
+|0000922025|Ethernet1/2               default                              1  --
+|0000922025|Ethernet1/3               default                              1  --
+|0000922025|Ethernet1/4               default                              1  --
+|0000922025|Ethernet1/5               default                              1  --
+|0000922025|Ethernet1/6               default                              1  --
+|0000922025|Ethernet1/7               default                              1  --
+|0000922025|Ethernet1/8               default                              1  --
+|0000922025|Ethernet1/9               default                              1  --
+|0000922025|Ethernet1/10              default                              1  --
+|0000922025|Ethernet1/11              default                              1  --
+|0000922025|Ethernet1/12              default                              1  --
+|0000922025|Ethernet1/13              default                              1  --
+|0000922025|Ethernet1/14              default                              1  --
+|0000922025|Ethernet1/15              default                              1  --
+|0000922025|Ethernet1/16              default                              1  --
+|0000922025|Ethernet1/17              default                              1  --
+|0000922025|Ethernet1/18              default                              1  --
+|0000922025|Ethernet1/19              default                              1  --
+|0000922025|Ethernet1/20              default                              1  --
+|0000922025|Ethernet1/21              default                              1  --
+|0000922025|Ethernet1/22              default                              1  --
+|0000922025|[7m--More--[m
+Ethernet1/23              default                              1  --
+|0000922927|Ethernet1/24              default                              1  --
+|0000922927|Ethernet1/25              default                              1  --
+|0000922927|Ethernet1/26              default                              1  --
+|0000923027|Ethernet1/27              default                              1  --
+|0000923027|Ethernet1/28              default                              1  --
+|0000923027|Ethernet1/29              default                              1  --
+|0000923027|Ethernet1/30              default                              1  --
+|0000923027|Ethernet1/31              default                              1  --
+|0000923027|Ethernet1/32              default                              1  --
+|0000923027|Ethernet1/33              default                              1  --
+|0000923027|Ethernet1/34              default                              1  --
+|0000923027|Ethernet1/35              default                              1  --
+|0000923027|Ethernet1/36              default                              1  --
+|0000923027|Ethernet1/37              default                              1  --
+|0000923027|Ethernet1/38              default                              1  --
+|0000923027|Ethernet1/39              default                              1  --
+|0000923027|Ethernet1/40              default                              1  --
+|0000923027|Ethernet1/41              default                              1  --
+|0000923027|Ethernet1/42              default                              1  --
+|0000923027|Ethernet1/43              default                              1  --
+|0000923027|Ethernet1/44              default                              1  --
+|0000923027|Ethernet1/45              default                              1  --
+|0000923027|[7m--More--[m
+Ethernet1/46              default                              1  --
+|0000923128|Ethernet1/47              default                              1  --
+|0000923128|Ethernet1/48              default                              1  --
+|0000923128|Ethernet1/49              default                              1  --
+|0000923128|Ethernet1/50              default                              1  --
+|0000923128|Ethernet1/51              default                              1  --
+|0000923128|Ethernet1/52              default                              1  --
+|0000923228|Ethernet1/53              default                              1  --
+|0000923228|Ethernet1/54              default                              1  --
+|0000923228|Ethernet1/55              default                              1  --
+|0000923228|Ethernet1/56              default                              1  --
+|0000923228|Ethernet1/57              default                              1  --
+|0000923228|Ethernet1/58              default                              1  --
+|0000923228|Ethernet1/59              default                              1  --
+|0000923228|Ethernet1/60              default                              1  --
+|0000923228|Ethernet1/61              default                              1  --
+|0000923228|Ethernet1/62              default                              1  --
+|0000923228|Ethernet1/63              default                              1  --
+|0000923228|Ethernet1/64              default                              1  --
+|0000923228|mgmt0                     management                           2  --
+|0000923228|
+N7K-2#    [J[J[Jsh ip int br vrf ma[26D[J
+N7K-2# sh ip int br vrf ma[Jnagement 
+
+|0000930342|
+|0000930342|IP Interface Status for VRF "management"(2)
+|0000930342|Interface            IP Address      Interface Status
+|0000930342|mgmt0                172.16.100.2    protocol-up/link-up/admin-up       
+|0000930342|
+N7K-2# ping 172.16.100.1 vrf m[30D[J
+N7K-2# ping 172.16.100.1 vrf m[Janagement 2022 Jun 17 00:53:38 N7K-2 %$ VDC-1 %$ %COPP-2-COPP_NO_POLICY: Control-plane is unprotected.
+
+|0001418279|
+
+|0001418380|PING 172.16.100.1 (172.16.100.1): 56 data bytes
+|0001418380|36 bytes from 172.16.100.2: Destination Host Unreachable
+|0001418480|
+|0001420383|Request 0 timed out
+|0001420383|64 bytes from 172.16.100.1: icmp_seq=1 ttl=254 time=13.486 ms
+|0001420383|64 bytes from 172.16.100.1: icmp_seq=2 ttl=254 time=3.054 ms
+|0001420383|64 bytes from 172.16.100.1: icmp_seq=3 ttl=254 time=2.796 ms
+|0001420383|64 bytes from 172.16.100.1: icmp_seq=4 ttl=254 time=2.908 ms
+|0001422487|
+|0001422487|--- 172.16.100.1 ping statistics ---
+|0001422487|5 packets transmitted, 4 packets received, 20.00% packet loss
+|0001422487|round-trip min/avg/max = 2.796/5.56/13.486 ms
+|0001422487|
+N7K-2# 
+
+|0001422487|
+N7K-2# 
+
+|0001438713|
+N7K-2# vpc dom[14D[J
+N7K-2# vpc dom[J[J[J[J[J[J[Jvonf [J[J[J[J[Jvong 
+
+|0001878965|        ^
+|0001878966|% Invalid command at '^' marker.
+|0001878966|
+N7K-2# cong[Jf
+
+|0001881470|Enter configuration commands, one per line. End with CNTL/Z.
+|0001881470|
+N7K-2(config)# vpc domain 1
+
+|0001903105|
+N7K-2(config-vpc-domain)# pe[28D[J
+N7K-2(config-vpc-domain)# pe
+
+|0001905110|peer-gateway     peer-keepalive   peer-switch      
+
+|0001905110|[J
+N7K-2(config-vpc-domain)# peer-ke[33D[J
+N7K-2(config-vpc-domain)# peer-ke[Jepalive de[43D[J
+N7K-2(config-vpc-domain)# peer-keepalive de[Jstination 172.16.100.2
+
+|0001916032|
+N7K-2(config-vpc-domain)# 
+
+|0001918637|
+N7K-2(config-vpc-domain)# 
+
+|0001918937|
+N7K-2(config-vpc-domain)# end 
+
+|0001920642|
+N7K-2# sh rin[13D[J
+N7K-2# sh rin[J[Jun [14D[J
+N7K-2# sh run 
+
+|0001924650|aaa                      exclude                  port-profile           
+
+|0001924650|acllog                   expand-port-profile      radius                 
+
+|0001924650|aclmgr                   icam                     routing                
+
+|0001924650|adjmgr                   icmpv6                   rpm                    
+
+|0001924650|all                      igmp                     section                
+
+|0001924650|arp                      include-switch-profile   security               
+
+|0001924650|bloggerd                 interface                service-reflect        
+
+|0001924650|callhome                 ip                       snmp                   
+
+|0001924650|cdp                      ipqos                    spanning-tree          
+
+|0001924650|cert-enroll              ipv6                     syncc                  
+
+|0001924650|cfs                      l2pt                     track                  
+
+|0001924650|clock_manager            l3vm                     vdc                    
+
+|0001924650|config-profile           license                  vdc-all                
+
+|0001924650|copp                     mld                      virtual-service        
+
+|0001924650|diagnostic               mmode                    vlan                   
+
+|0001924650|diff                     monitor                  vpc                    
+
+|0001924750|ecp                      mpls                     vrf                    
+
+|0001924750|eem                      ntp                      vshd                   
+
+|0001924750|eltm                     param-list               
+
+|0001924750|[J
+N7K-2# sh run int mg[20D[J
+N7K-2# sh run int mg[Jmt 
+
+|0001927855|                       ^
+|0001927855|Invalid command (incomplete interface) at '^' marker.
+|0001927855|
+N7K-2# [7D[J
+N7K-2# sh run int mgmt 0
+
+|0001931362|
+|0001931362|!Command: show running-config interface mgmt0
+|0001931362|!Running configuration last done at: Fri Jun 17 01:05:10 2022
+|0001931362|!Time: Fri Jun 17 01:05:25 2022
+|0001931362|
+|0001931362|version 9.3(6) Bios:version  
+|0001931362|
+|0001931362|interface mgmt0
+|0001931362|  vrf member management
+|0001931362|  ip address 172.16.100.2/24
+|0001931362|
+|0001931362|
+N7K-2# [7D[J
+N7K-2# sh run int mgmt 0[24D[J
+N7K-2# sh run int mgmt [23D[J
+N7K-2# vong [12D[J
+N7K-2# ping 172.16.100.1 vrf management [40D[J
+N7K-2# vong [12D[J
+N7K-2# sh run int mgmt [J[J[J[J[J[J[J[J[J[J[J[J[J[J[J[Jconf 
+
+|0002020807|Enter configuration commands, one per line. End with CNTL/Z.
+|0002020807|
+N7K-2(config)# vpc domai[24D[J
+N7K-2(config)# vpc domai[Jn 1
+
+|0002025616|
+N7K-2(config-vpc-domain)# [26D[J
+N7K-2(config-vpc-domain)# vpc domain 1[38D[J
+N7K-2(config-vpc-domain)# conf [31D[J
+N7K-2(config-vpc-domain)# sh run int mgmt 0[43D[J
+N7K-2(config-vpc-domain)# sh run int mgmt [42D[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 172.16.100.2[65D[J
+N7K-2(config-vpc-domain)# vpc domain 1[38D[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 172.16.100.2[39Dnpeer-keepalive destination 172.16.100.2[39Dopeer-keepalive destination 172.16.100.2[39D peer-keepalive destination 172.16.100.2[39D[39C
+
+|0002033830|% Invalid command
+|0002033830|
+|0002033830|
+N7K-2(config-vpc-domain)# [26D[J
+N7K-2(config-vpc-domain)# no peer-keepalive destination 172.16.100.2[J1[42D[C[C[C[Cpeer-keepalive destination 172.16.100.1[J[39Dpeer-keepalive destination 172.16.100.1[J[39Dpeer-keepalive destination 172.16.100.1[J[39D[39C
+
+|0002047255|\
+N7K-2(config-vpc-domain)# \[J
+
+|0002049158|
+N7K-2(config-vpc-domain)# end
+
+|0002050560|
+N7K-2# sh run vpc m[19D[J
+N7K-2# sh run vpc mgn[Jm0
+
+|0002073499|                  ^
+|0002073499|% Invalid command at '^' marker.
+|0002073499|
+N7K-2# sh rin[J[J[J[J[J[Jsh run it[Jnt m[19D[J
+N7K-2# sh run int m[Jgmt 0
+
+|0002104151|
+|0002104151|!Command: show running-config interface mgmt0
+|0002104151|!Running configuration last done at: Fri Jun 17 01:07:20 2022
+|0002104151|!Time: Fri Jun 17 01:08:17 2022
+|0002104151|
+|0002104151|version 9.3(6) Bios:version  
+|0002104151|
+|0002104151|interface mgmt0
+|0002104151|  vrf member management
+|0002104151|  ip address 172.16.100.2/24
+|0002104151|
+|0002104151|
+N7K-2# 2022 Jun 17 01:08:34 N7K-2 %$ VDC-1 %$ %COPP-2-COPP_NO_POLICY: Control-plane is unprotected.
+
+|0002166862|
+
+|0002166862|
+N7K-2# 
+
+|0002167062|
+N7K-2# cond t[J[J[J[Jnf
+
+|0002172272|Enter configuration commands, one per line. End with CNTL/Z.
+|0002172272|
+N7K-2(config)# c[Jvpc doma[23D[J
+N7K-2(config)# vpc doma[Jin 1
+
+|0002176281|
+N7K-2(config-vpc-domain)# peer[30D[J
+N7K-2(config-vpc-domain)# peer
+
+|0002178184|peer-gateway     peer-keepalive   peer-switch      
+
+|0002178184|[J
+N7K-2(config-vpc-domain)# peer-ke[33D[J
+N7K-2(config-vpc-domain)# peer-ke[Jepalive destination 172.16.100.1
+
+|0002186999|
+N7K-2(config-vpc-domain)# 2022 Jun 17 01:09:40 N7K-2 %$ VDC-1 %$ %VPC-2-PEER_KEEP_ALIVE_RECV_FAIL: In domain 1, VPC peer keep-alive receive has failed
+
+|0002187299|2022 Jun 17 01:09:40 N7K-2 %$ VDC-1 %$ %VPC-2-PEER_KEEP_ALIVE_SEND_FAIL: In domain 1, VPC peer keep-alive send has failed
+
+|0002189604|
+
+|0002189604|
+N7K-2(config-vpc-domain)# 
+
+|0002191507|
+N7K-2(config-vpc-domain)# end
+
+|0002299389|
+N7K-2# sh vpc ke[J[Jpeer[18D[J
+N7K-2# sh vpc peer[J-keepalive 
+
+|0002305502|
+|0002305502|vPC keep-alive status             : peer is alive                 
+|0002305502|--Peer is alive for             : (117) seconds, (169) msec
+|0002305502|--Send status                   : Success 
+|0002305502|--Last send at                  : 2022.06.17 01:11:37 186 ms
+|0002305502|--Sent on interface             : mgmt0
+|0002305502|--Receive status                : Success
+|0002305502|--Last receive at               : 2022.06.17 01:11:37 410 ms
+|0002305502|--Received on interface         : mgmt0
+|0002305502|--Last update from peer         : (0) seconds, (70) msec
+|0002305502|
+|0002305502|vPC Keep-alive parameters
+|0002305502|--Destination                   : 172.16.100.1
+|0002305502|--Keepalive interval            : 1000 msec
+|0002305502|--Keepalive timeout             : 5 seconds
+|0002305502|--Keepalive hold timeout        : 3 seconds
+|0002305502|--Keepalive vrf                 : management
+|0002305502|--Keepalive udp port            : 3200
+|0002305502|--Keepalive tos                 : 192
+|0002305502|
+N7K-2# 
+
+|0002322228|
+N7K-2# 
+
+|0002322429|
+N7K-2# sh cdp ne[16D[J
+N7K-2# sh cdp ne[Jighbors 
+
+|0002336155|Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+|0002336155|                  S - Switch, H - Host, I - IGMP, r - Repeater,
+|0002336155|                  V - VoIP-Phone, D - Remotely-Managed-Device,
+|0002336255|                  s - Supports-STP-Dispute
+|0002336255|
+|0002336255|Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+|0002336255|N7K-1(9RKP8CWHUX7)
+|0002336255|                    mgmt0          157    R S s     N9K-C9500v    mgmt0         
+|0002336255|
+|0002336255|Total entries displayed: 1
+|0002336255|
+N7K-2# 
+
+|0002358993|
+N7K-2# 
+
+|0002359194|
+N7K-2# cond[Jf t
+
+|0002384037|Enter configuration commands, one per line. End with CNTL/Z.
+|0002384037|
+N7K-2(config)# 
+
+|0002385339|
+N7K-2(config)# sh int br
+
+|0002392653|
+|0002392653|--------------------------------------------------------------------------------
+|0002392653|Port   VRF          Status IP Address                              Speed    MTU
+|0002392653|--------------------------------------------------------------------------------
+|0002392753|mgmt0  --           up     172.16.100.2                            unknown 1500 
+|0002392753|   
+|0002392753|--------------------------------------------------------------------------------
+|0002392753|Ethernet        VLAN    Type Mode   Status  Reason                 Speed     Por
+|0002392753|t
+|0002392753|Interface                                                                    Ch 
+|0002392753|#
+|0002392753|--------------------------------------------------------------------------------
+|0002392753|Eth1/1          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/2          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/3          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/4          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/5          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/6          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/7          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/8          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/9          --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/10         --      eth  routed down    Administratively down    auto(D) --
+|0002392753|Eth1/11         --      eth  routed down    Administratively down    auto(D) --
+|0002392753|[7m--More--[m
+Eth1/12         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/13         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/14         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/15         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/16         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/17         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/18         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/19         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/20         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/21         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/22         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/23         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/24         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/25         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/26         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/27         --      eth  routed down    Administratively down    auto(D) --
+|0002394457|Eth1/28         --      eth  routed down    Administratively down    auto(D) --
+|0002394558|Eth1/29         --      eth  routed down    Administratively down    auto(D) --
+|0002394558|Eth1/30         --      eth  routed down    Administratively down    auto(D) --
+|0002394558|Eth1/31         --      eth  routed down    Administratively down    auto(D) --
+|0002394558|Eth1/32         --      eth  routed down    Administratively down    auto(D) --
+|0002394558|Eth1/33         --      eth  routed down    Administratively down    auto(D) --
+|0002394558|Eth1/34         --      eth  routed down    Administratively down    auto(D) --
+|0002394558|[7m--More--[m
+Eth1/35         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/36         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/37         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/38         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/39         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/40         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/41         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/42         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/43         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/44         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/45         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/46         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/47         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/48         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/49         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/50         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/51         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/52         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/53         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/54         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/55         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/56         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|Eth1/57         --      eth  routed down    Administratively down    auto(D) --
+|0002394658|[7m--More--[m
+Eth1/58         --      eth  routed down    Administratively down    auto(D) --
+|0002394858|Eth1/59         --      eth  routed down    Administratively down    auto(D) --
+|0002394858|Eth1/60         --      eth  routed down    Administratively down    auto(D) --
+|0002394858|Eth1/61         --      eth  routed down    Administratively down    auto(D) --
+|0002394858|Eth1/62         --      eth  routed down    Administratively down    auto(D) --
+|0002394858|Eth1/63         --      eth  routed down    Administratively down    auto(D) --
+|0002394858|Eth1/64         --      eth  routed down    Administratively down    auto(D) --
+|0002394858|
+N7K-2(config)#    [J[J[Jint et[21D[J
+N7K-2(config)# int et[Jhernet 1/1
+
+|0002504060|
+N7K-2(config-if)# no sh[23D[J
+N7K-2(config-if)# no sh[Jutdown 
+
+|0002507668|
+N7K-2(config-if)# no sw[23D[J
+N7K-2(config-if)# no sw[Jitchport 
+
+|0002511676|
+N7K-2(config-if)# 
+
+|0002517486|
+N7K-2(config-if)# ip add[24D[J
+N7K-2(config-if)# ip add[Jress 192.106[J[J8[J68.12[J00.1/24
+
+|0002529412|
+N7K-2(config-if)# 
+
+|0002529913|
+N7K-2(config-if)# conf[J[J[J[Jint eth[25D[J
+N7K-2(config-if)# ip address 192.168.100.1/24[45D[J
+N7K-2(config-if)# no switchport [32D[J
+N7K-2(config-if)# no shutdown [30D[J
+N7K-2(config-if)# int ethernet 1/1
+
+|0002599942|
+N7K-2(config-if)# [18D[J
+N7K-2(config-if)# int ethernet 1/1[34D[J
+N7K-2(config-if)# ip address 192.168.100.1/24/24[J2/24[3C
+
+|0002605855|
+N7K-2(config-if)# 
+
+|0002726055|
+N7K-2(config-if)# 
+
+|0002726155|
+N7K-2(config-if)# end
+
+|0002726856|
+N7K-2# coin[J[Jnf t
+
+|0002729962|Enter configuration commands, one per line. End with CNTL/Z.
+|0002729962|
+N7K-2(config)# 
+
+|0002731165|
+N7K-2(config)# vpc doma[23D[J
+N7K-2(config)# vpc doma[Jin 1
+
+|0002735073|
+N7K-2(config-vpc-domain)# peer[30D[J
+N7K-2(config-vpc-domain)# peer
+
+|0002737376|peer-gateway     peer-keepalive   peer-switch      
+
+|0002737376|[J
+N7K-2(config-vpc-domain)# peer-kee[34D[J
+N7K-2(config-vpc-domain)# peer-kee[Jpalive des[44D[J
+N7K-2(config-vpc-domain)# peer-keepalive des[Jtination 192.168.100.2
+
+|0002758215|
+N7K-2(config-vpc-domain)# 2022 Jun 17 01:19:08 N7K-2 %$ VDC-1 %$ %VPC-2-PEER_KEEP_ALIVE_RECV_FAIL: In domain 1, VPC peer keep-alive receive has failed
+
+|0002758916|2022 Jun 17 01:19:08 N7K-2 %$ VDC-1 %$ %VPC-2-PEER_KEEP_ALIVE_SEND_FAIL: In domain 1, VPC peer keep-alive send has failed
+
+|0002765128|
+
+|0002765129|
+N7K-2(config-vpc-domain)# [26D[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 192.168.100.2 vrf defa[75D[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 192.168.100.2 vrf defa[Jult s our[A[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 192.168.100.2 vrf default soour[Jce 192.168.100.1
+
+|0002853576|
+N7K-2(config-vpc-domain)# 2022 Jun 17 01:20:43 N7K-2 %$ VDC-1 %$ %VPC-2-PEER_KEEP_ALIVE_SEND_FAIL: In domain 1, VPC peer keep-alive send has failed (message repeated 1 time)
+
+|0002854378|
+
+|0002854378|
+N7K-2(config-vpc-domain)# 
+
+|0002854578|
+N7K-2(config-vpc-domain)# 
+
+|0002856181|
+N7K-2(config-vpc-domain)# show tr[J[Jrun vpc
+
+|0002862091|
+|0002862091|!Command: show running-config vpc
+|0002862091|!Running configuration last done at: Fri Jun 17 01:20:43 2022
+|0002862091|!Time: Fri Jun 17 01:20:52 2022
+|0002862091|
+|0002862091|version 9.3(6) Bios:version  
+|0002862091|feature vpc
+|0002862091|
+|0002862091|vpc domain 1
+|0002862091|  peer-keepalive destination 192.168.100.2 source 192.168.100.1 vrf default
+|0002862091|
+|0002862091|
+N7K-2(config-vpc-domain)# sh vpc peer[37D[J
+N7K-2(config-vpc-domain)# sh vpc peer[J-keepalive 
+
+|0003001947|
+|0003001947|vPC keep-alive status             : peer is not reachable through peer-keepalive
+|0003001947|--Send status                   : Success 
+|0003001947|--Last send at                  : 2022.06.17 01:23:11 597 ms
+|0003001947|--Sent on interface             : Eth1/1
+|0003001947|--Receive status                : Failed
+|0003001947|--Last update from peer         : (244) seconds, (60) msec
+|0003001947|
+|0003001947|vPC Keep-alive parameters
+|0003001947|--Destination                   : 192.168.100.2
+|0003001947|--Keepalive interval            : 1000 msec
+|0003001947|--Keepalive timeout             : 5 seconds
+|0003001947|--Keepalive hold timeout        : 3 seconds
+|0003001947|--Keepalive vrf                 : default
+|0003001947|--Keepalive udp port            : 3200
+|0003002048|--Keepalive tos                 : 192
+|0003002048|
+N7K-2(config-vpc-domain)# 
+
+|0003005854|
+N7K-2(config-vpc-domain)# 
+
+|0003006856|
+N7K-2(config-vpc-domain)# 
+
+|0003007056|
+N7K-2(config-vpc-domain)# end
+
+|0003014670|
+N7K-2# sh run vp[16D[J
+N7K-2# sh run vp[Jc 
+
+|0003018176|
+|0003018176|!Command: show running-config vpc
+|0003018176|!Running configuration last done at: Fri Jun 17 01:20:43 2022
+|0003018176|!Time: Fri Jun 17 01:23:27 2022
+|0003018176|
+|0003018176|version 9.3(6) Bios:version  
+|0003018176|feature vpc
+|0003018176|
+|0003018176|vpc domain 1
+|0003018176|  peer-keepalive destination 192.168.100.2 source 192.168.100.1 vrf default
+|0003018176|
+|0003018176|
+N7K-2# vpc d2022 Jun 17 01:23:30 N7K-2 %$ VDC-1 %$ %COPP-2-COPP_NO_POLICY: Control-plane is unprotected.
+
+|0003021283|om[14D[J
+N7K-2# vpc dom[14D[J
+N7K-2# vpc domain 1
+
+|0003027995|           ^
+|0003027995|% Invalid command at '^' marker.
+|0003027995|
+N7K-2# conf 
+
+|0003030700|Enter configuration commands, one per line. End with CNTL/Z.
+|0003030700|
+N7K-2(config)# vpc do[21D[J
+N7K-2(config)# vpc do[Jmain 1
+
+|0003034607|
+N7K-2(config-vpc-domain)# pe[28D[J
+N7K-2(config-vpc-domain)# pe
+
+|0003037713|peer-gateway     peer-keepalive   peer-switch      
+
+|0003037713|[J
+N7K-2(config-vpc-domain)# peer-ke[33D[J
+N7K-2(config-vpc-domain)# peer-ke[Jepalive des[44D[J
+N7K-2(config-vpc-domain)# peer-keepalive des[Jtination 192.168.100.1 vrf[70D[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 192.168.100.1 vrf[J de[73D[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 192.168.100.1 vrf de[Jfault s [A[J
+N7K-2(config-vpc-domain)# peer-keepalive destination 192.168.100.1 vrf default s [Jource 192.168.100.2
+
+|0003054744|
+N7K-2(config-vpc-domain)# 2022 Jun 17 01:24:04 N7K-2 %$ VDC-1 %$ %VPC-2-PEER_KEEP_ALIVE_SEND_FAIL: In domain 1, VPC peer keep-alive send has failed
+
+|0003055846|
+
+|0003055846|
+N7K-2(config-vpc-domain)# 
+
+|0003056146|
+N7K-2(config-vpc-domain)# end
+
+|0003058049|
+N7K-2# ping 192.1687[J.100.1 vrf[29D[J
+N7K-2# ping 192.168.100.1 vrf[J de[32D[J
+N7K-2# ping 192.168.100.1 vrf de[Jfault 
+
+|0003070872|PING 192.168.100.1 (192.168.100.1): 56 data bytes
+|0003070872|64 bytes from 192.168.100.1: icmp_seq=0 ttl=254 time=4.331 ms
+|0003070872|64 bytes from 192.168.100.1: icmp_seq=1 ttl=254 time=3.33 ms
+|0003070872|64 bytes from 192.168.100.1: icmp_seq=2 ttl=254 time=3.154 ms
+|0003070972|64 bytes from 192.168.100.1: icmp_seq=3 ttl=254 time=3.798 ms
+|0003070972|64 bytes from 192.168.100.1: icmp_seq=4 ttl=254 time=4.967 ms
+|0003072975|
+|0003072975|--- 192.168.100.1 ping statistics ---
+|0003072975|5 packets transmitted, 5 packets received, 0.00% packet loss
+|0003072975|round-trip min/avg/max = 3.154/3.916/4.967 ms
+|0003072975|
+N7K-2# s[J
+
+|0003076883|
+N7K-2# sh vpc ke[16D[J
+N7K-2# sh vpc ke[16D[J
+N7K-2# sh vpc ke[J[J[Jp[J pe[16D[J
+N7K-2# sh vpc pe[Jer-keepalive 
+
+|0003087301|
+|0003087301|vPC keep-alive status             : peer is not reachable through peer-keepalive
+|0003087301|--Send status                   : Success 
+|0003087301|--Last send at                  : 2022.06.17 01:24:36 306 ms
+|0003087301|--Sent on interface             : Eth1/1
+|0003087301|--Receive status                : Failed
+|0003087301|--Last update from peer         : (329) seconds, (68) msec
+|0003087301|
+|0003087301|vPC Keep-alive parameters
+|0003087301|--Destination                   : 192.168.100.1
+|0003087301|--Keepalive interval            : 1000 msec
+|0003087301|--Keepalive timeout             : 5 seconds
+|0003087301|--Keepalive hold timeout        : 3 seconds
+|0003087301|--Keepalive vrf                 : default
+|0003087301|--Keepalive udp port            : 3200
+|0003087301|--Keepalive tos                 : 192
+|0003087401|
+N7K-2# [7D[J
+N7K-2# sh vpc peer-keepalive 
+
+|0003171247|
+|0003171248|vPC keep-alive status             : peer is not reachable through peer-keepalive
+|0003171248|--Send status                   : Success 
+|0003171248|--Last send at                  : 2022.06.17 01:26:00 379 ms
+|0003171248|--Sent on interface             : Eth1/1
+|0003171248|--Receive status                : Failed
+|0003171248|--Last update from peer         : (412) seconds, (968) msec
+|0003171248|
+|0003171248|vPC Keep-alive parameters
+|0003171248|--Destination                   : 192.168.100.1
+|0003171248|--Keepalive interval            : 1000 msec
+|0003171248|--Keepalive timeout             : 5 seconds
+|0003171248|--Keepalive hold timeout        : 3 seconds
+|0003171248|--Keepalive vrf                 : default
+|0003171248|--Keepalive udp port            : 3200
+|0003171248|--Keepalive tos                 : 192
+|0003171248|
+N7K-2# 
+
+|0003315196|
+N7K-2# 2022 Jun 17 01:38:26 N7K-2 %$ VDC-1 %$ %COPP-2-COPP_NO_POLICY: Control-plane is unprotected.
+
+|0004323591|
+
+|0004323591|
+N7K-2# 
+
+|0004323691|
+N7K-2# 
+
+|0004323891|
+N7K-2# sh vpc 
+
+|0004329500|Legend:
+|0004329500|		(*) - local vPC is down, forwarding via vPC peer-link
+|0004329500|
+|0004329500|vPC domain id                     : 1   
+|0004329500|Peer status                       : peer link not configured      
+|0004329500|vPC keep-alive status             : peer is not reachable through peer-keepalive
+|0004329500|Configuration consistency status  : failed  
+|0004329500|Per-vlan consistency status       : failed                        
+|0004329600|Configuration inconsistency reason: vPC peer-link does not exist  
+|0004329600|Type-2 consistency status         : failed  
+|0004329600|Type-2 inconsistency reason       : vPC peer-link does not exist  
+|0004329600|vPC role                          : none established              
+|0004329600|Number of vPCs configured         : 0   
+|0004329600|Peer Gateway                      : Disabled
+|0004329600|Dual-active excluded VLANs        : -
+|0004329600|Graceful Consistency Check        : Disabled (due to peer configuration)
+|0004329600|Auto-recovery status              : Disabled
+|0004329600|Delay-restore status              : Timer is off.(timeout = 30s)
+|0004329600|Delay-restore SVI status          : Timer is off.(timeout = 10s)
+|0004329600|Operational Layer3 Peer-router    : Disabled
+|0004329600|Virtual-peerlink mode             : Disabled
+|0004329600|
+N7K-2# conf 
+
+|0004340818|Enter configuration commands, one per line. End with CNTL/Z.
+|0004340818|
+N7K-2(config)# int eth[22D[J
+N7K-2(config)# int eth[Jernet 1/2
+
+|0004346729|
+N7K-2(config-if)# no sh[23D[J
+N7K-2(config-if)# no sh[Jutdown 
+
+|0004349334|
+N7K-2(config-if)# sw[20D[J
+N7K-2(config-if)# sw[Jitchport 
+
+|0004351437|
+N7K-2(config-if)# s[19D[J
+N7K-2(config-if)# s
+
+|0004353842|service-policy      snmp                speed-group         switchport        
+
+|0004353842|show                spanning-tree       storm-control       
+
+|0004353842|shutdown            speed               storm-control-cpu   
+
+|0004353842|[J
+N7K-2(config-if)# sw[20D[J
+N7K-2(config-if)# sw[Jitchport mode tr[36D[J
+N7K-2(config-if)# switchport mode tr[Junk 
+
+|0004358351|
+N7K-2(config-if)# 
+
+|0004358852|
+N7K-2(config-if)# che[Jannel[25D[J
+N7K-2(config-if)# channel[J-group 1 mode[38D[J
+N7K-2(config-if)# channel-group 1 mode[J a[40D[J
+N7K-2(config-if)# channel-group 1 mode a[Jctive 
+
+|0004365866|LACP process needs to be started before configuring active or passive mode
+|0004365866|
+N7K-2(config-if)# push
+
+|0004374282|
+N7K-2(config-if)# exit
+
+|0004377589|
+N7K-2(config)# fe[17D[J
+N7K-2(config)# fe
+
+|0004380195|feature       feature-set   
+
+|0004380195|[J
+N7K-2(config)# feature la[25D[J
+N7K-2(config)# feature la[Jcp 
+
+|0004384001|
+|0004384302|
+N7K-2(config)# 
+
+|0004384302|
+N7K-2(config)# pi[J[Jpop
+
+|0004386807|
+N7K-2(config-if)# where
+
+|0004389011|  conf; interface Ethernet1/2      cisco@N7K-2%default
+|0004389011|
+N7K-2(config-if)# channe[24D[J
+N7K-2(config-if)# channe[Jl-group 1 mode[38D[J
+N7K-2(config-if)# channel-group 1 mode[J a[40D[J
+N7K-2(config-if)# channel-group 1 mode a[Jctive 
+
+|0004395525|
+N7K-2(config-if)# 
+
+|0004396627|
+N7K-2(config-if)# end
+
+|0004398229|
+N7K-2# sh r[11D[J
+N7K-2# sh r
+
+|0004400232|radius            reload            rollback          routing-context 
+
+|0004400232|radius-cfs        resource          route-map         running-config  
+
+|0004400232|radius-server     rmon              router-guard      
+
+|0004400232|redundancy        role              routing           
+
+|0004400232|[J
+N7K-2# sh ru[12D[J
+N7K-2# sh ru[Jnning-config in
+
+|0004404240|                          ^
+|0004404240|% Ambiguous command at '^' marker.
+|0004404240|
+N7K-2# [7D[J
+N7K-2# sh running-config in[27D[J
+N7K-2# sh running-config in
+
+|0004406744|include-switch-profile   interface                
+
+|0004406744|[J
+N7K-2# sh running-config inte[29D[J
+N7K-2# sh running-config inte[Jrface 
+
+|0004409350|
+|0004409350|!Command: show running-config interface
+|0004409350|!Running configuration last done at: Fri Jun 17 01:46:20 2022
+|0004409350|!Time: Fri Jun 17 01:46:34 2022
+|0004409350|
+|0004409350|version 9.3(6) Bios:version  
+|0004409350|
+|0004409350|interface port-channel1
+|0004409350|  switchport
+|0004409350|  switchport mode trunk
+|0004409350|
+|0004409350|interface Ethernet1/1
+|0004409350|  ip address 192.168.100.2/24
+|0004409350|  no shutdown
+|0004409350|
+|0004409350|interface Ethernet1/2
+|0004409350|  switchport
+|0004409350|  switchport mode trunk
+|0004409350|  channel-group 1 mode active
+|0004409350|  no shutdown
+|0004409350|
+|0004409350|interface Ethernet1/3
+|0004409350|
+|0004409350|[7m--More--[m
+interface Ethernet1/4
+|0004412355|
+|0004412355|interface Ethernet1/5
+|0004412355|
+|0004412355|interface Ethernet1/6
+|0004412355|
+|0004412355|interface Ethernet1/7
+|0004412355|
+|0004412355|interface Ethernet1/8
+|0004412355|
+|0004412355|interface Ethernet1/9
+|0004412355|
+|0004412355|interface Ethernet1/10
+|0004412355|
+|0004412355|interface Ethernet1/11
+|0004412355|
+|0004412355|interface Ethernet1/12
+|0004412355|
+|0004412355|interface Ethernet1/13
+|0004412355|
+|0004412355|interface Ethernet1/14
+|0004412356|
+|0004412356|interface Ethernet1/15
+|0004412356|[7m--More--[m
+
+[K
+|0004412556|interface Ethernet1/16
+|0004412556|
+|0004412556|interface Ethernet1/17
+|0004412556|
+|0004412556|interface Ethernet1/18
+|0004412556|
+|0004412556|interface Ethernet1/19
+|0004412556|
+|0004412556|interface Ethernet1/20
+|0004412556|
+|0004412556|interface Ethernet1/21
+|0004412556|
+|0004412556|interface Ethernet1/22
+|0004412556|
+|0004412556|interface Ethernet1/23
+|0004412556|
+|0004412556|interface Ethernet1/24
+|0004412556|
+|0004412556|interface Ethernet1/25
+|0004412556|
+|0004412556|interface Ethernet1/26
+|0004412556|
+|0004412556|[7m--More--[m
+interface Ethernet1/27
+|0004412756|
+|0004412756|interface Ethernet1/28
+|0004412756|
+|0004412756|interface Ethernet1/29
+|0004412756|
+|0004412756|interface Ethernet1/30
+|0004412756|
+|0004412756|interface Ethernet1/31
+|0004412756|
+|0004412756|interface Ethernet1/32
+|0004412756|
+|0004412756|interface Ethernet1/33
+|0004412756|
+|0004412756|interface Ethernet1/34
+|0004412756|
+|0004412756|interface Ethernet1/35
+|0004412756|
+|0004412756|interface Ethernet1/36
+|0004412756|
+|0004412756|interface Ethernet1/37
+|0004412756|
+|0004412756|interface Ethernet1/38
+|0004412756|[7m--More--[m
+
+[K
+|0004412956|interface Ethernet1/39
+|0004412956|
+|0004412956|interface Ethernet1/40
+|0004412956|
+|0004412956|interface Ethernet1/41
+|0004412956|
+|0004412956|interface Ethernet1/42
+|0004412956|
+|0004412956|interface Ethernet1/43
+|0004412956|
+|0004412956|interface Ethernet1/44
+|0004412956|
+|0004412956|interface Ethernet1/45
+|0004412956|
+|0004412956|interface Ethernet1/46
+|0004412956|
+|0004412956|interface Ethernet1/47
+|0004412956|
+|0004412956|interface Ethernet1/48
+|0004412956|
+|0004412956|interface Ethernet1/49
+|0004412956|
+|0004412956|[7m--More--[m
+interface Ethernet1/50
+|0004413157|
+|0004413157|interface Ethernet1/51
+|0004413157|
+|0004413157|interface Ethernet1/52
+|0004413157|
+|0004413157|interface Ethernet1/53
+|0004413157|
+|0004413157|interface Ethernet1/54
+|0004413157|
+|0004413157|interface Ethernet1/55
+|0004413157|
+|0004413157|interface Ethernet1/56
+|0004413157|
+|0004413157|interface Ethernet1/57
+|0004413157|
+|0004413157|interface Ethernet1/58
+|0004413157|
+|0004413157|interface Ethernet1/59
+|0004413157|
+|0004413157|interface Ethernet1/60
+|0004413157|
+|0004413157|interface Ethernet1/61
+|0004413157|[7m--More--[m
+
+[K
+|0004413358|interface Ethernet1/62
+|0004413358|
+|0004413358|interface Ethernet1/63
+|0004413358|
+|0004413358|interface Ethernet1/64
+|0004413358|
+|0004413358|interface mgmt0
+|0004413358|  vrf member management
+|0004413358|  ip address 172.16.100.2/24
+|0004413358|
+|0004413358|
+N7K-2#           [J[J[J[J[J[J[J[J[J[Jsh por[13D[J
+N7K-2# sh por
+
+|0004418669|port-channel   port-profile   
+
+|0004418669|[J
+N7K-2# sh port-ch[17D[J
+N7K-2# sh port-ch[Jannel su[25D[J
+N7K-2# sh port-channel su[Jmmary 
+
+|0004421775|Flags:  D - Down        P - Up in port-channel (members)
+|0004421775|        I - Individual  H - Hot-standby (LACP only)
+|0004421775|        s - Suspended   r - Module-removed
+|0004421775|        b - BFD Session Wait
+|0004421775|        S - Switched    R - Routed
+|0004421775|        U - Up (port-channel)
+|0004421775|        p - Up in delay-lacp mode (member)
+|0004421775|        M - Not in use. Min-links not met
+|0004421775|--------------------------------------------------------------------------------
+|0004421775|Group Port-       Type     Protocol  Member Ports
+|0004421775|      Channel
+|0004421775|--------------------------------------------------------------------------------
+|0004421775|1     Po1(SU)     Eth      LACP      Eth1/2(P)    
+|0004421775|
+N7K-2# sho [Jw vpc 
+
+|0004432395|Legend:
+|0004432395|		(*) - local vPC is down, forwarding via vPC peer-link
+|0004432395|
+|0004432395|vPC domain id                     : 1   
+|0004432395|Peer status                       : peer link not configured      
+|0004432395|vPC keep-alive status             : peer is not reachable through peer-keepalive
+|0004432395|Configuration consistency status  : failed  
+|0004432395|Per-vlan consistency status       : failed                        
+|0004432395|Configuration inconsistency reason: vPC peer-link does not exist  
+|0004432395|Type-2 consistency status         : failed  
+|0004432395|Type-2 inconsistency reason       : vPC peer-link does not exist  
+|0004432395|vPC role                          : none established              
+|0004432395|Number of vPCs configured         : 0   
+|0004432395|Peer Gateway                      : Disabled
+|0004432395|Dual-active excluded VLANs        : -
+|0004432395|Graceful Consistency Check        : Disabled (due to peer configuration)
+|0004432395|Auto-recovery status              : Disabled
+|0004432395|Delay-restore status              : Timer is off.(timeout = 30s)
+|0004432395|Delay-restore SVI status          : Timer is off.(timeout = 10s)
+|0004432395|Operational Layer3 Peer-router    : Disabled
+|0004432395|Virtual-peerlink mode             : Disabled
+|0004432395|
+N7K-2#  [J
+
+|0004435399|
+N7K-2# 
+
+|0004435600|
+N7K-2# 
+
+|0004435900|
+N7K-2# 
+
+|0004436101|
+N7K-2# 
+
+|0004436201|
+N7K-2# sh run in[16D[J
+N7K-2# sh run in
+
+|0004485486|include-switch-profile   interface                
+
+|0004485486|[J
+N7K-2# sh run int[17D[J
+N7K-2# sh run int[Jerface 
+
+|0004487390|
+|0004487390|!Command: show running-config interface
+|0004487390|!Running configuration last done at: Fri Jun 17 01:46:20 2022
+|0004487390|!Time: Fri Jun 17 01:47:52 2022
+|0004487390|
+|0004487390|version 9.3(6) Bios:version  
+|0004487390|
+|0004487390|interface port-channel1
+|0004487390|  switchport
+|0004487390|  switchport mode trunk
+|0004487390|
+|0004487390|interface Ethernet1/1
+|0004487390|  ip address 192.168.100.2/24
+|0004487390|  no shutdown
+|0004487390|
+|0004487390|interface Ethernet1/2
+|0004487390|  switchport
+|0004487390|  switchport mode trunk
+|0004487390|  channel-group 1 mode active
+|0004487390|  no shutdown
+|0004487390|
+|0004487390|interface Ethernet1/3
+|0004487390|
+|0004487390|[7m--More--[m
+interface Ethernet1/4
+|0004489694|
+|0004489694|interface Ethernet1/5
+|0004489694|
+|0004489694|interface Ethernet1/6
+|0004489694|
+|0004489694|interface Ethernet1/7
+|0004489694|
+|0004489694|interface Ethernet1/8
+|0004489694|
+|0004489694|interface Ethernet1/9
+|0004489694|
+|0004489694|interface Ethernet1/10
+|0004489694|
+|0004489694|interface Ethernet1/11
+|0004489694|
+|0004489694|interface Ethernet1/12
+|0004489694|
+|0004489694|interface Ethernet1/13
+|0004489694|
+|0004489694|interface Ethernet1/14
+|0004489694|
+|0004489694|interface Ethernet1/15
+|0004489694|[7m--More--[m
+
+[K
+|0004490395|interface Ethernet1/16
+|0004490395|
+|0004490395|interface Ethernet1/17
+|0004490395|
+|0004490395|interface Ethernet1/18
+|0004490395|
+|0004490395|interface Ethernet1/19
+|0004490395|
+|0004490395|interface Ethernet1/20
+|0004490395|
+|0004490395|interface Ethernet1/21
+|0004490395|
+|0004490395|interface Ethernet1/22
+|0004490395|
+|0004490395|interface Ethernet1/23
+|0004490395|
+|0004490395|interface Ethernet1/24
+|0004490395|
+|0004490395|interface Ethernet1/25
+|0004490395|
+|0004490395|interface Ethernet1/26
+|0004490395|
+|0004490395|[7m--More--[m
+interface Ethernet1/27
+|0004490595|
+|0004490595|interface Ethernet1/28
+|0004490595|
+|0004490595|interface Ethernet1/29
+|0004490595|
+|0004490595|interface Ethernet1/30
+|0004490595|
+|0004490595|interface Ethernet1/31
+|0004490595|
+|0004490595|interface Ethernet1/32
+|0004490595|
+|0004490595|interface Ethernet1/33
+|0004490595|
+|0004490595|interface Ethernet1/34
+|0004490595|
+|0004490595|interface Ethernet1/35
+|0004490595|
+|0004490595|interface Ethernet1/36
+|0004490595|
+|0004490595|interface Ethernet1/37
+|0004490595|
+|0004490595|interface Ethernet1/38
+|0004490595|[7m--More--[m
+
+[K
+|0004491096|interface Ethernet1/39
+|0004491096|
+|0004491096|interface Ethernet1/40
+|0004491096|
+|0004491096|interface Ethernet1/41
+|0004491096|
+|0004491096|interface Ethernet1/42
+|0004491096|
+|0004491096|interface Ethernet1/43
+|0004491096|
+|0004491096|interface Ethernet1/44
+|0004491096|
+|0004491096|interface Ethernet1/45
+|0004491096|
+|0004491096|interface Ethernet1/46
+|0004491096|
+|0004491096|interface Ethernet1/47
+|0004491096|
+|0004491096|interface Ethernet1/48
+|0004491096|
+|0004491096|interface Ethernet1/49
+|0004491096|
+|0004491096|[7m--More--[m
+interface Ethernet1/50
+|0004491096|
+|0004491096|interface Ethernet1/51
+|0004491096|
+|0004491096|interface Ethernet1/52
+|0004491096|
+|0004491096|interface Ethernet1/53
+|0004491096|
+|0004491096|interface Ethernet1/54
+|0004491096|
+|0004491096|interface Ethernet1/55
+|0004491096|
+|0004491096|interface Ethernet1/56
+|0004491096|
+|0004491096|interface Ethernet1/57
+|0004491096|
+|0004491096|interface Ethernet1/58
+|0004491096|
+|0004491096|interface Ethernet1/59
+|0004491096|
+|0004491096|interface Ethernet1/60
+|0004491096|
+|0004491096|interface Ethernet1/61
+|0004491096|[7m--More--[m
+
+[K
+|0004491296|interface Ethernet1/62
+|0004491296|
+|0004491296|interface Ethernet1/63
+|0004491296|
+|0004491296|interface Ethernet1/64
+|0004491296|
+|0004491296|interface mgmt0
+|0004491296|  vrf member management
+|0004491296|  ip address 172.16.100.2/24
+|0004491296|
+|0004491296|
+N7K-2#  [Jsh vp[c [J[J[Jc 
+
+|0004498608|Legend:
+|0004498608|		(*) - local vPC is down, forwarding via vPC peer-link
+|0004498608|
+|0004498608|vPC domain id                     : 1   
+|0004498608|Peer status                       : peer link not configured      
+|0004498608|vPC keep-alive status             : peer is not reachable through peer-keepalive
+|0004498608|Configuration consistency status  : failed  
+|0004498608|Per-vlan consistency status       : failed                        
+|0004498608|Configuration inconsistency reason: vPC peer-link does not exist  
+|0004498608|Type-2 consistency status         : failed  
+|0004498608|Type-2 inconsistency reason       : vPC peer-link does not exist  
+|0004498608|vPC role                          : none established              
+|0004498608|Number of vPCs configured         : 0   
+|0004498608|Peer Gateway                      : Disabled
+|0004498608|Dual-active excluded VLANs        : -
+|0004498608|Graceful Consistency Check        : Disabled (due to peer configuration)
+|0004498608|Auto-recovery status              : Disabled
+|0004498608|Delay-restore status              : Timer is off.(timeout = 30s)
+|0004498608|Delay-restore SVI status          : Timer is off.(timeout = 10s)
+|0004498608|Operational Layer3 Peer-router    : Disabled
+|0004498608|Virtual-peerlink mode             : Disabled
+|0004498608|
+N7K-2# int po[13D[J
+N7K-2# int po1[J[J[J[J[J[J[Jconf t[13D[J
+N7K-2# conf t[Jerminal 
+
+|0004509627|Enter configuration commands, one per line. End with CNTL/Z.
+|0004509627|
+N7K-2(config)# int po1
+
+|0004513232|
+N7K-2(config-if)# vpc v[Jpee[25D[J
+N7K-2(config-if)# vpc pee[Jr-link 
+
+|0004519343|2022 Jun 17 01:48:24 N7K-2 %$ VDC-1 %$ %STP-2-BRIDGE_ASSURANCE_WARNING: Bridge Assurance MUST be enabled at the remotely connected interface
+
+|0004519343|2022 Jun 17 01:48:24 N7K-2 %$ VDC-1 %$ stp: Please note that spanning tree port type is changed to "network" port type on vPC peer-link. This will enable spanning tree Bridge Assurance on vPC peer-link provided the STP Bridge Assurance (which is enabled by default) is not disabled. 
+
+|0004519643|
+N7K-2(config-if)# end
+
+|0004578545|
+N7K-2# 
+
+|0004579347|
+N7K-2# sh run int po1
+
+|0004583455|
+|0004583455|!Command: show running-config interface port-channel1
+|0004583455|!Running configuration last done at: Fri Jun 17 01:48:24 2022
+|0004583455|!Time: Fri Jun 17 01:49:28 2022
+|0004583455|
+|0004583455|version 9.3(6) Bios:version  
+|0004583455|
+|0004583455|interface port-channel1
+|0004583455|  switchport
+|0004583455|  switchport mode trunk
+|0004583455|  spanning-tree port type network
+|0004583455|  vpc peer-link
+|0004583455|
+|0004583455|
+N7K-2# 
+
+|0004584758|
+N7K-2# sh vpc
+
+|0004586561|Legend:
+|0004586561|		(*) - local vPC is down, forwarding via vPC peer-link
+|0004586561|
+|0004586561|vPC domain id                     : 1   
+|0004586561|Peer status                       : peer adjacency formed ok      
+|0004586561|vPC keep-alive status             : peer is not reachable through peer-keepalive
+|0004586561|Configuration consistency status  : success 
+|0004586561|Per-vlan consistency status       : success                       
+|0004586561|Type-2 consistency status         : success 
+|0004586561|vPC role                          : primary                       
+|0004586561|Number of vPCs configured         : 0   
+|0004586561|Peer Gateway                      : Disabled
+|0004586561|Dual-active excluded VLANs        : -
+|0004586561|Graceful Consistency Check        : Enabled
+|0004586561|Auto-recovery status              : Disabled
+|0004586561|Delay-restore status              : Timer is off.(timeout = 30s)
+|0004586561|Delay-restore SVI status          : Timer is off.(timeout = 10s)
+|0004586561|Operational Layer3 Peer-router    : Disabled
+|0004586561|Virtual-peerlink mode             : Disabled
+|0004586561|
+|0004586561|vPC Peer-link status
+|0004586561|---------------------------------------------------------------------
+|0004586561|id    Port   Status Active vlans    
+|0004586561|[7m--More--[m
+--    ----   ------ -------------------------------------------------
+|0004591372|1     Po1    up     1                                                           
+|0004591372|         
+|0004591372|
+N7K-2#   [J[J
