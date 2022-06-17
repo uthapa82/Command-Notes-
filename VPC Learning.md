@@ -113,6 +113,12 @@ N7K-2# ping 172.16.100.1 vrf management
 
 ![show command1](show4.png)
 
+### Keep alive Recommendations 
+* In case of Dual-SUP, do not connect the mgmt0 port back to back
+* Reason: in case of active SUP (supervisor module) failure keep alive connectivity can be broken 
+
+## SOLUTION ###
+* Use a layer-2 switch to connect the mgmt ports of peer devices 
 
 
 
