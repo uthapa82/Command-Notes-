@@ -1,5 +1,5 @@
 ## CCNA Notes- Jeremy IT Lab
-#### Switch Interfaces 
+#### IPv4 Addressing
 * IPv4 address classes 
 * finding the 
             - Max number of hosts
@@ -30,9 +30,27 @@ Layer 2 Status => protocol column
 `R1(config)#do sh ip int br `
 -
 
-`R1# sh int description`
+`R1# sh interfaces description`
 `R1# int g0/0`
 `R1#(config-if)# description (our note) to SW!`
+-
+
+#### Switch Interfaces 
+* interfaces speed & duplx
+* speed and duplex autonegotiation
+* interface status 
+* interface counters & errors 
+
+*ASR 10000-X Router*
+*Catalyst 9200 switch*
+<span style="color:red"> *router interfaces are in administratively disable by default--> shutdown command enables whereas in switch interfaces they don't have shutdown command applied Status->up* </span> 
+
+`SW1(config)#do sh interfaces status`
+`Port Name  Status vlan Duplex Speed Type(SFP or RJ45)`
+`SW1(config)# int f0/1`
+`SW1(config-if)#speed ?`
+`SW1(config-if)#speed 100`
+`SW1(config-if)#duplex full`
 -
 
 
