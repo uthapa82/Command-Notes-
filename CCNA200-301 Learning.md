@@ -27,14 +27,12 @@ Max hosts per network = 2^8 -2 = 254
 Layer 1 Status => status 
 Layer 2 Status => protocol column 
 
-`R1(config)#do sh ip int br `
--
-
-`R1# sh interfaces description`
-`R1# int g0/0`
-`R1#(config-if)# description (our note) to SW!`
--
-
+```
+R1(config)#do sh ip int br 
+R1# sh interfaces description
+R1# int g0/0
+R1#(config-if)# description (our note) to SW!
+```
 #### Switch Interfaces 
 * interfaces speed & duplx
 * speed and duplex autonegotiation
@@ -45,13 +43,24 @@ Layer 2 Status => protocol column
 *Catalyst 9200 switch*
 <span style="color:red"> *router interfaces are in administratively disable by default--> shutdown command enables whereas in switch interfaces they don't have shutdown command applied Status->up* </span> 
 
-`SW1(config)#do sh interfaces status`
-`Port Name  Status vlan Duplex Speed Type(SFP or RJ45)`
-`SW1(config)# int f0/1`
-`SW1(config-if)#speed ?`
-`SW1(config-if)#speed 100`
-`SW1(config-if)#duplex full`
--
+```
+SW1(config)#do sh interfaces status
+Port Name  Status vlan Duplex Speed Type(SFP or RJ45)`
+SW1(config)# int f0/1
+SW1(config-if)#speed ?
+SW1(config-if)#speed 100
+SW1(config-if)#duplex full
+*multiple interfaces at same time*
+SW1(config)#int range f0/5 - 6, f0/9 - 12
+```
+
+#### IPv4 Headers 
+* Version => length 4 bits  
+    - IPv4 ->4 -> 0100
+    - IPv6 = 6  (0110)
+
+* 
+
 
 
 
