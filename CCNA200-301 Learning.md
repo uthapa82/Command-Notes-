@@ -131,6 +131,7 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 * if the IHL field is greater than 5, it means that options are present
 
 `R1# ping 192.168.1.2 size 10000`
+
 `R1# ping 192.168.1.2 df-bit`
 **df - don't fragment bit**
 
@@ -159,7 +160,9 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 **Switches flood frames with unknown destinations(destinations not in the MAC table)**
 **Routers drop packets with unknown destinations IP address**
 `ip route destination-address mask exit-interface`
+
 `R1(config)# ip route 192.168.4.0 255.255.255.0 g0/0`
+
 * **one way reachability**
 * When a router looks up a destination address in it's routing table it looks for the most specific matching route 
 * Most specific = longest prefix length (/32 > /24 > /16 > /8 > /0)
