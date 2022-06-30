@@ -159,6 +159,7 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 
 **Switches flood frames with unknown destinations(destinations not in the MAC table)**
 **Routers drop packets with unknown destinations IP address**
+
 `ip route destination-address mask exit-interface`
 
 `R1(config)# ip route 192.168.4.0 255.255.255.0 g0/0`
@@ -166,6 +167,36 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 * **one way reachability**
 * When a router looks up a destination address in it's routing table it looks for the most specific matching route 
 * Most specific = longest prefix length (/32 > /24 > /16 > /8 > /0)
+
+
+#### Life of a Packet 
+* Entire process of sending a packet to a remote destination
+* Including ARP, encapsulation, de-encapulation etc.
+
+#### Subnetting 
+* CIDR (Classless Inter-Domain Routing)
+* The process of Subnetting 
+* Class A - /8
+* Class B - /16
+* Class C - /24
+* IANA - Internet Assigned Number Authority 
+* 203.0.113.0 /25 =>2n -2 =>2^7 - 2 = 126 usable addresses
+* 203.0.113.0 /26 =>2n -2 =>2^6 - 2 = 62 usable addresses
+* 203.0.113.0 /27 =>2n -2 =>2^5 - 2 = 30 usable addresses
+* 203.0.113.0 /28 =>2n -2 =>2^4 - 2 = 14 usable addresses
+* 203.0.113.0 /29 =>2n -2 =>2^3 - 2 = 6 usable addresses
+* 203.0.113.0 /30 =>2n -2 =>2^2 - 2 = 2 usable addresses
+* 203.0.113.0 /31 =>2n -2 =>2^1 - 2 = 0 usable addresses
+    * for point to point network we don't need network and broadcast address
+    * cisco routers will give error making sure the two devices are p2p
+
+* 203.0.113.0 /32 =>2n -2 =>2^0 - 2 = -1 usable addresses
+    * There are some uses like we want to create a static route to one specific host
+
+#### VLSM (Variable Length Subnet Mask )
+* Until now we used FLSM (Fixed Length Subnet Masks)
+* VLSM is the process of creating subnets of different sizes to make your use of network addresses more efficient
+
 
 
 
