@@ -197,6 +197,11 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 * Until now we used FLSM (Fixed Length Subnet Masks)
 * VLSM is the process of creating subnets of different sizes to make your use of network addresses more efficient
 
+**VLSM steps**
+1. Assign the largest subnet at the start of the address space 
+2. Assign the second largest subnet after it
+3. Repeat the process until all subnets have been assigned 
+
 
 
 
