@@ -233,10 +233,13 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
     
 * How to configure VLANs on Cisco Switches 
     ### `SW1# show vlan brief `
-    * VLANs 1, 1002 - 1005 exist by default and cannot be deleted 
+    * VLANs 1, 1002, 1003, 1004 and 1005 exist by default and cannot be deleted 
     * `sw1(config)# interface range g1/0 - 3 `
+     
      connected to end hosts will be access mode by default 
+     
       `sw1(config)# switchport mode access`
+     
       assigns the vlan to the ports
       `sw1(config)# switchport access vlan 10`
     * An access port is a switchport which belongs to a single VLAN and usually connects to end hosts like PCs.
@@ -245,6 +248,7 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 
     * change the default names of the VLAN 
     * ` sw1(config)# vlan 10`
+      
       ` sw1(config)# name Engineering`
     
 
