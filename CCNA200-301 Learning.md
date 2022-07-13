@@ -203,5 +203,53 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 3. Repeat the process until all subnets have been assigned 
 
 
+#### VLAN 
+* Virtual Local Area Networks 
+* What is a LAN ? 
+    * Group of devices in a single location 
+    * A LAN is a single broadcast domain including all devices in that broadcast domain 
+
+* Broadcast domains 
+    * The group of devices which will receive a broadcast frame (destination MAC FFFF.FFFF.FFFF) sent by any one of the members.
+
+* What is a VLAN ?
+    * Performance: :Lots of unneccessary broadcast traffic can reduce network performance 
+    * Even within the same office you weant to limit who has access to what 
+    * You can apply security policies on a router/firewall
+    * Because this is one LAN, PCs can reach each other directly, without traffic  passing through the router 
+    * So, even if you configure security policies they won't have any effect 
+
+    * VLANs are configured on switches on a per-interface basis
+    * logically separate end hosts at Layer 2.
+    * Switched do not forward traffic directly between different hosts in different VLANs
+
+
+* Purpose of VLANs
+    * Even if we use the separate the three departments into three subnets (Layer 3), they are still in the same broadcast domain (Layer 2)
+
+    * By creating a separate CLAN a switch will not forward traffic between VLANs, including broadcast/unknown unicast traffic 
+
+    * The switch does not perform inter- VLAN routing. It must send the traffic through the router 
+    
+* How to configure VLANs on Cisco Switches 
+    ### `SW1# show vlan brief `
+    * VLANs 1, 1002 - 1005 exist by default and cannot be deleted 
+    * `sw1(config)# interface range g1/0 - 3 `
+     connected to end hosts will be access mode by default 
+      `sw1(config)# switchport mode access`
+      assigns the vlan to the ports
+      `sw1(config)# switchport access vlan 10`
+    * An access port is a switchport which belongs to a single VLAN and usually connects to end hosts like PCs.
+
+    * Switchports which carry multiple VLANs are called 'trunk ports'.
+
+    * change the default names of the VLAN 
+    * ` sw1(config)# vlan 10`
+      ` sw1(config)# name Engineering`
+    
+
+    
+
+
 
 
