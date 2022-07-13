@@ -237,11 +237,10 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
     * `sw1(config)# interface range g1/0 - 3 `
      
      connected to end hosts will be access mode by default 
-     
-      `sw1(config)# switchport mode access`
+     * `sw1(config)# switchport mode access`
      
       assigns the vlan to the ports
-      `sw1(config)# switchport access vlan 10`
+    * `sw1(config)# switchport access vlan 10`
     * An access port is a switchport which belongs to a single VLAN and usually connects to end hosts like PCs.
 
     * Switchports which carry multiple VLANs are called 'trunk ports'.
