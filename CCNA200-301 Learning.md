@@ -58,6 +58,7 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 **Version => length 4 bits**
 * IPv4 ->4 -> 0100
 * IPv6 = 6  (0110)
+
 **Internet Header Length (IHL) => 4 bits in length**
 * Min value is 5 (20 bytes)
 * Maximum value is 15 (15 * 4 bytes = 60 bytes)
@@ -214,20 +215,20 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 
 * What is a VLAN ?
     * Performance: :Lots of unneccessary broadcast traffic can reduce network performance 
-    * Even within the same office you weant to limit who has access to what 
+    * Even within the same office you meant to limit who has access to what 
     * You can apply security policies on a router/firewall
     * Because this is one LAN, PCs can reach each other directly, without traffic  passing through the router 
     * So, even if you configure security policies they won't have any effect 
 
     * VLANs are configured on switches on a per-interface basis
     * logically separate end hosts at Layer 2.
-    * Switched do not forward traffic directly between different hosts in different VLANs
+    * Switches do not forward traffic directly between different hosts in different VLANs
 
 
 * Purpose of VLANs
     * Even if we use the separate the three departments into three subnets (Layer 3), they are still in the same broadcast domain (Layer 2)
 
-    * By creating a separate CLAN a switch will not forward traffic between VLANs, including broadcast/unknown unicast traffic 
+    * By creating a separate VLAN a switch will not forward traffic between VLANs, including broadcast/unknown unicast traffic 
 
     * The switch does not perform inter- VLAN routing. It must send the traffic through the router 
     
@@ -250,7 +251,24 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
       
       ` sw1(config)# name Engineering`
     
+#### VLAN part -2
+* What is a trunk port ?
+    * In a small network with few VLANs, it is possible to use a separate interface for each VLAN when connecting switches to switches, and switches to routers. 
 
+    * However when the number of VLANs increases, this is not viable. It will result in wasted interfaces, adn often routers won't have enough interfaces for each VLAN
+    
+    * You can use trunk ports to carry traffic from multiple VLANs over a single interface 
+
+    * switches will "Tag all frames that they send over a trunk link, this allows the receiving switch to know which VLAN the frame belongs to 
+        * Trunk ports = 'tagged' ports 
+        * Access ports = 'untagged ports'
+    
+    
+
+* What is the purpose of trunk ports ?
+* 802.1Q Encapsulation
+* How to configure trunk ports 
+* Router on a Stick (ROAS)
     
 
 
