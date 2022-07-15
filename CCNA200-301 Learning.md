@@ -255,6 +255,8 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 * What is a trunk port ?
     * In a small network with few VLANs, it is possible to use a separate interface for each VLAN when connecting switches to switches, and switches to routers. 
 
+
+* What is the purpose of trunk ports ?
     * However when the number of VLANs increases, this is not viable. It will result in wasted interfaces, adn often routers won't have enough interfaces for each VLAN
     
     * You can use trunk ports to carry traffic from multiple VLANs over a single interface 
@@ -262,13 +264,64 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
     * switches will "Tag all frames that they send over a trunk link, this allows the receiving switch to know which VLAN the frame belongs to 
         * Trunk ports = 'tagged' ports 
         * Access ports = 'untagged ports'
-    
-    
 
-* What is the purpose of trunk ports ?
+
 * 802.1Q Encapsulation
-* How to configure trunk ports 
-* Router on a Stick (ROAS)
+    * There are two main trunking protocols: 
+        * ISL (Inter -Switch Link)
+        * IEEE 802.1Q
+    
+    * ISL is an  old Cisco proprietary protocol created before the industry standard IEEE 802.1Q
+
+    * IEEE 802.1Q is an industry standard protocol created by the IEEE( Institute of Electrical and Electronics Engineers)
+
+    * We will probably NEVER use ISL in the real world. Even modern cisco equipment doesn't support it. (CCNA 802.1Q)
+
+    * Preamble  || SFD   | Destination | Src | 802.1Q | Type 
+    * dot1Q is inserted between the source and destination Type/Length fields of the ehternet frame 
+    * The tag is 4 bytes (32 bits) in length
+
+    * The tag consists of two main fields :
+        * Tag Protocol Identifier (TPID)
+        * Tag Control Information (TCI)
+
+    * The TCI consists of three sub-fields
+
+    * 801.Q format 
+        * TPID( 16 bits )   || TCI 16 bits 
+        *                  PCP (3 bits) | DEI (1 bit) | VID (12 bits)
+        
+        * #### TPID (Tag Protocol Identifier)
+            * 16 bits (2 bytes) in length
+            * Always set to a value of 0x8100. This indicates that the frame is 802.1Q tagged 
+        * PCP (Priority Code Point) 
+            * 3 bits in length
+            * Used for class of Service(CoS), which prioritizes important traffic in congested networks 
+
+        * DEI ( Drop Eligible Indicator)
+            * 1 bit in length
+            * Used to indicate frames that can be dropped if the network is congested 
+        
+        * VID (VLAN ID)
+            * 12 bits in length
+            * identifies the VLAN the frame belongs to 
+            * 12 bits in length = 4096 total VLANs(2^12), range of 0-4095
+            * VLANs 0 and 4095 are reserved and can't be used
+            * Therefore, the actual range of VLANs is 1-4094
+            * Cisco proprietary ISL also has a VLAN range of 1-4094
+        
+        * #####  VLAN ranges 
+        * The range of VLANs (1-4094) is divided into two sections:
+            * Normal VLANs: 1 - 1005
+            * Extended VLANs: 1006 - 4094
+        * Some older devices cannot use the extended VLAN range, however it's safe to expect that modern switches will support the extended VLAN range
+
+        * #### Native VLAN : feature of dot1Q
+        * Native VLAN  is VLAN 1 by default on all trunk ports, however this can be manually configured on each trunk port.
+        * The switch does not add an 802.1Q tag to frames in the native VLAN 
+        * When a switch recevies and untagged frame on a trunk port, it assumes the frame belongs to the native VLAN.
+        (**It is very important that the native VLAN Matches**)
+
     
 
 
