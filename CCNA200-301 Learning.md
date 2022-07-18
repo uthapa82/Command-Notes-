@@ -322,7 +322,42 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
         * When a switch recevies and untagged frame on a trunk port, it assumes the frame belongs to the native VLAN.
         (**It is very important that the native VLAN Matches**)
 
+#### Day 18
+* VLAN - Part 3
+* `encapsulation dot1Q vlan-id native` on subinterface router 
+    * int g0/0.10
+    * encapsulation dot1q 10 native 
+
+* configure the IP address for the native VLAN on the router's physical interface (the encapsulation dot1q vlan-id command is not necessary)
+    * `no interface g0/0.10`
     
+    * `interface g0/0`
+
+    * `ip add 192.168.1.62 255.255.255.192`
+
+#### Layer 3 switch (Multilayer switch)
+* capable of both switching and routing 
+* it's layer 3 aware 
+* Can assign IP addresses to interfaces
+* Can create virtual interface for each VLAN and assign IP addresses
+* SVI (switch Virtual Interfaces)
+
+* `default interface g0/0 `--->reset default setting 
+
+**Enabling layer 3 routing on the swtich**
+* `#ip routing `
+* `#int g0/1`
+* `#no switchport` --->this configures the interface as a routed port( Layer 3 port, not a Layer 2/switchport)
+
+**#show interfaces status**
+
+#### condition for SVI to be UP UP
+    * VLAN must exist on the switch 
+    * must have at least one access port in VLAN in an up/up state , AND/OR one trunk port that allows the VLANs that is in an up/up state 
+    * VLAN must not be shutdown (shutdown command)
+    * SVI must not be shutdown 
+    
+
 
 
 
