@@ -364,11 +364,22 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 
 ### Lab 
 * in a router removing ROAS 
-`no interface g0/0/0.10`
+* `no interface g0/0/0.10`
 
-`no interface g0/0/0.20`
+* `no interface g0/0/0.20`
 
-`no interfave g0/0/0.30`
+* `no interface g0/0/0.30`
+
+
+### DTP/VTP 
+* DTP - Dynamic Trunking Protocol 
+    * Cisco proprietary protocol that allows CISCO switched to dynamically determine their interface status(access/trunk) w/o manual configuration
+    * DTP is enabled by default on all Cisco switch interfaces 
+    * For security purposes manual configuration is recommended. DTP should be disabled on all switchports
+    
+* VTP - VLAN trunking protocol 
+    
+
 
 
 
