@@ -352,11 +352,24 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 **#show interfaces status**
 
 #### condition for SVI to be UP UP
-    * VLAN must exist on the switch 
-    * must have at least one access port in VLAN in an up/up state , AND/OR one trunk port that allows the VLANs that is in an up/up state 
-    * VLAN must not be shutdown (shutdown command)
-    * SVI must not be shutdown 
-    
+* VLAN must exist on the switch 
+* must have at least one access port in VLAN in an up/up state , AND/OR one trunk port that allows the VLANs that is in an up/up state 
+* VLAN must not be shutdown (shutdown command)
+* SVI must not be shutdown 
+
+#### Quiz 
+1. b and c 
+2. a and d (no interfaces in VLAN 225 are up/up)
+3. a(no switchport)
+
+### Lab 
+* in a router removing ROAS 
+`no interface g0/0/0.10`
+
+`no interface g0/0/0.20`
+
+`no interfave g0/0/0.30`
+
 
 
 
