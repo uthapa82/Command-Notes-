@@ -393,6 +393,15 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 
 * `#vtp version 2` #changing the version of the VTP 
 
+#### Quiz 
+1. (b) Interfaces on old switches default to switchport mode dynamic desirable 
+
+2. `#vtp mode transparent` forward VLAN database information but won't sync its VLAn database 
+
+3. (a)change the VTP domain to an unused domain name , (c) change the switch to VTP transparent mode 
+
+
+
 
 
     
