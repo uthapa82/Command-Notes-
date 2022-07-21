@@ -381,7 +381,18 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 * VTP - VLAN trunking protocol 
 * `#vtp domain cisco`
 
-*`#show vtp status`
+* `#show vtp status`
+
+* `#vtp mode client`
+
+* `#vtp mode transparent`
+
+* `#show vtp status`
+
+* `#vtp domain cisco`
+
+* `#vtp version 2` #changing the version of the VTP 
+
 
 
     
