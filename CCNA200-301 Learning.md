@@ -376,8 +376,14 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
     * Cisco proprietary protocol that allows CISCO switched to dynamically determine their interface status(access/trunk) w/o manual configuration
     * DTP is enabled by default on all Cisco switch interfaces 
     * For security purposes manual configuration is recommended. DTP should be disabled on all switchports
+    * A switchport in dynamic desirable mode will actively try to form a trunk with other cisco switches.
     
 * VTP - VLAN trunking protocol 
+* `#vtp domain cisco`
+
+*`#show vtp status`
+
+
     
 
 
