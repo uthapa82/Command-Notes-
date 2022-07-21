@@ -396,12 +396,22 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 #### Quiz 
 1. (b) Interfaces on old switches default to switchport mode dynamic desirable 
 
-2. `#vtp mode transparent` forward VLAN database information but won't sync its VLAn database 
+2. `#vtp mode transparent` forward VLAN database information but won't sync its VLAN database 
 
 3. (a)change the VTP domain to an unused domain name , (c) change the switch to VTP transparent mode 
 
 
+### Spanning Tree Protocol (STP)
+* Redundancy in Networks 
+* STP 
+    * Layer 2 Protocol 
+    * Broadcast Storms 
+        * The ethernet header doesn't have a TTL field. These broadcast frames will loop around the network indefinitely. If enough of these looped broadcasts accumulate in the network, the network will be too congested for legitimate traffic to use the network. This is called a broadcast storm.
 
+    * MAC Address Flapping 
+        * Each time frame arrives on a switchport, Switch uses the source MAC address field to 'learn' the MAC address and update its MAC address table. when frames with the same source MAC address repeatedly arrive on different interfaces, the switch is continuously updation the interface in its MAC address table. This is known as MAC address Flapping 
+
+        
 
 
     
