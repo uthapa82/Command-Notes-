@@ -421,7 +421,26 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 * The switch with lowest Bridge ID becomes the root bridge
 * ports of ROOT bridge are in a forwarding state and other must have path to reach the root bridge
 
-* 
+*               Bridge ID 
+* Bridge Priority(16 bits) ||       MAC address (48 bits)
+
+* **Default Bridge Priority is 32,768 on all switches**
+* Bridge Priority extended to two parts 
+*           Bridge Priority (4bits) || Extended System Id (VLAN ID = 12bits )
+
+* Extended System ID was included because cisco Switches use a version of STP called PVST (per-VLAN spanning Tree) runs separate instance in each VLAN 
+
+* Each port will select it's one port as root port, root ports are in forwarding state 
+
+*           Speed                   |       STP cost
+            10 Mbps                            100
+            100 Mbps                |           19
+            1 Gbps                  |           4
+            10 Gbps                 |           2
+
+* STP port ID = port priority (default 128) + port number 
+
+
 
 
     
