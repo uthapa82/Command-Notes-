@@ -440,6 +440,21 @@ SW1(config)#int range f0/5 - 6, f0/9 - 12
 
 * STP port ID = port priority (default 128) + port number 
 
+* **Spanning Tree Selection Process**
+1. One switch will eleect the root bridge , all ports are designated ports (forwarding state ). Root Bridge --> Lowest Bridge ID ( Priority --> MAC address )
+
+2. Each remaining switch selects one int to be its root 
+Root Port Selection:
+    1. Lowest root Cost 
+    2. Lowest Neighbor Bridge ID 
+    3. Lowest Neighbor port ID 
+
+* Every collision domain has a single STP designated port 
+    * Designated Port Selection :
+    1. Interface on switch with lowest root cost 
+    2. Interface on switch with lowest bridge ID 
+
+
 
 
 
