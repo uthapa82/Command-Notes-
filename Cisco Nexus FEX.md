@@ -65,7 +65,6 @@ Po4              Eth101/1/48   Eth101/1/47   Eth101/1/46   Eth101/1/45
                  
  ```
 
- * 
 * Initial Configuration
     * ssh key rsa 2048 
 ```
@@ -95,4 +94,4 @@ Po4              Eth101/1/48   Eth101/1/47   Eth101/1/46   Eth101/1/45
 
     n9K-1(config)# int po100
 ```
-* ![cisco Nexus 9K](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus2000/sw/configuration/guide/n9k_rel_703I11/b_Cisco_Nexus_2000_Series_NX-OS_Fabric_Extender_Configuration_Guide_for_Cisco_Nexus_9000_Series_Switches_Release_7x/b_Cisco_Nexus_2000_Series_NX-OS_Fabric_Extender_Configuration_Guide_for_Cisco_Nexus_9000_Series_Switches_Release_7x_chapter_011.html)
+![cisco Nexus 9K](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus2000/sw/configuration/guide/n9k_rel_703I11/b_Cisco_Nexus_2000_Series_NX-OS_Fabric_Extender_Configuration_Guide_for_Cisco_Nexus_9000_Series_Switches_Release_7x/b_Cisco_Nexus_2000_Series_NX-OS_Fabric_Extender_Configuration_Guide_for_Cisco_Nexus_9000_Series_Switches_Release_7x_chapter_011.html)
