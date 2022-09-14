@@ -1,7 +1,6 @@
 ### Securing Switch CLI 
  
 #### Basic Password Configuration 
-
 ```
 switch(config)# username admin secret "password"
 switch # config t
@@ -10,7 +9,6 @@ switch(config-line)# login local
 
 switch(config)# line vty 0 15 
 switch(config-)# login local
-
 ```
 #### SSH specific Configuration
 ```
