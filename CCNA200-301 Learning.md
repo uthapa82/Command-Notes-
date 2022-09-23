@@ -510,6 +510,31 @@ R1(config) #lldp holdtime seconds ---> configure the lldp holdtime
 
 R1(config) #lldp reinit seconds---> configure the lldp reinit timer
 ```
+#### Link Layer Discovery Protocol 
+* displays how many lldp messages have been sent and received 
+
+`R1# show lldp traffic `
+
+* Displays which interfaces LLDP tx/rx is enabled on 
+
+`R1# show lldp interface`
+
+* Shows basic information about lldp (timers, version)
+
+`R1# show lldp `
+
+* lists LLDP neighbors and some basic information about each neighbor 
+
+`R1# show lldp neighbors`
+
+* lists each LLDP neighbor with more detailed information
+
+`R1# show lldp neighbors detail`
+
+* displays the same info as above, but for the specified neighbor only
+
+`R1# show lldp entry SW1`
+
 
 
 
