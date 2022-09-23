@@ -479,6 +479,20 @@ Root Port Selection:
 
 `R1# show cdp entry name (example R2)`
 
+#### CDP configuration commands 
+* CDP is globally enabled by default 
+
+```
+R1(config) # no cdp run --> cdp enable/disable globally 
+
+R1(config) #[no] cdp enable --> enable\ disable CDP on specific interfaces 
+
+R1(config) #cdp timer seconds --> configure the CDP timer 
+
+R1(config) #cdp holdtime seconds ---> configure the CDP holdtime
+
+R1(config) #[no] cdp advertise-v2 ---> enable\disable CDPv2
+```
 
 
 
