@@ -454,6 +454,31 @@ Root Port Selection:
     1. Interface on switch with lowest root cost 
     2. Interface on switch with lowest bridge ID 
 
+#### CDP show commands summary 
+* shows basic information about CDP (timers, version)
+
+`R1# show cdp `
+
+* Displays how many CDP messages have been sent and received 
+
+`R1# show cdp traffic`
+
+* Displays which interfaces CDP is enabled on 
+
+`R1# show cdp interface`
+
+* lists CDP neighbors and some basic information about each neighbor 
+
+`R1# show cdp neighbors`
+
+* lists each CDP neighbor with more detailed information
+
+`R1# show cdp neighbors detail`
+
+* Displays the same info as above, but for the specified neighbor only 
+
+`R1# show cdp entry name (example R2)`
+
 
 
 
