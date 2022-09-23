@@ -483,7 +483,7 @@ Root Port Selection:
 * CDP is globally enabled by default 
 
 ```
-R1(config) # no cdp run --> cdp enable/disable globally 
+R1(config) # no cdp run --> cdp enable/disable globally
 
 R1(config) #[no] cdp enable --> enable\ disable CDP on specific interfaces 
 
@@ -492,6 +492,23 @@ R1(config) #cdp timer seconds --> configure the CDP timer
 R1(config) #cdp holdtime seconds ---> configure the CDP holdtime
 
 R1(config) #[no] cdp advertise-v2 ---> enable\disable CDPv2
+```
+
+#### LLLDP configuration commands 
+* LLDP is globally disabled by default 
+
+```
+R1(config) # [no] lldp run --> lldp enable/disable globally
+
+R1(config) # lldp transmit --> enable lldp on specific interfaces (tx)
+
+R1(config) # lldp receive --> enable lldp on specific interfaces (rx)
+
+R1(config) #lldp timer seconds --> configure the LLDDP timer 
+
+R1(config) #lldp holdtime seconds ---> configure the lldp holdtime
+
+R1(config) #lldp reinit seconds---> configure the lldp reinit timer
 ```
 
 
