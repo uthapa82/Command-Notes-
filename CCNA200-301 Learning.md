@@ -991,9 +991,11 @@ R1(config-if)# ip address dhcp
 
 <b>
     ```
+
     SNMP Agent = UDP 161
 
     SNMP Manager = UDP 162
+
     ```
 </b>
 
@@ -1026,30 +1028,17 @@ R1(config)# snmp-server enable traps config
     * This is not secure as the packets can easily be captured and read 
 
 **Quiz**
-
 1. used by NMS to read the information from the managed devices 
-
-Ans => Get, GetNext, GetBulk
-<br>
-
+* Ans => Get, GetNext, GetBulk
 2. SNMP message sent to UDP port 162
-
-Ans=> Inform , trap (Managed devices )
+* Ans=> Inform , trap (Managed devices )
       Set, Get (UDP port 161)
-<br>
 3. mass retrieval of information, introduces in SNMPv2
-
-Ans=> GetBulk
-<br>
+* Ans=> GetBulk
 4. Software that runs on SNMP NMS 
-
-Ans=> Manager 
-<br>
-5. SNMP messages sent without expecting a Response 
-
-Ans=> Trap
-<br>
-
+* Ans=> Manager 
+5. SNMP messages sent without expecting a Response
+* Ans=> Trap
 
 
 
