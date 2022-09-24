@@ -754,10 +754,113 @@ R1(config)# ip domain name jeremysitlab.com ---> optional command
 5. Protocol that hosts can use to automatically learn the address of their DNS server ==> **DHCP**
 
 
-    
+### DHCP - Dynamic Host Configuration Protocol 
+
+* The purpose of DHCP 
+    * allows host to automatically/dynamically learn various aspects of their network configuration such as IP address, subnet mask, default gateway, DNS server, etc without manual/static configuration 
+    * It is essenttial part of modern networks 
+        * for example when we connect a phone/laptop to WiFi, we don't ask the network admin which IP address, subnet mask, default gateway, etc the phone/laptop should use ? 
+    * Typically used for 'client devices' such as workstations(PCS), phones etc 
+    * Devices such as routers, servers etc are usually manually configured 
+    * In small home networks, the router typically acts as the DHCP server for hosts in the LAN 
+    * In larger networks,the DHCP server is usually a Windows/Linux server 
+
+* Basic Functions of DHCP
+    * DHCP server 'lease' IP address to clients 
+    * `user> ipconfig /release ` --> clear the learned addresses  DHCP release 
+    * DHCP server --> UDP 67, DHCP client UDP 68 
+    * `user> ipconfig /renew `
+    * **Four messages**
+
+        1. DHCP Discover 
+            * Broadcast message from client, asking if there are any DHCP servers in the network 
+
+        2. DHCP Offer: Sent from DHCP server to the client, offering an address for client to  use,  as well as other information like default gateway, DNS server etc 
+            * Unicast frame , unicast at layer 3
+            * src : UDP 67 Dst: UDP 68 ---> reversed from DHCP Discover 
+            * DHCP offer message can be either broadcast or unicast 
+
+        3. DHCP Request: DHCP client to server , telling the server that it wants to use the IP address it was offered 
+            * broadcast message 
+            * src : UDP 68, dst: UDP 67
+
+        4. DHCP ACK: From server to client, 
+            * unicast messages 
+            * Bootp flag unicast, DHCP ack message can be broadcast or unicast 
+![DHCP](images/dhcp.png)
+* Configuring DHCP in Cisco IOS - router can be DHCP client/server/DHCP relay agent
+
+**DHCP relay**
+* large enterprises often choose to use a centralized DHCP server 
+* If the server is centralized, it won't receive the DHCP clients broadcast DHCP messages (broadcast messages don't leave the local subnet)
+* To fix this, we can configure a router to act as a DHCP relay agent 
+* The router will forward the clients broadcast DHCP messages to the remote DHCP server as unicast messages 
+
+**DHCP server config in IOS**
+```
+R1(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10 --> specify a range of addresses that won't be given to DHCP clients 
+
+R1(config)#  ip dhcp pool LAB_POOL 
+! create a DHHCP pool --> subnet of addresses that can be assigned to DHCP clients as well as other info such as DFG and DNS server 
+
+R1(dhcp-config)# network 192.168.1.0 /24
+! specify the subnet of addresses to be assigned to clients (except the excluded addresses)
+
+R1(dhcp-config)# dns-server 8.8.8.8
+! specify the DNs server that DHCP clients should use 
+
+R1(dhcp-config)# domain-name google.com
+! specift the domain name of the network 
+! PC1 = pc1.google.com
+
+R1(dhcp-config)# default-router 192.168.1.1
+! specify the default gateway 
+
+R1(dhcp-config)# lease 0 5 30 
+! specify the lease time 
+! lease days hours minutes OR lease infinite (not recommended)
+```
+
+### `R1# show ip dhcp binding`
 
 
+**DHCP Relay Agent configuration in IOS**
+```
+R1(config)# interface g0/1
+! configure the interface connected to the subnet of the client devices 
 
+R1(config)# ip helper-address 192.168.10.10
+! configure the IP address of the DHCP server as the 'helper' address (make sure the address is configured OSPF or static )
+
+R1(config-if)# do show ip interface g0/1
+``` 
+
+**DHCP client config in IOS** 
+```
+R1(config)# interface g0/1
+R1(config-if)# ip address dhcp 
+! use this command mode to tell the router to use DHCP to learn its IP address 
+```
+
+**command Summary**
+![DHCP commands](images/dhcp1.png)
+
+**Quiz**
+1. correct order of messages when a DHCP client gets an IP address from a server 
+    * (b) DORA:- Discover, Offer, Request, ACK
+
+2. windows command which cause a PC to discover a DHCP Discover message 
+    * (d) > ipconfig /renew
+
+3. wireshark messages 
+    * (d) 255.255.255.255 
+    * Bootp flags: 0x8000 , Broadcast flag (Broadcast)
+
+4. which of the following DHCP messages can be sent using unicast ?
+    * DHCP Offer, DHCP Release(unicast) & DHCP Ack
+
+5. situation when we would configure a router as a DHCP relay agent 
+    * (a) when the router is not a DHCP server, there are DHCP clients in the router's connected LAN, and there is no other DHCP server in the connected LAN 
 
 
 
