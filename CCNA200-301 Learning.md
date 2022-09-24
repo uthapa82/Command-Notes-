@@ -883,6 +883,153 @@ R1(config-if)# ip address dhcp
 5. situation when we would configure a router as a DHCP relay agent 
     * (a) when the router is not a DHCP server, there are DHCP clients in the router's connected LAN, and there is no other DHCP server in the connected LAN 
 
+### SNMP (Simple Network Management Protocol)
+* Overview
+    * industry standard framework  (1988)
+* **SNMPv1** 
+    * RFC 1065 - Structure and identification of management information for TCP/IP based internets 
+    * RFC 1006 - Management information base for network management of TCP/IP based internets 
+    * RFC 1067 - A simple network management protocol 
+    <br>
+    * Used to monitor the status of devices, make configuration changes, etc 
+    
+    * There are two main types of devices in SNMP 
+        1. **Managed Devices**
+        - Devices being managed using SNMP, like routers and switches 
+
+        2. **Network Management Station (NMS)**
+        - The device/devices managing the managed devices above 
+        - This is the SNMP server 
+
+**SNMP operations**
+* There are three main operations used in SNMP
+   1. Managed devices can notify the NMS of events 
+   2. NMS can ask the managed devices for information about their current status
+   3. NMS can tell the managed devices to change aspects of thier configuration
+
+**SNMP Components**
+![SNMP comp](images/snmp_components.png)
+
+* Green section SNMP software on NMS(PC or server)
+    * SNMP Application
+        - provides an interface for the network admin to interact with 
+            * Displays alerts, statistics, charts  etc (eg. Solarwinds)
+            <br>
+    * SNMP Manager 
+        - The software on the NMS that interacts with the managed devices 
+            * It receives notifications, send requests for information, sends configuration changes etc
+            <br>
+
+* Blue area:
+    * SNMP Agent
+        - The SNMP software running on the managed devices that interacts with the SNMP Manager on the NMS 
+            * It sends notification to/reveices messages from the NMS 
+            <br>
+    * Management Information Base (MIB)
+        - The structure that contains the variables that are managed by SNMP 
+            * Each variable is identified with an **<i>Object ID(OID)</i>**
+            * Example variables: Interface status, traffic throughput, CPU usage, temperature, etc 
+            <br>
+            * SNMP OIDs are organized in a hierarchical structure 
+            .1 .  3  . 6  . 1  . 2  . 1  . 1  . 5
+            1 -> iso
+            3 ->identified organiation
+            6 --> dod   
+            1 --> internet
+            2 --> mgmt
+            1 --> mib2
+            1 --> system
+            5 --> sysName  
+* SNMP versions
+    * Three main versions:
+        1. SNMPv1
+            * The original version of SNMP
+            <br>
+
+        2. SNMPv2c
+            * Allows the NMS to retrieve large amounts of information in a single request, so it is more efficient  
+            * c refers to the community strings used as passwords in SNMPv1, removed from SNMPv2 and then added back for SNMPv2c 
+            <br>
+
+        3. SNMPv3 
+            * A much more secure version of SNMP that supports strong encryption and authentication whenever possible, this version should be used 
+            <br>
+
+* SNMP messages 
+![SNMP message](images/snmp_message.png)
+
+    * Get 
+        * A request sent from the manager to the agent to retrieve the value of a variable (OID) or multiple variables. The agent will send a Response message with the current value of each variable
+    * GetNext 
+        * A request sent from the manager to the agent to discover the available variable in the MIB
+    * GetBulk
+        * A more efficient version of the GetNext message( introduced in SNMPv2)
+    <br>
+    * set
+        * A request from the manger to the agent to change the value of one or more variables,
+        * The agent will send a response message with the new values 
+    <br>
+    * Trap 
+        * Notification from the agent to the manager, the manager doesnot send a response message to acknowledge that it received the Trap, so these messages are 'unreliable'
+
+    * Inform
+        * A notification message that is acknowledged with  Response message
+        * Originally used for communications between managers, but later updates allow agents to send inform messages to managers, too.
+    <br>
+    <b>
+    ```
+    SNMP Agent = UDP 161
+
+    SNMP Manager = UDP 162
+    ```
+    </b>
+
+* SNMPv2c configuration (basic)
+
+```
+R1(config)# snmo-server contact sample@gmail.com
+R1(config)# snmp-server location Sample House 
+! optional information
+
+R1(config)# snmp-server community username ro 
+! configure the SNMP community strings(password)
+! ro ---> read only -->  no Set message 
+
+Default  ro= public rw=private 
+
+R1(config)# snmp-server community username2 rw
+! rw ----> read/write = can use Set message 
+
+R1(config)# snmp-server host 192.168.1.1 version 2c username
+! Specify the NMS, version and community 
+
+R1(config)# snmp-server enable traps snmp linkdown linkup
+R1(config)# snmp-server enable traps config
+! configure the Trap types to send to the NMS 
+
+```
+* SNMPv1 & SNMPv2: there is no encryption
+    * The community and message contents are sent in plain-text. 
+    * This is not secure as the packets can easily be captured and read 
+
+**Quiz**
+1. used by NMS to read the information from the managed devices 
+Ans => Get, GetNext, GetBulk
+<br>
+2. SNMP message sent to UDP port 162
+Ans=> Inform , trap (Managed devices )
+      Set, Get (UDP port 161)
+<br>
+3. mass retrieval of information, introduces in SNMPv2
+Ans=> GetBulk
+<br>
+4. Software that runs on SNMP NMS 
+Ans=> Manager 
+<br>
+5. SNMP messages sent without expecting a Response 
+Ans=> Trap
+<br>
+
 
 
 
