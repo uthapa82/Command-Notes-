@@ -931,15 +931,25 @@ R1(config-if)# ip address dhcp
             * Example variables: Interface status, traffic throughput, CPU usage, temperature, etc 
             <br>
             * SNMP OIDs are organized in a hierarchical structure 
+
             .1 .  3  . 6  . 1  . 2  . 1  . 1  . 5
+
             1 -> iso
+
             3 ->identified organiation
+
             6 --> dod   
+
             1 --> internet
+
             2 --> mgmt
+
             1 --> mib2
+
             1 --> system
+
             5 --> sysName  
+
 * SNMP versions
     * Three main versions:
         1. SNMPv1
@@ -965,10 +975,12 @@ R1(config-if)# ip address dhcp
     * GetBulk
         * A more efficient version of the GetNext message( introduced in SNMPv2)
     <br>
+
     * set
         * A request from the manger to the agent to change the value of one or more variables,
         * The agent will send a response message with the new values 
     <br>
+
     * Trap 
         * Notification from the agent to the manager, the manager doesnot send a response message to acknowledge that it received the Trap, so these messages are 'unreliable'
 
@@ -976,15 +988,16 @@ R1(config-if)# ip address dhcp
         * A notification message that is acknowledged with  Response message
         * Originally used for communications between managers, but later updates allow agents to send inform messages to managers, too.
     <br>
-    <b>
+
+<b>
     ```
     SNMP Agent = UDP 161
 
     SNMP Manager = UDP 162
     ```
-    </b>
+</b>
 
-* SNMPv2c configuration (basic)
+**SNMPv2c configuration (basic)**
 
 ```
 R1(config)# snmo-server contact sample@gmail.com
@@ -1013,20 +1026,27 @@ R1(config)# snmp-server enable traps config
     * This is not secure as the packets can easily be captured and read 
 
 **Quiz**
+
 1. used by NMS to read the information from the managed devices 
+
 Ans => Get, GetNext, GetBulk
 <br>
+
 2. SNMP message sent to UDP port 162
+
 Ans=> Inform , trap (Managed devices )
       Set, Get (UDP port 161)
 <br>
 3. mass retrieval of information, introduces in SNMPv2
+
 Ans=> GetBulk
 <br>
 4. Software that runs on SNMP NMS 
+
 Ans=> Manager 
 <br>
 5. SNMP messages sent without expecting a Response 
+
 Ans=> Trap
 <br>
 
