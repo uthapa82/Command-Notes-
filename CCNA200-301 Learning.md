@@ -537,6 +537,153 @@ R1(config) #lldp reinit seconds---> configure the lldp reinit timer
 
 
 
+### NTP Network Time Protocol 
+* clock -- software 
+* calendar -- hardware time 
+
+* clock time is correct 
+```
+R1# show clock 
+R1# show calendar 
+R1# clock update-calendar 
+R1# show clock
+R1# show calendar 
+```
+* Calendar time is correct ==>
+```
+R1# show clock 
+R1# show calendar 
+R1# clock read-calendar 
+R1# show clock
+R1# show calendar 
+```
+
+* Configure Time Zone 
+
+```
+R1(config)# do show clock 
+R1(config)# clock timezone ?
+R1(config)# clock timezone JST ?
+R1(config)# clock timezone JST 9 ?
+R1(config)# clock timezone JST 9
+R1(config)# do show clock
+R1(config)# do clock set 15:15:00 Dec 27 2020
+R1(config)# do show clock
+```
+* Daylight saving time 
+
+```
+R1(config)# clock summer-time ?
+R1(config)# clock summer-time EDT ?
+R1(config)# clock summer-time EDT recurring ?
+R1(config)# clock summer-time EDT recurring 2 ?
+R1(config)# clock summer-time EDT recurring 2 sunday ?
+R1(config)# clock summer-time EDT recurring 2 Sunday March ?
+R1(config)# clock summer-time EDT recurring 2 Sunday March 02:00(start)  1 Sunday November 02:00 (end)
+```
+
+#### Network time Protocol 
+* Manual config on devices is not scalable 
+* manual configured clocks will drift, resulting in inaccurate time 
+* allows automatic synch of time over a network 
+* ntp clients request the time from NTP servers 
+* a device can be a NTP server and an NTP client at the same time 
+* accuracy of ~1 milisecond in same LAN , o r ~50 miliseconds if connecting to NTM server over WAN/the internet 
+* The distance of an NTP server from the original referecnce clock is called stratum 
+* NTP uses UDP port 123 to communicate 
+
+#### Reference Clock 
+* very accurate time device like an atomic clock or a GPS clock
+* reference clocks are stratum 0 within the NTP hierarchy 
+* NTP servers directly connected to reference clocks are stratum 1
+* Devices can also 'peer' with devices at the same stratum to provide more accurate time 
+    * This is called symmetric active mode, cisco devices operate in three NTP modes :
+        1. Server mode 
+        2. Client mode 
+        3. Symmetric active mode 
+    
+* An NTP client can sync to multiple servers 
+* Get their time directly from reference clocks ==> primary servers 
+* get their time from other NTP servers are called secondary servers (server/client at same time)
+
+#### NTP configuration 
+
+```
+R1(config)# ntp server 216.239.35.0 prefer ! preferred NTP server 
+R1(config)# ntp server 216.239.35.4
+R1(config)# ntp server 216.239.35.8
+R1(config)# ntp server 216.239.35.12
+
+R1# show ntp associations 
+address  ||  ref clock  |  st     |  when   |  poll | reach
+
+* sys.peer, # selected, + candidate , -outlyer, x falseticker, ~configured 
+```
+* show ntp status command 
+    * synchronized 
+    * stratum 2
+    * address of reference clock
+
+* do show clock detail 
+    * NTP uses only UTC time zone 
+
+* configures the router to update the hardware clock (calendar) with the time learned via NTP 
+
+`R1(config)# ntp update-calendar`
+
+* **The hardware clock tracks the date and time on the device even if it restarts, power is lost etc. When the system is restarted, the hardware clock is used to initialize the software clock**
+
+```
+R1(config)# interface loopback0
+R1(config-if)# ip address 10.1.1.1 255.255.255.255
+R1(config)#  exit
+R1(config)# ntp source loopback0
+```
+* ntm servers with lower stratum levels are preferred 
+
+#### configuring NTP server mode 
+
+```
+R1(config) #ntp master ?
+R1(config)# ntp master 
+R1(config)# do show ntp associations 
+```
+
+* The default stratum of the ntp master command is 8
+
+#### Configuring NTP symmetric active mode 
+
+* # ntp peer 10.0.23.0(peer's address )
+
+#### NTP authentication 
+
+* allows ntp clients to ensure they only sync to the intended servers 
+
+* To configure NTP authentication:
+    * **ntp authenticate --> enable NTP authentication**
+    * **ntp authenticate-key key-number  md5 key ---> create the NTP authentication key(s)**
+    * **ntp trusted-key key-number**
+    * **ntp server ip-address key key-number ---> specify which key to use for the server**
+        * Not needed on the server 
+
+* Sample example:
+
+```
+R1(config)# ntp authenticate
+R1(config)# ntp authentication-key 1 md5 jeremysitlab
+R1(config)# ntp trusted-key 1
+```
+* NTP configs 
+
+![NTP](images\NTPconfigs.png)
+
+
+#### Quiz 
+1. 
+
+
+
+
 
 
     
