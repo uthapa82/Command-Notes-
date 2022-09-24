@@ -696,9 +696,62 @@ R1(config)# ntp trusted-key 1
 * Ans => (c) ntp authenticate, (d) ntp auth-key key-num md5 key, (f) ntp trusted-key key-number
 (g) ntp server ip-ad key key-numb
 
-#### 
+### DNS- Domain Name System 
+* The purpose of DNS / Basic functions of DNS 
+    * resolve hum-readable names to IP 
+    * The DNS server(s) our device uses can be manually configured or learned via DHCP 
+    * `> ipconfig /all`
+    * cisco Router can act as DNS client and server
+    * DNS 'A' record = Used to map names to IPv4 addresses 
+    * DNS 'AAAA' record = Used to map names to IPv6 addresses 
+    * Standard DNS queries/responses typically use UDP .
+    * TCP is used for DNS messages greater than 512 bytes in either case, port 53 is used 
+    * DNS cache --> devices will save the DNS server's responses to a local DNS cache.
+    * windows dns cache `user> ipconfig /displaydns`
+    * windows clear dns cache `user> ipconfig /flushdns`
+    * host file `Windows > System32 > drivers > etc `
 
+**configure DNS in cisco IOS** 
+* ```
+    R1(config)# ip dns server ----> configure R1 to act as a DNS server 
+    R1(config)# ip host R1 192.168.0.1 ------> configure a list of hostname/IP address mappings
+    R1(config)# ip host PC1 192.168.0.101
+    R1(config)# ip host PC2 192.168.0.102
+    R1(config)# ip host PC3  192.168.0.103
 
+    R1(config)# ip name-server 8.8.8.8 --> configure a DNS server that R1 will query if the requested record isn't in its host table 
+
+    R1(config)# ip domain lookup ----> enable R1 to perform DNS queries( enabled by default old version command is ip domain-lookup)
+    ```
+* `R1# show hosts` --> view configured hosts and host learned via cached DNS 
+* Configure cisco router as DNS client 
+```
+R1(config)# do ping youtube.com
+--> unable to resolve
+R1(config)# ip name-server 8.8.8.8
+R1(config)# ip domain lookup
+R1(config)# do ping youtube.com
+--> shows result, working
+R1(config)# ip domain name jeremysitlab.com ---> optional command 
+```
+* Command Review 
+![dns](images/dns.png)
+
+**Quiz**
+1. windows command that displays PC's dns server 
+    * ipconfig /all
+    * nslookup
+
+2. statement about DNS 
+    * 'A' records map hostnames to IPv4 addresses 
+    * A cisco router can be configured as a DNS server and DNS client at the same time 
+
+3. No DNS configuration are needed on Router when it uses external server , it will simply forward the packet as normal
+
+4. command to show cached name/IP address mappings
+    * R1# show hosts 
+
+5. Protocol that hosts can use to automatically learn the address of their DNS server ==> **DHCP**
 
 
     
