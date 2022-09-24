@@ -990,13 +990,10 @@ R1(config-if)# ip address dhcp
     <br>
 
 <b>
-    ```
 
-    SNMP Agent = UDP 161
+`SNMP Agent = UDP 161`
 
-    SNMP Manager = UDP 162
-
-    ```
+`SNMP Manager = UDP 162`
 </b>
 
 **SNMPv2c configuration (basic)**
