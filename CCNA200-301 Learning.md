@@ -498,17 +498,23 @@ R1(config) #[no] cdp advertise-v2 ---> enable\disable CDPv2
 * LLDP is globally disabled by default 
 
 ```
-R1(config) # [no] lldp run --> lldp enable/disable globally
+R1(config) # [no] lldp run 
+! lldp enable/disable globally
 
-R1(config) # lldp transmit --> enable lldp on specific interfaces (tx)
+R1(config) # lldp transmit
+! enable lldp on specific interfaces (tx)
 
-R1(config) # lldp receive --> enable lldp on specific interfaces (rx)
+R1(config) # lldp receive
+! enable lldp on specific interfaces (rx)
 
-R1(config) #lldp timer seconds --> configure the LLDDP timer 
+R1(config) #lldp timer seconds
+! configure the LLDDP timer 
 
-R1(config) #lldp holdtime seconds ---> configure the lldp holdtime
+R1(config) #lldp holdtime seconds
+! configure the lldp holdtime
 
-R1(config) #lldp reinit seconds---> configure the lldp reinit timer
+R1(config) #lldp reinit seconds
+! configure the lldp reinit timer
 ```
 #### Link Layer Discovery Protocol 
 * displays how many lldp messages have been sent and received 
@@ -610,8 +616,11 @@ R1(config)# clock summer-time EDT recurring 2 Sunday March 02:00(start)  1 Sunda
 
 ```
 R1(config)# ntp server 216.239.35.0 prefer ! preferred NTP server 
+
 R1(config)# ntp server 216.239.35.4
+
 R1(config)# ntp server 216.239.35.8
+
 R1(config)# ntp server 216.239.35.12
 
 R1# show ntp associations 
@@ -635,8 +644,11 @@ address  ||  ref clock  |  st     |  when   |  poll | reach
 
 ```
 R1(config)# interface loopback0
+
 R1(config-if)# ip address 10.1.1.1 255.255.255.255
+
 R1(config)#  exit
+
 R1(config)# ntp source loopback0
 ```
 * ntm servers with lower stratum levels are preferred 
@@ -645,7 +657,9 @@ R1(config)# ntp source loopback0
 
 ```
 R1(config) #ntp master ?
+
 R1(config)# ntp master 
+
 R1(config)# do show ntp associations 
 ```
 
@@ -670,7 +684,9 @@ R1(config)# do show ntp associations
 
 ```
 R1(config)# ntp authenticate
+
 R1(config)# ntp authentication-key 1 md5 jeremysitlab
+
 R1(config)# ntp trusted-key 1
 ```
 * NTP configs 
@@ -719,9 +735,11 @@ R1(config)# ntp trusted-key 1
     R1(config)# ip host PC2 192.168.0.102
     R1(config)# ip host PC3  192.168.0.103
 
-    R1(config)# ip name-server 8.8.8.8 --> configure a DNS server that R1 will query if the requested record isn't in its host table 
+    R1(config)# ip name-server 8.8.8.8
+    ! configure a DNS server that R1 will query if the requested record isn't in its host table 
 
-    R1(config)# ip domain lookup ----> enable R1 to perform DNS queries( enabled by default old version command is ip domain-lookup)
+    R1(config)# ip domain lookup
+    !enable R1 to perform DNS queries( enabled by default old version command is ip domain-lookup)
     ```
 * `R1# show hosts` --> view configured hosts and host learned via cached DNS 
 * Configure cisco router as DNS client 
@@ -798,10 +816,12 @@ R1(config)# ip domain name jeremysitlab.com ---> optional command
 
 **DHCP server config in IOS**
 ```
-R1(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10 --> specify a range of addresses that won't be given to DHCP clients 
+R1(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10
+! specify a range of addresses that won't be given to DHCP clients 
 
 R1(config)#  ip dhcp pool LAB_POOL 
-! create a DHHCP pool --> subnet of addresses that can be assigned to DHCP clients as well as other info such as DFG and DNS server 
+! create a DHHCP pool --> subnet of addresses that can be assigned 
+! to DHCP clients as well as other info such as DFG and DNS server 
 
 R1(dhcp-config)# network 192.168.1.0 /24
 ! specify the subnet of addresses to be assigned to clients (except the excluded addresses)
@@ -830,7 +850,8 @@ R1(config)# interface g0/1
 ! configure the interface connected to the subnet of the client devices 
 
 R1(config)# ip helper-address 192.168.10.10
-! configure the IP address of the DHCP server as the 'helper' address (make sure the address is configured OSPF or static )
+! configure the IP address of the DHCP server as the 'helper' address 
+! (make sure the address is configured OSPF or static )
 
 R1(config-if)# do show ip interface g0/1
 ``` 
