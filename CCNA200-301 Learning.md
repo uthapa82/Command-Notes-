@@ -653,7 +653,7 @@ R1(config)# do show ntp associations
 
 #### Configuring NTP symmetric active mode 
 
-* # ntp peer 10.0.23.0(peer's address )
+*  ntp peer 10.0.23.0(peer's address )
 
 #### NTP authentication 
 
@@ -675,13 +675,28 @@ R1(config)# ntp trusted-key 1
 ```
 * NTP configs 
 
-![NTP](images\NTPconfigs.png)
+![NTP](images/NTPconfigs.png)
+
 
 
 #### Quiz 
-1. 
+1. command to match software clock to hardware clock 
+* Ans=> (c) clock read-calendar , clock update-calendar (adjust hardware clock to software)
 
+2. command to configure timezone 
+* Ans => (d) R1(config)#clock timezone name offset 
 
+3. show ntp associations 
+* Ans => R1(config)# ntp master 9 ===> 127.127.1.1 --> loopback that's why 
+
+4. command to operate router in NTP client mode 
+* Ans ==> (c) (config)# ntp server 216.239.35.0
+
+5. must be enabled on NTP client to enable NTP authentication 
+* Ans => (c) ntp authenticate, (d) ntp auth-key key-num md5 key, (f) ntp trusted-key key-number
+(g) ntp server ip-ad key key-numb
+
+#### 
 
 
 
