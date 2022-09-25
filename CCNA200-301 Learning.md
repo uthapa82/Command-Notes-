@@ -1230,8 +1230,141 @@ SW1(config)# crypto key generate rsa modulus length
 5. A netowrk admin  using PC1 is remotely configuring SW1 by connecting to the CLI of SW1 via SSH. What is the role of SW1 in this situation ?
     * SSH server 
 
+### FTP and TFTP 
+**The purpose of FTP/TFTP**
+* File Transfer Protocol and Trivial File Transfer Protocol are industry standard protocols
+* Uses client-server model 
+    * clients can user FTP or TFTP to copy files from a server
+    * cliens can user FTP or TFTP to copy file to a server 
+* most common use is while upgrading the OS of a network device 
+* can use it to download the newer version of IOS from a server and then reboot the device with the new IOS image 
 
 
+**FTP/TFTP functions and differences**
+* TFTP first standardized in 1981
+* It is simple and has only the basic features compared to FTP 
+    * only allows a client to copy a file to or from a server 
+* was released after FTP, but is not a replacement for FTP
+* It is another tool to use when lightweight simplicity is more important than functionality 
+* No authentication, so servers will respond to all TFTP request 
+* No encryption, so all data is sent in plain text 
+* Best used in a controlled environment to transfer small files quickly 
+* TFTP servers listen on **UDP port 69**
+* TFTP has similar built in features within the protocol itself 
 
+**TFTP Reliability**
+* send ACK messages 
+* timers are used,  so that it can resend data after certain time 
+* TFTP uses 'lock-step' communication, the client and server alternately send a message and then wait for a reply.(+retransmissions are sent as needed)
 
+**TFTP connections**
+* 3 phases 
+    1. connection : 
+        * client sends a request to the server and the server responds back, initializing the connection
+    2. Data transfer: 
+        * the client and server exchange TFTP messages
+        * One sends data and the other sends acknowledgement 
+    3. Connection termination
+        * After the last data message has been sent a final acknowledgement is sent to terminate the connection
+
+**FTP**
+* first standardized in 1971
+* FTP uses TCP port 20 and 21 
+* Usernames and passwords are used for authentication, however no encryption
+* for greater security, FTPS (FTP over SSL/TLS) can be used --upgrade to FTP 
+* SSH file Transfer protocol (SFTP) can also be used for greater security 
+* FTP is more complex the TFTP and allows not only file transfers, but clients can also navigate file directories, add and remove directories, lst files, etc 
+* The clients sends FTP commands to the server to perform these functions 
+
+* FTP uses two types of connection that's why it uses two different ports 
+    * FTP control TCP 21 -> to send FTP commands 
+    * FTP data TCP 20 --> for data or files transfer 
+    * the default method of establishing FTP data connection is active mode, in which the server initiates the TCP connection
+    * in FTP passive mode the client initiates the data connection, this is often necessary when the client is behind a firewall, which could block the incoming connection from the server 
+
+    * **Firewall usually don't permit outside devices to initiate connection. In this case, FTP passive mode is used and the client(behind the firewall) initiates the TCP connection**
+
+![TFTP FTP Differe](images/FTP-TFTP%20com.png)
+
+**IOS file systems**
+* File system is a way of controlling how data is stored and retrieved 
+* Command to view file systems of a cisco IOS devices 
+
+    **`Router# show files systems`**
+    * disk :- storage devices such as flash
+    * opaque :- used for internal functions
+    * nvram :- internal NVRAM. The startup-config file is stored here
+    * network :- Represents external file systems, for example external FTP/TFTP servers 
+
+**Using FTP/TFTP in IOS**
+* command to show the IOS version
+
+    **`Router1# show version `**
+
+* command to show the content of the flash
+
+    **`R1# show flash `**
+
+sample output: c2900-universalk9-mz.SPA.151-4.M4.bin
+
+* Copying files 
+**`R1# copy tftp: flash:`**
+    * copy src dst 
+    * enter the TFTP server IP 
+    * enter the filename on the server 
+    * enter the name you want to save it as on flash (*hit enter for the default*)
+
+* Upgrading Cisco IOS 
+
+<b>
+
+```
+R1(config)# boot system flash:c2900-universalk9-mz.SPA.151-4.M4.bin
+
+R1(config)# exit
+R1(config)# write
+R1(config)# reload
+
+R1# show version
+
+R1# delete flash:c2900-universalk9-mz.SPA.151-4.M4.bin
+
+R1# show flash
+```
+</b>
+
+* *boot system filepath* 
+
+**Copying Files(FTP)**
+<b>
+
+```
+R1(config)# ip ftp username cisco
+R1(config)# ip ftp password ccna
+R1# copy ftp:flash
+```
+
+</b>
+
+* command summary 
+
+![command-summary](images/ftp-summar.png)
+
+**Quiz**
+1. True statements about FTP 
+    * FTP data - TCP 20
+    * FTP control -TCP 21
+
+2. command to transfer file from external TFTP server to local device's flash storage
+    * copy tftp: flash:
+
+3. R1 is behind the firewall and wants to connect to an external FTP server 
+    * FTP passive mode for the data connection should be used
+
+4. Used to store the startup-config of a device running Cisco IOS 
+    * NVRAM
+
+5. Following function not possible when using TFTP 
+    * Create a new directory on a server
+    * List the contents of a server 
 
