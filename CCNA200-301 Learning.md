@@ -1206,6 +1206,7 @@ SW1(config)# crypto key generate rsa modulus length
 **`ssh -l username ip-address OR ssh username@ip-address`**
 
 **SSH Command Summary**
+
 ![ssh-summary](images/ssh-sum.png)
 
 **Quiz**
