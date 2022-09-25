@@ -1368,3 +1368,111 @@ R1# copy ftp:flash
     * Create a new directory on a server
     * List the contents of a server 
 
+
+### Network Address Translation (NAT)
+**Private IPv4 addresses**
+* RFC 1918 
+* Three main short term solutions 
+    * CIDR 
+    * Private IPv4 addresses 
+    * NAT 
+* RFC 1918 specifies the following IPv4 address ranges as private :
+<b>
+    * 10.0.0.0/8 (10.0.0.0 to  10.255.255.255) ------> Class A
+    * 172.16.0.0/12 (172.16.0.0 to 172.31.255.255)------> Class B
+    * 192.168.0.0/16 (192.168.0.0 to 192.168.255.255)--------> Class C 
+</b>
+
+* they don't have to be globally unique 
+
+**Intro to NAT**
+* used to modify src and/or dst IP addresses of packets 
+* the common reason is to allow hosts with private IP addresses to communicate with other hosts over the internet
+* **source NAT**
+
+* statically configuring one-to-one mappings of private IP addresses to public IP addresses 
+* An inside local IP address is mapped to an inside global IP address
+    * inside local : 
+        * IP address of the inside host, from the perspective of the local network
+        * The ip address actually configured on the inside host, usually a private address 
+
+    <br>
+
+    * inside global
+        * The ip address of the inside host, from the perspective of outside hosts
+        * the ip address of the inside host after NAT, usually a public address 
+
+    <br>
+
+    * outside local
+        * The ip address of the outside host, from the perspective of the local network
+
+    <br>
+
+    * Outside Global
+        * The ip address of the outside host, from the perspective of the outside Network
+
+    <br>
+
+
+* Static NAT allows devices with private IP addresses to communicate over the internet 
+* But as it requires a one-to-one IP address mapping, it doesn't help preserve IP addresses 
+
+**Static NAT configuration**
+
+![NAT](images/Nat-1.png)
+
+<b>
+
+```
+
+R1(config)# int g0/1
+R1(config-if)# ip nat inside 
+! define inside interfaces connected to the internal network
+
+R1(config-if)# int g0/0
+R1(config-if)# ip nat outside 
+R1(config-if)# exit 
+! define the outside interfaces connected to the external network 
+
+
+R1(config)# ip nat inside source static 192.168.0.167 100.0.0.1
+R1(config)# ip nat inside source static 192.168.0.168 100.0.0.2
+R1(config)# exit
+! configure 1-1 IP address mappings 
+! ip nat inside source static inside-local-ip inside-global-ip
+
+R1# show ip nat translations
+```
+</b>
+
+* Clear ip nat translation
+
+    **`R1# show ip nat translations`**
+
+    **`R1# clear ip nat translation *`**
+
+    **`R1# show ip nat statistics`**
+
+**Quiz**
+1. command to static source NAT mapping of 192.168.10.10 to 203.0.113.10
+    * ip nat inside source static 192.168.10.10 203.0.113.10
+
+2. ip nat inside source static 10.0.0.1 20.0.0.1 and ip nat inside ...10.0.0.2 20.0.0.1
+    * only 10.0.0.1 will be translated to 20.0.0.1
+
+3. R1# show ip nat stat
+Result => Total active translations: 7 (3 static, 4 dynamic; 0 extended)
+How many active translations will be there if we issue clear ip nat trans*
+    * 3
+
+4.  ipv4 private address 
+    * 10.254.255.0
+    * 172.20.2.3
+    * 10.11.12.13
+
+5. Packet flows and IP
+    * outside Global :8.8.8.8
+    * outside local : 8.8.8.8
+    * inside local: 172.20.0.101
+    * inside global: 200.0.0.1
