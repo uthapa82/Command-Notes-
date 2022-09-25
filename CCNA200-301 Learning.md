@@ -1377,12 +1377,15 @@ R1# copy ftp:flash
     * Private IPv4 addresses 
     * NAT 
 * RFC 1918 specifies the following IPv4 address ranges as private :
+
 <b>
+
     * 10.0.0.0/8 (10.0.0.0 to  10.255.255.255) ------> Class A
 
     * 172.16.0.0/12 (172.16.0.0 to 172.31.255.255)------> Class B
-    
+
     * 192.168.0.0/16 (192.168.0.0 to 192.168.255.255)--------> Class C 
+
 </b>
 
 * they don't have to be globally unique 
