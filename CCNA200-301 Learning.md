@@ -1084,6 +1084,7 @@ R1(config)# service sequence-number
 
 ```
 </b>
+<br>
 
 * Syslog Command Summary 
 ![syslog-command](images/syslog-command.png)
@@ -1147,7 +1148,7 @@ SW1(config)# ip default-gateway 192.168.1.254
 * less secure (Teletype Network) developed in 1969
 * should use SSH instead of Telnet 
 * no encryption, can use wireshark to capture the traffic in plain text 
-* 
+
 ![telnet](images/telnet.png)
 
 **SSH**
@@ -1227,7 +1228,7 @@ SW1(config)# crypto key generate rsa modulus length
 
 5. A netowrk admin  using PC1 is remotely configuring SW1 by connecting to the CLI of SW1 via SSH. What is the role of SW1 in this situation ?
     * SSH server 
-    
+
 
 
 
