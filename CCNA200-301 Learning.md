@@ -1120,6 +1120,115 @@ R1(config)# service sequence-number
     * time stamp
 
 
+### SSH- Secure Shell 
+**ConsolePort Security**
+* By default  No password needed 
+![console-port](images/console-port.png)
+
+![login-local](images/login-local.png)
+
+**Layer 2 switch management IP**
+* Layer 2 switch don't perform packet routing and don't build a routing table, they are not IP routing aware
+* But we can assign an IP address to an SVI to allow remote connections to the CLI of the switch(using telnet or ssh)
+
+```
+SW1(config)# interface vlan1
+! configure the IP address on the SVI in the same way on multilayer switch
+
+SW1(config)# ip address 192.168.1.253 255.255.255.0
+SW1(config)# no shut 
+! enable the interface if necessary 
+
+SW1(config)# ip default-gateway 192.168.1.254
+
+```
+
+**Telnet**
+* less secure (Teletype Network) developed in 1969
+* should use SSH instead of Telnet 
+* no encryption, can use wireshark to capture the traffic in plain text 
+* 
+![telnet](images/telnet.png)
+
+**SSH**
+* Secure Shell , 1995 
+* SSHv2, 2006
+* If devices supports both version 1 and version 2 it is said version 1.99
+* More secure and provides data encryption and authentication 
+* check ssh support (vios_12-ADVENTERPRISEK9-M)
+* Cisco supports NPE(No Payload Encryption) IOS images to countries that have restrictions on encryption technologies 
+
+* NPE IOS images doesnot support cryptographic featurs such as SSH 
+
+**`SW1# show version `**
+
+**`SW1# show ip ssh`**
+
+* RSA at least 768 bits 
+* must generate RSA public and private key pair 
+* Keys are used for data encryption/decryption, authentication etc 
+
+```
+SW1(config)# ip domain name domain.com
+! The FQDN of the device is used to name the RSA keys
+! FQDM = Fully Qualified Domain Name(host name + domain name )
+
+SW1(config)# crypto key generate rsa 
+! size :2048 bits 
+
+or 
+
+SW1(config)# crypto key generate rsa modulus length
+! length must be 768bits or greater for SSHv2
+```
+* restrict SSH to version 2 only 
+`SW1(config)# ip ssh version 2`
+
+**SSH configuration**
+1. Configure hostname 
+
+`Router(config)# hostname R2`
+
+2. Configure DNS domain name 
+
+`R2(config)# ip domain name company.com`
+
+3. Generate RSA key pair
+
+`R2(config)# crypto key generate rsa`
+
+4. Configure enable PW, username/PW
+
+5. Enable SSHv2 only 
+6. configure VTY lines 
+
+**`ssh -l username ip-address OR ssh username@ip-address`**
+
+**SSH Command Summary**
+![ssh-summary](images/ssh-sum.png)
+
+**Quiz**
+1. crypto key generate rsa command rejected 
+    * hostname hasn't been configured
+    * a DNS domain name hasn't been configured 
+
+2. both telnet and ssh to be used 
+    * transport input telnet ssh
+    * transport input all 
+
+3. allow only 192.168.1.1 to connect to R1 via SSH 
+    * access-list 199 permit tcp host 192.168.1.1 any eq 22 
+    * line vty 0 15 
+    * access-class 199 in
+
+4. True SSH statements 
+    * (F) a key length of at least 768 bits is required for SSHv2
+    *  (b) K9 IOS images support SSH
+
+5. A netowrk admin  using PC1 is remotely configuring SW1 by connecting to the CLI of SW1 via SSH. What is the role of SW1 in this situation ?
+    * SSH server 
+    
+
 
 
 
