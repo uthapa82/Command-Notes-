@@ -1038,4 +1038,89 @@ R1(config)# snmp-server enable traps config
 * Ans=> Trap
 
 
+### The Syslog Protocol -RFC 5424 
+**Syslog overview** 
+* Protocol for message logging
+* changes and interface status 
+* can be displayed in CLI, saved in the RAM or sent to an external Syslog server 
+* Syslog and SNMP are both used for monitoring and troubleshooting of devices
+
+**Syslog message format ** 
+* seq:time stamp: %facility-severity-MNEMONIC:description
+![syslog_message_format](images/syslog-message.png)
+
+**Syslog facilities and severity levels**
+
+![syslog_severity levels](images/syslog-sev.png)
+
+**Syslog logging locations**
+* Console line: Syslog message will be displayed in the CLI when connnected to the device via the console port. By default, all messages (level 0 - level 7 are displayed)
+<br>
+* VTY lines: displayed in CLI when connected to the device via Telnet/SSH, disabled by default 
+<br>
+* Buffer: messages saved to RAM, all messaged (level 0 - level 7) are displayed
+    * `show logging`
+<br>
+* External server: configure the device to send Syslog message to an external server 
+    * syslog servers will listen for messages on UDP port 514.
+
+**Syslog configuration**
+![syslog-conf](images/syslog-conf.png)
+
+* Even if logging monitor level is enabled, by default syslog messages will not be displayed when connected via telnet or ssh 
+
+* For the messages to be displayed, you must use the following command:
+
+    `R1# terminal monitor`
+
+* This command must be used every time we connect to the devices via telnet or SSH 
+
+**Service timestamps / service sequenve-numbers**
+<b>
+```
+R1(config)# service timestamps log datatime
+
+R1(config)# service sequence-number 
+
+```
+</b>
+
+* Syslog Command Summary 
+![syslog-command](images/syslog-command.png)
+
+**Syslog vs SNMP** 
+* syslog:
+    * message logging
+    * events occur within the system are categorized based on facility/severity and logged
+    * used for system mgmt, analysis and troubleshooting
+    * messages are sent from the devices to the server
+    * the server can't actively pull information from the devices (like SNMP Get) or modify variables (SNMP set)
+
+* SNMP
+    * used to retrieve and organize info about the SNMP managed devices
+    * Ip add, current int status, temperature, CPU usage etc
+    * SNMP servers can use Get to query the clients and Set to modify varibales on the clients
+
+**Quiz**
+1. severity level ..%SYS-5-CONFIG_I:..
+    * 5 (Notification)
+<br>
+2. severity level ...%LINK-3-UPDOWN:...
+    * 3 (Error)
+<br>
+3. Syslog messages sent to by default 
+    * console line
+    * Buffer 
+<br>
+4. logging buffered 6
+    * Severity 0 to 6
+<br>
+5. syslog message field that might not be displayed 
+    * seq
+    * time stamp
+
+
+
+
+
 
