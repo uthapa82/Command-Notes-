@@ -1,7 +1,7 @@
 #### Timeshift backups 
 * Dlete the directory (empty)
  
-  `sudo rm -d <file name> `
+  `$ sudo rm -d <file name> `
  
 * Delete non empty directory 
 
