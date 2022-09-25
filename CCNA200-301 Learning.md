@@ -1104,17 +1104,17 @@ R1(config)# service sequence-number
 **Quiz**
 1. severity level ..%SYS-5-CONFIG_I:..
     * 5 (Notification)
-<br>
+
 2. severity level ...%LINK-3-UPDOWN:...
     * 3 (Error)
-<br>
+
 3. Syslog messages sent to by default 
     * console line
     * Buffer 
-<br>
+
 4. logging buffered 6
     * Severity 0 to 6
-<br>
+
 5. syslog message field that might not be displayed 
     * seq
     * time stamp
