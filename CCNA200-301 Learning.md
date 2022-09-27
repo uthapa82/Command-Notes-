@@ -1481,3 +1481,74 @@ How many active translations will be there if we issue clear ip nat trans*
     * outside local : 8.8.8.8
     * inside local: 172.20.0.101
     * inside global: 200.0.0.1
+
+### NAT - Dynamic NAT Part 2
+**Dynamic NAT**
+* Static NAT -- statically configuring one-to-one mapping of private IP addresses to public addresses 
+
+* Dynamic NAT -- the router dynamically maps inside local addresses to inside global addresses as needed 
+* ACL is used to identify which traffic should be translated 
+    * src ip is permitted, then src ip is translated 
+    * if src ip is denies, the src ip is not translated 
+* NAT pool is usedto define the available inside global addresses
+* Mapping is still one-to-one (one inside local IP per global IP)
+* if there are no enough global IP (all are currently being used), it is called NAT pool exhaustion
+    * dynamic NAt entries will time out automatically if not used or we can clear them manually 
+* Dynamic NAT default timeout is 24hrs 
+* Configuration 
+![NAT](images/NAT.png)
+
+**Dynamic PAT (Port Address Translation)**
+*  aka NAT overload, translates both the IP and the port number( if neccessary)
+*  unique port for each communication flow, a single public address can be used by different internatl hosts 
+    * port number are 16 bits => 65,000 available port numbers
+* The router will keep track of which inside local address is using which inside global address and port 
+* As many inside hosts can share a single public IP, PAT is very useful for preserving public IP addresses, and it is used in networks all over the world 
+
+* **PAT is most widely used**
+
+* Configuration 
+![NAT](images/PAT.png)
+
+<br>
+
+**Command Summary**
+
+![NAT summary](images/NAT-sum.png)
+
+**Quiz**
+1. Best NAT types which help in preserving public IPv4
+    * NAT overload
+
+2. Translate inside local addresses from 172.16.1.0/24 to addreses from the subnet 203.0.113.0/25
+    ```
+    access-list 1 permit 172.16.1.0 0.0.0.255
+    ip nat pool POOL1 203.0.113.0 203.0.113.127 netmask 255.255.255.128
+
+    ip nat inside source list 1 pool POOL1
+
+    interface g0/0
+    ip nat inside
+
+    interface g0/1
+    ip nat outside
+    ```
+3. what happens if all 10 addresses are being used by inside hosts 
+    * It discards the packet 
+
+4. 10.0.1.0/27 to use the IP address of the router's G0/1 interface 
+    ```
+    access-list 1 permit 10.0.1.0 0.0.0.31
+    ip nat inside source list 1 interface gigabitethernet0/1 overload
+
+    interface g0/0
+    ip nat inside
+
+    interface g0/1
+    ip nat outside 
+
+    ```
+5. access-list 1 deny 192.168.1.0 0.0.0.255, what happens to 192.168.1.0 in NAT
+    * The packets they send will noe be translated by R1
+
+    
