@@ -1590,4 +1590,65 @@ How many active translations will be there if we issue clear ip nat trans*
     * when a device is connected to a PoE enabled port the PSE switch sends low power signals, monitors the response, and determines how much power the PD needs 
     * if the device needs power the PSE supplies the power to allow the PD to boot
     * The PSE continues to monitor the PD and supply the required amount of power(but not too much)
+* Power Policing can be configures to prevent a PD from taking too much power 
+    * `power inline police`  configures power policing with the default settings: disable the port and send a Syslog message if a PD draws too much power
+        * equivalent to `power inline police action err-disable` 
+        * the interface will be put in an 'error-disabled' state and can be re-enabled with **shutdown** followed by **no shutdown**
+
+    <br>
+
+    * `power inline police action log` does not shut down the interface if the PD draws too much power. IT will restart the interface and send a Syslog message
+
+    **Preventing PD's from drawing too much power**
+
 **Intro to Quality of Service(QoS)**
+* Voice traffic and data traffic used to use entirely separate networks 
+    * voice traffic used the PSTN 
+    * Data traffic used the IP network (enterprise WAN, internet, etc)
+* QoS wasn't necessary as the different kinds of traffic didn't complete for bandwidth
+* modern network shares the same IP network 
+* **QoS is a set of tools used by network devices to apply different treatment to different packets**
+*  manage following characteristics of network traffic :
+    1. Bandwidth 
+        * Kbps, Mbps, Gbps etc 
+        * reserve a certain amount of a link's bandwidth for specific kinds of traffic, example 20% voice traffic, 30 % for specific kind of data traffic, leaving 50 % for other traffic
+    2. Delay 
+        * one-way delay (src- dst)
+        * two-way delay (src-dst and return )
+    3. Jitter 
+        * variation in one-way delay between packets sent by the same applicaiton
+        * IP phones have a 'jitter buffer' to provide a fixed delay to audio packets.
+    
+    4. Loss 
+        * the % of packets sent that do not reach their destination
+        * faulty cables, queues get full and the device starts discarding packets
+
+* 1-way delay : 150 ms or less
+* Jitter: 30 ms or less
+* Loss: 1% or less
+
+**QoS Queuing**
+* queued messages will be forwarded in FIFO manner 
+* Queue full new packets dropped => tail drop 
+* TCP global Synchronization:
+    * TCP sliding window 
+    * increase/decrease the rate at which they send traffic as needed 
+    * when a packet is dropped it will be re-transmitted
+    * when a drop occurs, the sender will reduce the rate it sends traffic 
+    * It will then gradually increase the rate again 
+
+    <br>
+
+    Network Congestion ---> Tail Drop -------> Global TCP window size decrease ----> Network underutilized -------> Global TCP window size ---> Network congestion again
+
+* Random Early Detection (RED) ---> solution to prevent tail drop 
+* when the amount of traffic in the queue reached a certain threshold, the device will start randomly dropping packets from select TCP flows 
+* improved version , Weighted Random Early Detection (WRED) allows us to control which packetd are dropped depending on the traffic class 
+
+**Quiz**
+1. -Voice traffic tagged in VLAN 99, data traffic untagged 
+2. The interface will be err-disabled and a Syslog message will be generated --> `power inline police`
+3.  Delay 150 ms or less, Jitter 30 ms or less, Loss: 1% or less 
+4. TCP global Sync
+5. FIFO is the default manner of forwarding queued packets 
+
