@@ -1552,3 +1552,42 @@ How many active translations will be there if we issue clear ip nat trans*
     * The packets they send will noe be translated by R1
 
     
+### Quality of Service (QoS)
+**IP Phones/Voice VLANs**
+* Traditional phone PSTN:- Public Switched Telephone Network 
+* Also called POTS (Plain Old Telephone Service)
+* IP phone uses VoIP (Voice Over IP) technologies to enable calls over an IP network, such as the Internet 
+* IP phone have an internal 3-port switch
+    * 1 port is the 'uplink' to external switch
+    * 1 port is the 'downlink'  to the PC
+    * 1 port connects internally to the phone itself 
+*  PC and the IP phone to share a single switch port
+* Traffic from the PC passes through the IP phone to the switch 
+* Recommended to separate 'voice' traffic (from the IP phone) and data traffic (From the PC ) by placing them in separate VLANs
+    * voice VLAN
+    * traffic from the PC will be intagged, but traffic from the phone will be tagged with a VLAN ID 
+
+    ```
+    SW1(config)# interfave gigabitethernet0/0
+    SW1(config)# switchport mode access
+    SW1(config)# switchport access vlan 10
+
+    SW1(config)# switchport voice vlan 11
+    ! PC1 will send traffic untagged, as normal SW1 will use CDP to tell PH1 to tag
+    PH1's traffic in VLAN 11
+
+    SW1# show interfaces g0/0 switchport 
+    ! even though interface sends/receives traffic from two VLANs it is 
+    not considered a trunk port. It is considered an access port 
+
+    ```
+
+**Power Over Ethernet (PoE)**
+* Power Sourcing Equipment (PSE) to provide power to Powered Devices (PD) over an Ethernet
+* typically PSE is a switch and the PDs are the IP phones, IP cameras, wireless access points etc 
+* The PSE receives AC power from the outlet, converts it to DC power, and supplies that DC power to the PDs
+* PoE has a process to determine if a connected device needs power and how much power it needs 
+    * when a device is connected to a PoE enabled port the PSE switch sends low power signals, monitors the response, and determines how much power the PD needs 
+    * if the device needs power the PSE supplies the power to allow the PD to boot
+    * The PSE continues to monitor the PD and supply the required amount of power(but not too much)
+**Intro to Quality of Service(QoS)**
