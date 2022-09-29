@@ -1652,3 +1652,49 @@ How many active translations will be there if we issue clear ip nat trans*
 4. TCP global Sync
 5. FIFO is the default manner of forwarding queued packets 
 
+### Quality of Service (Part 2)
+**Classification/Marking**
+* organizes network traffic(packets) into traffic classes(categories)
+* we have to identify which types of traffic to give priority to
+* Many methods of classifying traffic
+    * like ACL 
+    * NBAR: Network Based Application Recognition : performs a deep packet inspection, looking beyond Layer 3 and Layer 4 information up to Layer 7 to identify the specific kind of traffic 
+    * In Layer 2 and Layer 3 headers there are specific fields used for this purpose 
+* PCP (Priority Code Point) field of the 802.1Q tag (in the Ethernet header) can be used to identify high/low priority traffic 
+    * Only when there is a dot1q tag 
+* DSCP (Differentiated Services Code Point) field of the IP header can also be used to identify high/low priority traffic 
+* PCP i also known as CoS (Class Of Service). It use is defined by IEEE 802.1p
+* 3 bits = 8 possible values (2^3 = 8)
+
+<b>
+
+```
+ PCP Value             ||      Traffic Types     `
+    0                           Best effort (default)
+    1                           Background
+    2                           Excellent effort
+    3                           Critical Applications
+    4                           Video
+    5                           Voice 
+```
+
+</b>
+
+* IP phones mark call signaling traffic (used to establish calls) as PCP3
+    * They mark the actual voice traffic as PCP5
+
+* As PCP is found in the dot1q header, it can only be used over the following connections:
+    1. trunk links
+    2. access links with a voice VLAN
+
+* RFC 2474 defines the DSCP field 
+* We should be aware of the following standard markings:
+    * Default Forwarding (DF) - best effor traffic 
+    * Expedited Forwarding (EF) - low loss/latency/jitter traffic(usually voice)
+    * Assured Forwarding(AF) - A set of 12 standard values
+    * Class Selector(CS) - A set of 8 standard values, provides backward compatibility with IPP 
+    
+
+**Queuing/Congestion Management**
+**Shaping/Policing**
+
