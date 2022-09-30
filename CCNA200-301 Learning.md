@@ -1690,11 +1690,76 @@ How many active translations will be there if we issue clear ip nat trans*
 * RFC 2474 defines the DSCP field 
 * We should be aware of the following standard markings:
     * Default Forwarding (DF) - best effor traffic 
+        * It is used for best-effort traffic 
+        * The DSCP marking for DF is 0
+        * 000000
+
     * Expedited Forwarding (EF) - low loss/latency/jitter traffic(usually voice)
-    * Assured Forwarding(AF) - A set of 12 standard values
-    * Class Selector(CS) - A set of 8 standard values, provides backward compatibility with IPP 
+        * Used for traffic that requires low loss/latency/jitter 
+        * The DSCP marking for EF is 46
+        * Binary 101110
     
+    * Assured Forwarding(AF) - A set of 12 standard values
+        * Defines four traffic classes, all packets in a class have the same priority 
+        * Within each class, there are three levels of drop precedence 
+            * Higher drop precedence = more likely to drop the packet during congestion
+            * 0/1 0/1 0/1(class) 0/1 (drop precedence) 0/1 (always 0)  ==> AFXY 
+            * X -----> Decimal number of class , Y is decimal number of Drop precedence
+            * Binary 001010
+            * 32 | 16 | 8 | 4 | 2  | 0--> DSCP (8X + 2Y)
+            * 4  | 2  | 1 | 2 | 1  | 0 ---> AF 
+
+    * Class Selector(CS) - A set of 8 standard values, provides backward compatibility with IPP 
+        * 3 bits that were added for DSCP values are set to 0, and the original IPP bits are used to make 8 values 
+        * 32    |    16    |  8   |   4     |    2
+        * 0/1   |   0/1    |  0/1 |   0     |    0    | 0
+        * 0     |     1    |   2  |   3     |    4    | 5  |   6   |   7 ---> IPP
+        * CS0   |    CS1   |  CS2 |  CS3    |   CS4   | CS5 |  CS6 | CS7 ====> CS
+        * 0     |    8     |   16 |  24     |   32    |  40 |  48  |  56 -----> DSCP (decimal)
+
+    * **RFC 4954** was developed with the help of Cisco to bring all of these values together and standardize their use 
+    * The RFC offers many specific recommendations, but here are a few key ones :
+        1. Voice traffic: EF
+        2. Interactive Video: AF4x
+        3. Streaming video: AF3x
+        4. High Priority data: AF2x
+        5. Best effort: DF 
+        
+    * `R1(config)# class-map TEST`
+
+**Trust Boundaries**
+* defines where devices trust/don't trust the QoS markings of received messages 
+* If markings are trusted, the device will forward the message without changing the markings
+* If markings aren't trusted, the device will change the markings according to the configured policy 
+* if an IP phone is connected to the switch port, it is recommended to move the trust boundary to the IP phones
+* This is done via configuration on the switch port connected to the IP phone
+* If a user marks their PC's traffic with a high priority, the marking will be changed (not trusted)
 
 **Queuing/Congestion Management**
+* The device is only able to forward one frame out of an interface at once, so a scheduler is used to decide which queue traffic is forwarded from next 
+    * Prioritization allows the scheduler to give certain queues more priority than others 
+
+    ![QoS](images/QoS.png)
+
+* A common scheduling method is weighted round-robin
+    * round-robin == packets are takedn from each queue in order, cyclically 
+    * weighted == more data is taken from high priority queues each time the scheduler reached that queue 
+
+* CBWFQ(Class-Based Weighted Fair Queuing) is a popular method of scheduling, using a weighted round-robin scheduler while guaranteeing each queue a certain percentage of the interface's bandwidth during congestion 
+
+* Round-Robin scheduling is not ideal for voice/video traffic 
+
+* LLQ (Low Latency Queuing) designates one(or more) queues as strict priority queues
+
+* This is very effective for reducing the delay and jitter of voice/video traffic 
+
+* Downside of starving other queues if there is always traffic in the designated strict priority queue
+    - Policing can control the amount of traffic allowed in the strict priority queue so that it can't take all of the link's bandwidth 
+
+
 **Shaping/Policing**
+* traffic shaping and policing are both used to control the rate of traffic 
+* Shaping buffers traffic in a queue if the traffic rate goes over the configured rate 
+* Policing drops traffic if the traffic rate goes over the configured rate 
+
 
