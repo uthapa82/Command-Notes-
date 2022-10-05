@@ -6,7 +6,6 @@
 * Delete non empty directory 
 
   `$ sudo rim -r <file name>`
-
 <br>
 
 * Ubuntu installation Partition
