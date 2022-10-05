@@ -6,9 +6,8 @@
 * Delete non empty directory 
 
   `$ sudo rim -r <file name>`
-<br>
 
-* Ubuntu installation Partition
+#### Ubuntu installation Partition
   * EFI 512 MB
     * Primary 
     * Begining 
