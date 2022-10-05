@@ -1654,7 +1654,7 @@ How many active translations will be there if we issue clear ip nat trans*
 
 ### Quality of Service (Part 2)
 **Classification/Marking**
-* organizes network traffic(packets) into traffic classes(categories)
+* organizes network traffic (packets) into traffic classes (categories)
 * we have to identify which types of traffic to give priority to
 * Many methods of classifying traffic
     * like ACL 
@@ -1749,7 +1749,7 @@ How many active translations will be there if we issue clear ip nat trans*
 
 * Round-Robin scheduling is not ideal for voice/video traffic 
 
-* LLQ (Low Latency Queuing) designates one(or more) queues as strict priority queues
+* LLQ (Low Latency Queuing) designates one (or more) queues as strict priority queues
 
 * This is very effective for reducing the delay and jitter of voice/video traffic 
 
@@ -1761,5 +1761,26 @@ How many active translations will be there if we issue clear ip nat trans*
 * traffic shaping and policing are both used to control the rate of traffic 
 * Shaping buffers traffic in a queue if the traffic rate goes over the configured rate 
 * Policing drops traffic if the traffic rate goes over the configured rate 
+    * Burst traffic over the configured rate is allowed for a short period of time 
+    * the amount of burst traffic allowed is configurable 
 
 
+**Quiz**
+1. CoS markings consistent with standard practice 
+    * Best effort = CoS 0
+    * Voice = CoS 5
+    * Video = CoS 4
+
+2. bit pattern in DSCP field of a packet marked as EF 
+    * 101 110
+
+3. AF markings that provides the best service 
+    * AF 41 
+
+    ![AF marking](images/af.png)
+
+4. General Best Practice regarding QoS 
+    * Trust markings from IP phones, Don't trust markings from PCs
+
+5. Creates a strict priority queue for data that requires low delay/jitter/loss
+    * LLQ (Low Latency Queuing)
