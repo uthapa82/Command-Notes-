@@ -1784,3 +1784,81 @@ How many active translations will be there if we issue clear ip nat trans*
 
 5. Creates a strict priority queue for data that requires low delay/jitter/loss
     * LLQ (Low Latency Queuing)
+
+### Security Fundamentals
+**Key Security Concepts**
+* CIA Triad:- 
+    * Confidentiality : 
+        * only authorized users should be able to access data
+        * Some information/data is public and can be accessed by anyone, some is secret and should only be accessed by specific people
+    * Integrity
+        * Data should not be tampered with (modified) by unauthorized users
+        * Data should be correct and authentic 
+    * Availability
+        * The network/systems should be operational and accessible to authorized users
+    
+<br>
+
+* A vulnerability is any potential weakness that can compromise the CIA of a system/info
+    * A potential weakness isn't a problem on its own
+
+* An exploit is something that can potentially be used to exploit the vulnerability
+    * Something that can potentially be used as an exploit isn't a problem on it's own 
+
+* A threat is the potential of a vulnerability to be exploited 
+    * A hacker exploiting a vulnerability in your system is a threat
+
+* A mitigation technique is something that can protect against threates 
+    * client devices, switches, routers, firewall, etc 
+
+<br>
+  
+**Common attacks**
+* DoS (denial-of-service) attacks
+    * threaten the availability of a system 
+    * TCP SYN flood 
+        * SYN | SYN-ACK | ACK
+        * The attacker sends countless TCP SYN messages to the target 
+        * The target sends a SYN-ACK message in response to each SYN it receives
+        * The attacker never replies with the final ACK of the TCP three-way handshake
+        * The incomplete connections fill up the target's TCP connection table 
+        * The target is no longer able to make legitimate TCP connections
+    * Distributed Denial-Of-Service attack, the attacker infects many target computers with malware and uses them all to initiate a denial-of-service attack (**botnet**)
+    
+    <br>
+
+* spoofing attacks ---> Availability 
+    * use fake source address (IP or MAC address)
+    * Numerous attacks involve spoofing
+    * DHCP exhaustion attack
+    * Attacker uses spoofed MAC addresses to flood DHCP Discover message 
+    * The target server's DHCP pool becomes full, resulting in a denial-of-service to other devices
+
+    <br>
+
+* Reflection/amplification attacks 
+    * The attacker sends traffic to a reflector and spoofs the source address of its packets using the target's IP address
+    * The reflector (i.e a DNS server) sends the reply to the taget's IP address
+    *  A reflection attack becomes an **amplification** attack when the amount of traffic sent by the attacker is small, but it triggers a large amount of traffic to be sent from the reflector to the target 
+    
+    <br>
+
+* Man-in-the-middle attacks (Confidentiality and Integrity)
+    * attacker places himself between the src and dst to eavesdrop on communication or to modify traffic before it reaches the destination
+    * Common example is ARP spoofing, also known as ARP poisoning
+    * A host sends an ARP request, asking for the MAC address of another device
+    * The target of the request sends an ARP reply informing the requestor of its MAC address 
+
+    <br>
+
+* Reconaissance attacks
+    * Used to gather information about a target which can be used for a future attack 
+    * This is often publicly available information
+    
+* Malware 
+* Social Engineering attacks
+* Password-related attacks
+
+**Passwords/Multi-Factor Authentication(MFA)**
+**Authentication, Authorization, Accounting(AAA)**
+**Security Program Elements**
