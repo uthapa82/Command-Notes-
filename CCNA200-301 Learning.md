@@ -1077,6 +1077,7 @@ R1(config)# snmp-server enable traps config
 
 **Service timestamps / service sequenve-numbers**
 <b>
+
 ```
 R1(config)# service timestamps log datatime
 
@@ -1378,7 +1379,7 @@ R1# copy ftp:flash
     * NAT 
 * RFC 1918 specifies the following IPv4 address ranges as private :
 
-<b>
+<br>
 
     * 10.0.0.0/8 (10.0.0.0 to  10.255.255.255) ------> Class A
 
@@ -1386,7 +1387,7 @@ R1# copy ftp:flash
 
     * 192.168.0.0/16 (192.168.0.0 to 192.168.255.255)--------> Class C 
 
-</b>
+</br>
 
 * they don't have to be globally unique 
 
@@ -1889,12 +1890,67 @@ How many active translations will be there if we issue clear ip nat trans*
         ![common attack](/images/common_attack.png)
 
 **Passwords/Multi-Factor Authentication(MFA)**
-
-* Providing more than just a usrename/password to prove your identity
+* Providing more than just a username/password to prove your identity
 
 * Somthing you know 
     * a username/password combination, a PIN etc
- 
-    
+ * Something you have 
+    * pressing notifcation on phone or a badge that is scanned 
+* Somthing  you're 
+    * biometrics such as a face scan, palm scan, fingerprint scan, retina scan etc 
+* **digital certificates** are another form of authentication used to prove the identity of the holder of the certificate
+* they are used for websites to verify that the website being accessed is legitimate 
+* certificate signing Request to CA (certificate Authority) which will generate and sign the certificate 
+
 **Authentication, Authorization, Accounting(AAA)**
+* Framework for controlling and monitoring users of a computer system (i.e a network)
+* Authentication 
+    * process of verifying a user's identity 
+    * logging in (ideally using MFA) ==> authentication
+* Authorization 
+    * process of granting the user the appropriate access and permissions.
+    * granting the user access to some files/services, restricting access to other files/services = authorization 
+* Accounting 
+    * process of recording the user's activities on the system 
+    * logging when a user makes a changes to a file => accounting 
+* Enterprises typically use a AAA server to provide AAA services 
+    * ISE(Identity Services Engine) is Cisco's AAA server 
+
+* AAA servers usually support the following two AAA protocols
+    1. RADIUS: an open standard protocol. Uses UDP ports 1812 and 1813
+    2. TACAS+ : A cisco propriety protocol. Uses TCP port 49
+
 **Security Program Elements**
+* set of security policies and procedures 
+* User awarness programs are designed to make employees aware of potential security threats and risks 
+    * false phising emails 
+* User training programs
+    * more formal than user awareness programs 
+    * corporate security policies 
+    * how to create strong passwords, and how to avoid potential threats 
+* Physical access control
+    * protects equipment and data from potential attackers by only allowing authorized users into protected areas such as network closets or data center floors 
+    * **multifactor loks** can protects access to restricted areas 
+        * i.e door that requires users to swipe a badge and scan their fingerprint to enter 
+        * permissions of the badge can be easily changed, for eg. permissions can be removed when an employee leaves the company 
+
+**Quiz**
+1. CIA triad ensures the systems are running and accessible by user 
+    * Availability 
+
+2. Real possibility that a potential weakness is taken advantage of to attack a system 
+    * Threat 
+
+3. Door locks that require a badge to be scanned and pass code to be entered, this is example of :
+    * Physical Access Control 
+    * MFA 
+
+4. Not an example of MFA 
+    * Doing a retina scan and then doing a fingerprint scan
+
+5. Accounting in AAA model 
+    * Logging the date and time a user logged in to the system 
+
+
+    
+
