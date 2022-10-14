@@ -1854,11 +1854,47 @@ How many active translations will be there if we issue clear ip nat trans*
 * Reconaissance attacks
     * Used to gather information about a target which can be used for a future attack 
     * This is often publicly available information
+    * i.e nslookup to learn the IP address of a site 
+    * `$ nslookup visa.com`
+    * or WHOIS query to learn email addresses, phone numbers, physical addresses, etc 
     
 * Malware 
+    * malicious software , harmful program that can infect a computer 
+    * viruse infect software  (a 'Host program'), spread as the software is shared by the user 
+    * worms do not require a host program, they are standalone malware and they are able to spread on their own, without user interaction, can congest the network but the 'paylod' of a worm
+    * Trojan Horses, harmful software that is disguised as legitimate software , they spread through user interaction such as opening email attachments or downloading a file from the internet 
+
+
 * Social Engineering attacks
+    * psychological manipulation to make the target reveal confidential information or perform some action
+    * Phisiing
+        * fraudulent emails that appear to come from a legitimate bussiness 
+        * contain links to a fraudulent website that seems legitimate 
+        * **spear phising** is more targeted form of phising, i.e aimed at employee of a certain company 
+        * **whaling** is phishing targeted at high profile individuals, i.e a company president 
+    * Vishing (voice phishing) is phishing performed over the phone 
+    * Smishing (SMS phishing)
+    * Watering hole attacks compromise sites that target the victim frequently visits. If a malicious link is placed on a website the target trusts, they might not hesitate to click it 
+    * Tailgating attacks involve entering restricte, secured areas by simply walking in behind an authorized person as they enter 
+
 * Password-related attacks
+    * uername/password 
+    * Attackers can learn a user's password via multiple methods
+        * Guessing
+        * Dictionary attack 
+        * Brute Force attack: possible combination of letters, numbers and special characters to find the target's password 
+
+        <br>
+
+        ![common attack](/images/common_attack.png)
 
 **Passwords/Multi-Factor Authentication(MFA)**
+
+* Providing more than just a usrename/password to prove your identity
+
+* Somthing you know 
+    * a username/password combination, a PIN etc
+ 
+    
 **Authentication, Authorization, Accounting(AAA)**
 **Security Program Elements**
