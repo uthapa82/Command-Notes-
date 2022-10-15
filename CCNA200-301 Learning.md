@@ -1951,6 +1951,80 @@ How many active translations will be there if we issue clear ip nat trans*
 5. Accounting in AAA model 
     * Logging the date and time a user logged in to the system 
 
+#### Kali Linux Demo 
+* attacker use all of the dhcp pool addresses and the other users cannot get ip address assigned 
 
-    
+```
+R1# sh run | sec dhcp 
 
+R1# sh ip dhcp pool
+
+R1# sh ip dhcp binding 
+
+R1# clear ip dhcp binding *
+
+```
+#### Port Security 
+**Intro to port security**
+* Security feature of Cisco Switches 
+* allows us to control which source MAC address(es) are allowed to enter the switchport 
+* If an unauthorized source MAC address enters the port, an action will be taken
+    * default action is to place the interface in an 'err-disabled' state 
+* when we enable port security on an interface with the default settings, one MAC address is allowed
+    * we can configure the allowed MAC address manually 
+    * if we don't configure it manually the switch will allow the first source MAC address that enters the interface 
+    * We can change the maximum number of MAC addresses allowed 
+
+**Why we use port security**
+* Allows network admin to control which devices are allowed to access the network 
+* However, MAC address spoofing is a simple task
+    * it is easy to configure a device to send frames with a different source MAC address 
+* Rather than manually specifying the MAC addresses allowed on each port, port security's ability to limit the number of MAC addresses allowed on an interface is more useful 
+* DHCP starvation attack 
+    * the attacker spoofed thousands of fake MAC addresses 
+    * the DHCP server assigned IP addresses to these fake MAC addresses, exhausting the DHCP pool
+    * switch's MAC address table can also become full due to such an attack 
+* So, limiting the number of MAC addresses on an interface can protect against those attacks 
+
+**Port security configuration**
+* enabling port security 
+
+```
+SW1(config)# interface g0/1
+
+SW1(config-if)# switchport port-security 
+! cmd rejected: GigabitEthernet0/0 is a dynamic port 
+
+SW1(config-if)# do sh int g0/1 switchport 
+!Name: Gi0/1
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access 
+
+* port security only on access or trunk not in dynamic auto or desirable 
+
+SW1(config-if)# switchport mode access
+
+SW1(config-if)# do show int g0/1 switchport
+!Name: Gi0/1
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access 
+
+SW1(config-if)# switchport port-security 
+
+SW1# show port-security interface g0/1
+```
+
+* re-enabling an interface(manually)
+    1. disconnect the unauthorized device 
+    2. shutdown and then no shutdown the interface
+
+    ```
+    SW1(config)# interface g0/1
+    SW1(config-if)# shutdown
+    SW1(config-if)# no shutdown     
+    ```
+* re-enabling an interface (ErrDisable Recovery)
+
+`SW1# show errdisable recovery`
