@@ -2028,3 +2028,100 @@ SW1# show port-security interface g0/1
 * re-enabling an interface (ErrDisable Recovery)
 
 `SW1# show errdisable recovery`
+* every 5 minutes(by default), all err-disabled interfaces will be re-enabled if err-disable recovery has been enabled for the cause of the interface's disablement 
+
+`SW1(config)# errdisable recovery cause psecure-violation`
+
+`SW1(config)# errdisable recovery interval 180`
+
+`SW1(config)# show errdisable recovery`
+
+* ErrDisable Recovery is useless if you don't remove the device that caused the interface to enter the err-disabled state 
+
+**Violation Modes**
+* 3 dofferent violation modes that determine what the switch will do if an unauthorized frame enters an interface configured with port security 
+    1. **shutdown**
+        * effectively shuts down the port by placing it in an err-disabled state 
+        * Generates a Syslog and/or SNMP message when the interface is disabled 
+        * the violation counter is set to 1 when the interface is disabled 
+
+    2. **Restrict**
+        * the switch discards traffic from unauthorized MAC addresses
+        * the interface is NOT disabled 
+        * Generates a Syslog and/or SNMP message each time an unauthorized MAC is detected 
+        * the violation counter is incremented by 1 for each unauthorized frame 
+
+    ```
+    SW1(config-if)# switchport port-security
+
+    SW1(config-if)# switchport port-security mac-address 000a.000a.000a
+
+    SW1(config-if)# switchport port-security violation restrict 
+
+    ```
+
+
+    ![restrict mode](images/restrict_mode.png)
+    
+
+    3. **Protect**
+        * the switch discards traffic from unauthorized MAC addresses 
+        * The interface is NOT disabled 
+        * doesn't generate syslog and SNMP message 
+        * doesn't increment the violation counter
+    
+    ![protect mode](images/protect.png)
+
+*secure MAC address aging**
+* by default secure MAC address will not 'age out' (Aging Time : 0 mins)
+    * can be configured with switchport port-security aging time minutes 
+
+* the default aging type is Absolute 
+    * **Absolute** means : after the secure MAC address is learned, the aging timer starts and the MAC is removed after the timer expires, even if the switch continues receiving frames from that source MAC address 
+    * **Inactivity**: After the secure MAC address is learned , the aging timer starts but is reset every time a frame from that source MAC address is received on the interface 
+    * aging is configured with `switchport port-security aging type {absolute | inactivity}`
+
+* secure static MAC aging (addresses configured with switchport port-security mac-address x.x.x) is disabled by default 
+    * Can be enabled with switchport port-security aging static 
+
+![secure mac](images/secure_mac.png)
+
+**sticky Secure MAC addresses*
+* can be enabled with following command
+
+`SW1(config-if)# switchport port-security mac-address sticky`
+
+* when enabled, dynamically-learned secure MAC addresses will be added to the running config like this 
+
+`SW1(config-if)# switchport port-security mac-address sticky mac-address`
+
+* sticky secure MAC addresses will never age out
+    * We need to save the running-config to the startup-config to make them truly permanent(or else they will not be kept if the switch restarts)
+
+* after issusing the command sw port-sec mac-add sticky all current dynamically-learned secure MAC addresses will be converted to sticky secure MAC addresses and vice versa 
+
+![sticky secure](images/sticky_secure.png)
+
+* all command review 
+
+![command review](images/command_port_sec.png)
+
+**Quiz**
+1. sticky mac addresses: 3
+2. which of the following violation occurs in restrict mode: 
+    * the violation counter is inceremented (e)
+    * unauthorized traffic is discarded (b)
+
+3. Violation mode is: Protect, so unauthorized traffic will be dropped 
+
+4. Will re-enable an interface that was disabled by port security 
+    * shutdown and then no shutdown
+    * errdisable recovery cause psecure-violation in global config mode 
+
+5. switchport port-security command command : need Administrative mode: Static access 
+
+
+
+
+
+
