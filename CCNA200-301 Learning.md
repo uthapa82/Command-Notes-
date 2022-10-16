@@ -2197,3 +2197,94 @@ SW1# show port-security interface g0/1
 5. DHCP rate-limiting is configured on SW1's G0/1 interface. What happens if the DHCP messages are received on G0/1 at a rate faster than the configured limit ?
     * the interface will be disabled 
 
+#### Dynamic ARP inspection 
+**What is dynamic ARP inspection ?**
+* feature of switch that is used to filter ARP messages received on untrusted ports 
+* DAI only filters ARP messages. Non-ARP messages aren't affected 
+* All ports are untrusted by default 
+    * typically all ports connected to other network devices(switched, routers) should be configured as trusted, while interfaces connected to end hosts should remain untrusted 
+
+**How does it work?**
+**What attacks does it prevent?**
+* ARP poisoning (Man-in-the-middle)
+    * attacker manipulating targets' ARP tables so traffic is sent to the attacker 
+    * attacker can send gratuitous ARP messages using another device's IP address 
+* DAI inspects the sender MAC and sender IP fields of ARP messages received on untrusted ports and checks that there is a matching entry in the DHCP snooping binding table 
+    * if there is a matching entry, the ARP message is forwarded normally 
+    * if there isn't a matching entry, the ARP message is discarded 
+
+    `SW1# show ip dhcp snooping binding `
+
+    * DAI doesn't inspect messages received on trusted ports, they are forwarded normally 
+    
+    * ARP ACLs can be manually configured to map IP addresses/MAC addresses for DAI to check 
+        * useful for hosts that don't use DHCP 
+    * DAI can be configured to perform more in depth checks also
+    * DAi supports rate-limiting to prevent attackers from overwhelming the switch with ARP messages
+
+**DAI configuration**
+
+```
+SW2(config)# ip arp inspection vlan 1
+SW2(config)# interface range g0/0 - 1
+SW2(config-if-range)# ip arp inspection trust
+
+SW1(config)# ip arp inspection vlan 1
+SW1(config)# interface g0/0
+SW1(config-if)# ip arp inspection trust 
+
+```
+* unlike DHCP snooping which requires two commands to enable it like ip dhcp snooping and ip dhcp snooping vlan vlan-number, DAI only requires one: ip arp inspection valn vlan-number 
+
+**`SW1# show ip arp inspection interfaces`**
+
+* DAI rate limiting is enabled on untrusted ports by default with a rate of 15 packets per second 
+
+* DAI has a feature called burst interval which allows us to configure rate limiting using x packets per y seconds 
+
+**DAI rate limiting**
+
+![DAI rate limiting](images/dai%20rate%20limiting.png)
+
+**DAI optional checks**
+
+```
+SW1(config)# ip arp inspection validate ?
+    dst-mac validate destination MAC address
+    ip      validate IP addresses
+    src-mac validate source MAC address
+
+SW1(config)# ip arp inspection validate ip src-mac dst-mac 
+! must enter all of the validation we want in a single command 
+
+```
+**ARP ACL**
+* `SW2(config)# arp access-list ARP-ACL-1`
+
+* `SW2(config-arp-nacl)# permit ip host 192.168.1.100 mac host oc29.2f1e.7700`
+
+* `SW2(config)# ip arp inspection filter ARP-ACL-1 vlan 1`
+
+![command summary](images/arp-command-summary.png)
+
+**Quiz**
+1. when we enter ip arp inspection vlan 1 command on sw1
+    * all interfaces in vlan 1 are untrusted 
+    
+2. when ip inspection validate ip / src-mac /dst-mac are entered in different line as a command 
+    * DAI validation is only enabled for dst-mac (the last command takes effect)
+
+3. DAI rate limiting ( also allows to configure burst limit)
+    * it is enabled on untrusted ports by default 
+    * it is enabled at a rate of 15 packets per second by default 
+
+4. DAI inspects sender IP and MAC it checks against 
+    * DHCP snooping binding table 
+    * ARP ACLS 
+
+5. comand that limit ARP messages to max avg of 15 per second 
+    * ip arp inspection limit rate 15
+    * ip arp inspection limit rate 45 burst interval 3
+
+
+
