@@ -2121,7 +2121,79 @@ SW1# show port-security interface g0/1
 5. switchport port-security command command : need Administrative mode: Static access 
 
 
+#### DHCP Snooping 
+**what is DHCP snooping**
+* filter DHCP messages received on untrusted ports 
+* only filters DHCP messages, Non-DHCP messages aren't affected 
+* all ports are untrusted by default 
+    * usually, uplink ports are configured as trusted ports, and downlink ports remain untrusted 
+    * CHADDR ===> Client Hardware Address 
+        * indicates the MAC address of the client 
 
+* **DHCP poisoning (Man-in-the-middle)** 
+* similar to ARP poisoning, DHCP poisoning can be used to perform a Man-in-the-Middle attack 
+* A spurious DHCP sercer replies to clients 'DHCP Discover messages and assigns them IP addresses, but makes the client use the spurious server's IP as the default gateway.
+* this will cause the client to send traffic to the attacker instead of the legitimate default gateway 
+* The attacker can then examine/modify the traffic before forwarding it to the legitimate default gateway 
 
+* when dhcp snooping filters messages, it differentiates between DHCP server message and DHCP client 
+* **DHCP servers**--> OFFFER, ACK, NAK == opposite of ACK, used to decline a client's Request 
+* **DHCP client** ---> DISCOVER, REQUEST, RELEASE ==> used to tell the server that the client no longer needs its IP address 
+* DHCP client DECLINE ==> Used to decline the IP address offered by a DHCP server 
 
+**How does it work?**
+* if DHCP message is received on a trusted port, forward it as normal without inspection
+* if received on an untrusted port, inspect it and act as follows:
+    * if it is a DHCP server message, discard it 
+    * if it is a DHCP client message, perform following checks:
+        *Discover/Request message---> check if the frame's source MAC address and the DHCP message's CHADDR fields match. Match => forward, mismatch = discard 
+        * Release/Decline message: check if the packet's source IP address and the receiving interface match the entry in the DHCP snooping binding table. Match = forward, mismatch = discard 
+        * when a client successfully leases an IP address from a server, create a new entry in the DHCP snooping Binding Table 
+        
+        ```
+        SW2(config)# ip dhcp snooping 
+        SW2(config)# ip dhcp snooping vlan 1
+        SW2(config)# no ip dhcp snooping information option
+        SW2(config)# interface g0/0
+        SW2(config)# ip dhcp snooping trust
+        * same configuration for sw1
+
+        SW2# show ip dhcp snooping binding
+
+        ```
+**DHCP snooping rate-limiting**
+* limit the rate which DHCP messages are allowed to enter an interface
+* if therate of DHCP messages crosses the configured limit, the interface is err-disabled
+* like with port security the interface can be manually re-enabled or automatically re-enabled with errdisable recovery 
+
+![rate limit 1](images/rate-limit_1.png)
+
+![rate limit 2](images/rate-limit_2.png)
+
+* DHCP option 82 (information option)
+    * also known as DHCP relay agent information option
+    * provides additional information about which DHCP relay agent received the client's message on which interface in which VLAN etc 
+    * DHCP relay agent can add Option 82 to messages they forward to the remote DHCP server 
+    * With DHCP snooping enabled by default Cisco switched will add Option 82 to DHCP messages they receive from client, even if the switch isn't acting as a DHCP relay agent 
+
+**DHCP snooping coniguration**
+
+![command review](images/comand%20_review.png)
+
+**Quiz**
+1. Discarded if received on a DHCP snooping untrusted interface
+    * OFFER, ACK and NAK 
+
+2. Not stored in the DHCP snooping binding database 
+    * Default Gateway 
+
+3. functions of DHCP snooping 
+    * limiting the rate of DHCP messages 
+    * filtering DHCP messages on untrusted ports 
+
+4. when DHCP snooping inspects a DHCP Discover message that arrives on an untrusted interface, what does it check?
+    * Source MAC address and CHADDR, client hardware Mac address
+
+5. DHCP rate-limiting is configured on SW1's G0/1 interface. What happens if the DHCP messages are received on G0/1 at a rate faster than the configured limit ?
+    * the interface will be disabled 
 
