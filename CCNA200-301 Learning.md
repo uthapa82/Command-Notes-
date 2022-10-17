@@ -2345,4 +2345,24 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 
 
 **SOHO (Small Office/Home Office)**
-* 
+*  Small Office/Home Office 
+* don't have complex needs, all functionality provided by a single device 
+* Once device can serve as 'Router' 'Switch' 'firewall', 'Wireless Access Point', 'Modem'
+
+**Quiz**
+1. boundary betn layer 2 and layer 3 in a traditional 2-tier or 3-tier network
+    * Distribution 
+
+2. Not find in the core layer of a traditional 3-tier LAN
+    * STP
+
+3. PoE enabled switchports in a traditional 3-tier LAN
+    * Access Layer 
+
+4. In Spine leaf architecture which of the following should not be connected to a leaf switch 
+    * A Leaf Switch 
+
+5. Wireless router functions 
+    * routin, switching, wireless access, security 
+
+
