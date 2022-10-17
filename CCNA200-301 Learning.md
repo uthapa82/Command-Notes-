@@ -2286,5 +2286,63 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
     * ip arp inspection limit rate 15
     * ip arp inspection limit rate 45 burst interval 3
 
+#### LAN Architecture 
+**2-Tier and 3-Tier Architecture**
+* basic network design/architecture 
+* There are standard 'best practices' for network design
+* **star** topology 
+* **full mesh**
+* **partial mesh** some devices are connected to each other but not all 
+* **Access Layer & Distribution Layer**
+* Also called a collapsed core design because it omits a layer that is found in the Three Tier design: the CORE layer
+* Access Layer 
+    * end hosts connect to (PCs, printer, cameras etc)
+    * lots of ports for end hosts to connect to 
+    * QoS marking is typically done here
+    * Security services like port security, DAI etc are typically performed here 
+    * switchports might be POE-enables for wireless APs, IP phones etc 
+
+* Distribution Layer (*Core-Distribution Layer*)
+    * aggregates connection from the Access Layer switched 
+    * typically is the border between Layer 2 and Layer 3
+    * connects to services such as internet, WAN etc
+* in lare LAN networks with many Distribution Layer switches , the number of connection required betwn Distribution Layer Switches grows rapidly 
+
+* To help scale Large LAN networks we can add a core layer 
+* Cisco recommends adding a Core layer if there are more than three Distribution Layers in a Single location 
+
+* Core Layer 
+    * connects Distribution Layers together in large LAN networks 
+    * The focus is speed ('fast transport')
+    * CPU-intensive operations such as security, QoS marking/classification, etc should be avoided at this layer 
+    * connections are all Layer 3. No spanning-tree
+    * should maintain connectivity throughout the LAN even if devices fails 
+    
+![summary 3 tier](images/3%20tier.png)
+
+**Spine Leaf Architecture (Data Center)**
+* DC are the dedicated spaces/buildings used to store computer systems such as servers and network devices
+* Traditional Data center designs used a three-tier architecture(Access-Distribution-Core)
+* This architecture worked well when most traffic in the data center was North-South
+
+![North-south](images/North-south.png)
+
+* With the precedence of virtual servers, applications are often deployed in a distributed manner(accross multiple physical servers), which increases the amount of East-West traffic in the data center 
+
+* *the traditional three tier architecture led to bottlenecks in bandwidth as well as variablility in the server-to-server latency depending on the path the traffic takes*
+
+* to solve this, spine leaf architecture(also called clos architecture) has become prominent in data centers 
+
+* Basic rules about spine -leaf architecture 
+    1. Every leaf switch is connected to every spine switch 
+    2. Every spine switch is connected to every leaf switch 
+    3. Leaf switch is not connected to other leaf switches 
+    4. Spine switches do not connect to other spine switches
+    5. End hosts(servers etc) only connect to leaf switches 
+
+* The path taken by traffic is randomly chosen to balance the traffic load among the spine switches 
+* Each server is separated by the same nunber of 'hops'(except those connected to the same leaf) providing consistent latency for East-west Traffic 
 
 
+**SOHO (Small Office/Home Office)**
+* 
