@@ -2363,6 +2363,109 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
     * A Leaf Switch 
 
 5. Wireless router functions 
-    * routin, switching, wireless access, security 
+    * routing, switching, wireless access, security 
 
+#### WAN Architectures 
+**Intro to WANs**
+* etends over a large geographical area 
+* geographically separate LANs
+* Typically used to refer to an enterprise's private connections that connect their offices, data centers, and other sites together 
+* VPNs Virtual Private Networks can be used to create private WAN connections 
+
+![wan](images/WAN.png)
+
+**Leased lines**
+* dedicated physical link, typically connecting two sites 
+* Leased lines use serial connections (PPP or HDLC encapsulation)
+* T-carrier and E-carrier systems , standards that provide different speeds and different standards 
+* higher cost, higher installation lead time, and slower speeds of leased lines, Ethernet WAN technologies are becoming more popular 
+
+**MPLS VPNs**
+* Multi Protocol Label Switching 
+* service providers MPLS networks are shared infrastructure because many customer enterprises connect to and share the same infrastructure to make WAN connections
+* label switching in the name of MPLS allows VPNs to be created over the MPLS infrastructure through the use of labels 
+* Some important terms: 
+    * CE router = Customer Edge Router
+    * PE router = Provider Edge Router 
+    * P router = Provider Core Router 
+* When the PE routers receive frames from the CE routers, they add a label to the frame
+* These labels are used to make forwarding decisions within the service provider network, not the destination IP.
+* These labels are used to make forwarding decisions within the service provider network, not the destination IP 
+* The CE routers do not use MPLS, it is only used by the PE/P routers 
+* When using a Layer 3 MPLS VPN, the CE and PE routers peer using OSPF, for example to share routing information
+
+![MPLS](images/MPLS.png)
+
+**Internet Connectivity**
+* there are countless ways for an enterprise to connect to the intenet
+* for example, private WAN Technologies such as leased lines and MPLS VPNS can be used to connect to a service provider's internet infrastructure 
+* CATV and DSL 
+* A DSL modem (modulator-demodulator) is required to convert data into a format suitable to be sent over the phone lines 
+
+**Redundant Internet Connections**
+* 1 connections to 1 ISP ==> Single Homed 
+* 2 connections to 1 ISP ==> Dual Homed
+* 1 connections to each of 2 ISPs ==> Multi Homed 
+* 2 connections to each of 2 ISPs ==> Dual Multihomed
+
+**Internet VPNs**
+* When using the internet as a WAN to connect sites together, there is no built-in security by default 
+* to provide secure communications over the internet, VPNs are used 
+* 2 kinds of Internet VPNs:
+    1. **site-to-site VPNs using IPsec**
+    * between two devices and is used to connect two sites together over the internet 
+    * 'tunnel' is created between the two devices by encapsulating the original IP packet with a VPN header and a new IP header 
+
+    ![vpn](images/vpn.png)
+
+    * the sending device combines the original packet and session key(encryption key) and runs them through an encryption formula 
+    * the sending device encapsulated the encrypted packet with a VPN header and a new IP header 
+    
+    * a tunnel is formed only between two tunnel endpoints (for example, the two routers connected to the internet)
+    
+    * **Limitations of standard IPsec**
+        1. IPsec doesn't support broadcast and multicast traffic, only unicast. This means that routing protocols such as OSPF can't be used over the tunnels, because they rely on multicast traffic 
+            * can be solved with **'GRE over IPsec'**
+            * Generic Routing Encapsulation creates tunnels like IPsec, however it does not encrypt the original packet, so it is not secure 
+            * it has advantage of being able to encapsulate a wide variety of Layer 3 protocols as well as broadcast and multicast messages 
+            * To get the flexibility of GRE with security of IPsec, 'GRE over IPsec' can be used 
+
+            * **`IP packet + GRE Header + IP Header--> encrypted -----> IPsec VPN header + IP Header`**
+
+        2. configuring a full mesh of tunnels between many sites is a labor-intensive task
+            * can be solved with **cisco's DMVPN**
+            * Dynamic Multipoint VPN is a cisco developed solution that allows routers to dynamically create a full mesh of IPsec tunnesl without having to manually configure every single tunnel 
+            
+    <br>
+
+    2. **Remote-access VPNs using TLS** 
+    * Site-to-Site is used to make a point-to-point connection between two sites over the internet, the remote-access VPNs are used to allow end devices (PC, mobile phones) to access the company's internal resources securely over the internet 
+    * Remote-access VPNs typically use TLS (Transport Layer Security)
+        * TLS is also what provides security for HTTPS 
+        * TLS was formerly known as SSL(Secure Sockets Layer) and developed by Netscape, but it was renamed to TLS when it was standardized by the IETF 
+    * VPN client software (like Cisco AnyConnect) is installed on end devices like company laptop
+    * these end devices then form secure tunnels to one of the company's routers/firewalls acting as a TLS server 
+    * This allows the end users to securely access resources on the company's internal network without being directly connected to the company network 
+
+    ![remote vpn](images/remote_vpn.png)
+
+* **comparision between site-to-site and remote-access VPN
+
+|Site-to-Site    |                        Remote-Access     | 
+|----------|:-------------:|
+| Typically uses IPsec   |   typically uses TLS |
+| provide service to many devices within the sites they are connecting  |   provide service to the one end device the VPN client software is installed on    |
+| Used to permanently connect two sites over the internet | used to proide on-demand access for end devices that want to securely access company resources while connected to a network which is not secure | 
+
+**Quiz**
+1. leased line standard that provide 1.55 Mbps  of bandwidth 
+    * T1
+2. In MPLS which of the following routers doesn't run MPLS 
+    * CE 
+3. allows CE routers to directly form OSPF peerings with each other 
+    * Layer 2 MPLS VPN 
+4. already-installed phone lines 
+    * DSL 
+5. which of the following protocols can be used in combination with IPsec to provide more flexibility by allowing multicast traffic to be forwarded in the tunnel
+    * GRE 
 
