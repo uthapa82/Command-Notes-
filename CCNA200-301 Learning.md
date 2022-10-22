@@ -2469,3 +2469,79 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 5. which of the following protocols can be used in combination with IPsec to provide more flexibility by allowing multicast traffic to be forwarded in the tunnel
     * GRE 
 
+#### Virtualization and Cloud 
+**Intro to Virtualization**
+* Virtual Servers
+    * Cisco hardware servers such as UCS (Unified Computing System)
+    * largest vendors of hardware servers are Dell EMC, HPE, and IBM
+    * Hardware Components(CPU, RAM, Storage, NIC) -------> OS -------> Apps(web server, Email server etc )
+    * virtualization allows us to break the one-to-one relationshop of hardware to OS, allowing multiple OS's to run on a single physical server 
+    
+    ![virtualiztion](images/virtualization.png)
+
+    * hypervisor used to manage and allocate the hardware resources (CPU, RAM etc) to each VM
+    * Another name for a hypervisor is VMM(Virtual Machine Monitor)
+    * Type1 (directly runs on top of the hardware)
+        * VMware ESXi, Microsoft Hyper-V etc 
+        * also called bare-metal or native hypervisor as they run directly on the hardware(metal)
+    * Type 2, or hosted hypervisor 
+        * OS running directly on the hardware is called HOST OS, and the OS running in a VM is called a Guest OS 
+    * **Why  Virtualization**
+        * Partitioning : Run multiple OS on one physical machine 
+            - Divide system resources between virtual machines 
+        * Isolation:
+            - Provide fault and security isolation at the hardware level
+            - Preseve performance with advanced resource controls 
+        * Encapsulation:- save the entire state of a virtual machine to files
+            - Move and copy virtual machines as easily as moving and copying files 
+        * Hardware Independence: Provision or migrate any virtual machine to any physical server 
+
+        ![vms](images/vms.png)
+
+**Intro to Cloud Computing**
+* Essential Characteristics 
+    * Traditional IT infrastructure deployments 
+    1. On-premises
+    2. Colocation : data centers that rent out space for customers to put their infrastructure (servers, network devices)
+        * The data center provides the space electricity and cooling 
+        * The servers, network devices etc are still the responsibility of the end customer, although they are not located on the customer's premises 
+
+* The American NIST defined cloud computing in SP (Special Publication) 800-145
+* https://csrc.nist.gov/publications/detail/sp/800-145/final
+
+* Outlined SP 800-145:
+    1. five essential characteristics
+    * on-demand self-service : A customer can unilaterally provision computing capabilities, such as server time and network storage as needed automatically without requiring human interaction with each service provider 
+
+    * Broad network access:
+        * capabilities are available over the network and accesses through standard mechanisms that promote use by heterogeneous thin or thick client platforms(eg: mobile phones, tablets, laptops and workstations)
+    * Resource pooling
+    * Rapid elasticity 
+    * Measured service 
+
+    2. Three service models
+        * Software as a Service (SaaS)
+        * Platform as a Service (PaaS)
+        * Infrastructure as a Service (IaaS)
+
+    3. Four deployment models
+        * Private Cloud
+        * Community Cloud 
+        * Public Cloud 
+        * Hybrid Cloud 
+
+**Benefits of Cloud Computing**
+* cost 
+    * CapEx (Capital Expenses) of buying hardware and software, setting up data centers etc. are reduced or eliminated 
+* Global scale 
+    * cloud services can scale globally at a rapid pace. services can be set up and offered to customers from a geographic location close to them 
+* Speed/Agility 
+    * Services are provided on demand, and vast amounts of resources can be provisioned within minutes 
+* Productivity 
+    * Cloud services remove the need for many time-consuming tasks such as procuring physical servers, racking them, cabling, installing and updating operating systems etc 
+* Realiability 
+    * Backups in the cloud are very easy to perform. Data can be mirrored at multiple sites in different geographic locations to support disaster recovery  
+    
+
+**Connecting to Public Clouds**
+
