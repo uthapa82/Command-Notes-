@@ -2542,6 +2542,28 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 * Realiability 
     * Backups in the cloud are very easy to perform. Data can be mirrored at multiple sites in different geographic locations to support disaster recovery  
     
-
 **Connecting to Public Clouds**
+* Using Private WAN Service Provide like MPLS 
+* Internet 
+* IPsec VPN Tunnel 
+
+![cloud](images/cloud.png)
+
+**Quiz**
+1. The hypervisor is used to manage and allocate hardware resources to VMs 
+
+2. Native Hypervisor 
+    * Type 1
+
+3. Not a characteristic of cloud computing
+    * infinite resource pool
+
+4. Cloud service types that allows customer to use applications running on the provider's cloud infrastructure 
+    * SaaS 
+![cloud infras](images/cloud%20infras.png)
+
+5. cloud deployment type which may exist off premises
+    * Public, Private, Community 
+
+
 
