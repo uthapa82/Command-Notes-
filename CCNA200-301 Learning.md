@@ -2683,3 +2683,110 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 
 5. AP that provides multiple BSSs :
     * Each BSS doesn't share the same BSSID
+
+### Wireless Architectures 
+**802.11 messages/frame format**
+* Frame Control : 2 bytes (16bits)
+    * Proivides information such as the message type and subtype 
+* Duration/Id: 2 bytes 
+    * Depending on the message type , this field can indicate:
+        * the time(in microseconds) the channel will be dedicated for transmission of the frame 
+        * and the identifier for the association (connection)
+* Addresses: Up to four addreses can be present in 802.11 frame
+    * Destination Address (DA): Final recipient of the frame 
+    * Source address (SA): original sender of the frame
+    * Receiver Address (RA): Immediate recipient of the frame 
+    * Transmitter Address (TA): Immediate Sender of the frame 
+* sequence control : 2 bytes 
+    * Used to reassemble fragments and elimiate duplicate frames 
+* QoS Control: 2 bytes 
+    *  Used in QoS to prioritize certain traffic 
+* HT (High Throughput) Control: 4 bytes 
+    * Added in 802.11n to enable High Throughput operations 
+    * 802.11n is also known as 'High Throughput (HT)' Wifi
+    * 802.11ac also known as 'Very High Thoughput' (VHT) WiFi
+
+* FCS (Frame Check Sequence): 4 bytes 
+    * Same as in an Ethernet frame, used to check for errors
+
+**802.11 Association Process**
+* AP bridge traffic between wireless stations and other devices 
+* for a station to send traffic through the AP, it must be associated with the AP 
+* There are three 802.11 connection states 
+    * Not authenticated, not associated 
+    * Authenticated, not associated 
+    * Authenticated and associated 
+* The station must be authenticated and associated with the AP to send traffic through it 
+    * There are 2 ways a station can scan for a BSS
+        * Active Scanning: The station sends probe requests and listens for a probe response from an AP 
+        * Passive Scanning: The station listens for beacon messages from an AP 
+        Beacon messages are sent periodically by APs to advertise the BSS 
+* There are three 802.11 message types :
+    * Management: used to manage the BSS 
+        * Beacon 
+        * Probe request and probe response 
+        * Authentication
+        * Association request, association response 
+    * Control: used to control access to the medium (RF). assists with delivery of management and data frames 
+        * RTS (Request to Send)
+        * CTS (Clear to Send)
+        * ACK
+    * Data: Used to send actual data packets 
+
+![802.11](images/802-11.png)
+
+* Three main wireless AP deployment methods 
+* **Autonomous APs**
+    * Self contained systems that don't rely on a WLC 
+    * Are configured individually by console (CLI), telnet/SSH, or HTTP/HTTPS web connection (GUI)
+    * An IP address for remote management should be configured 
+    * The RF parameters must be manually configured (transmit power, channel etc)
+    * Security policies are handled individually by each AP 
+    * QoS rules etc are configured individually on each AP 
+    * There is no central monitoring or management of APs
+    * Autonomous APs connect to the wired network with a trunk link
+    * Each VLAN has to stretch accross the entire network. This is considered bad practice:
+        * Large broadcast domains 
+        * Spanning tree will disable links 
+        * Adding/deleting VLANs is very labor-intensive 
+
+    * Autonomous APs can be used in small networks, but they are not viable in medium to large networks 
+
+* **Lightweight APs**
+    * handle 'real-time' opetrations like transmitting/receiving RF traffic, encyption/decryption of traffic, sending out beacons/probes etc 
+    * Other functions are carried out by a WLC for example RF management, security/QoS management, client autentication, client association/roaming management etc 
+    * **split-MAC architecture**
+    * WLC and the lightweight APs authenticate each other using digital certificates installed on each device (X.509 standard certificates)
+    * CAPWAP (Control And Provisioning Of Wireless Access Points) to communicate 
+    * Based on an older protocol called LWAPP (Lightweight Access Point Protocol)
+    * Datagram Transport Layer Security (DTLS)
+    
+* **Cloud-based APs**
+    * in between autonomous AP and split-MAC architecture 
+        * Autonomous APs that are centrally managed in the cloud 
+    * Cisco Meraki is a popular cloud-based Wi-Fi solution
+    * The Meraki dashboard can be used to configure APs, monitor the network, generate performance reports, etc 
+
+**Wireless LAN Controller (WLC) deployments**
+* In a split-MAC architecture, there are four main WLC deployment models 
+    * Unified 
+    * Cloud-based 
+    * Embedded 
+    * Mobility Express
+
+**Quiz**
+1. 802.11 Probe Request is:
+    * Management 
+
+2. AP that are centrally managed 
+    * Lightweight 
+    * Cloud based 
+
+3. AP types that uses the CAPWAP protocol
+    * Lightweight 
+
+4. lightweight AP mode that offer a BSS for clients 
+    * Local and FlexConnect 
+
+5. WLC deployments supports the greatest number of APs 
+    * Unified 
