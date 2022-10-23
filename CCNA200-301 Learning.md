@@ -2566,4 +2566,120 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
     * Public, Private, Community 
 
 
+### Wireless Fundamentals
+* Wirelss LANs using Wi-Fi
+* IEEE 802.11
+* CSMA/CA : Carrier Sense Multiple Access with collision Avoidance is used to facilitate half-duplex communications 
+* Assembles frame ----> check if channel is free ---> Not free, wait for random period of time -----> listen again if it's free the transmit frame. 
 
+* RTS and CTS (Request to Send and Clear to send)
+* Regulated by various international and national bodies 
+* Coverage area must be considered 
+    * signal range 
+    * signal absorption, reflection, refraction, diffraction and scattering 
+    * absorption: passes through material and converted into heat, weakening the original signal
+    * Reflection :when a signal bounces off a material, for example metal 
+    * Refraction: happens when a wave is bent when entering a medium where the signal travels at a different speed 
+        * glass, water 
+    * Defraction : happens when a wave encounters an obstacle and travels around it
+        * blind spots 
+    * Scattering : happens when a material causes a signal to scatter in all directions
+        * Dust, smog, uneven surfaces, etc can cause scattering
+* Other devices using the same channels can cause interference 
+
+<br>
+
+**Radio Frequency(RF)**
+* to send wireless signals, the sender applies an alternating current to an antenna 
+    * this creates electromagnetic fields which propagate out as waves 
+* Electromagnetic waves can be measured in multiple ways for example amplitude and frequency 
+* Amplitude is the maximum strength of the electric and magnetic fields 
+* Frequency measures the number of up/dowm cycles per a given unit of time 
+* most common measurement of frequency is hertz, (Hz, kHz, MHz, GHz, THz)
+* The amount of time of one cycle => Period 
+* if frequency is 4Hz the period is 0.25 seconds 
+* visible frequency is 400 THz to 790 THz
+* RF is from 30Hz to 300Hz and is used for many purposes 
+* WiFi  uses two main bands (frequency ranges)
+    * 2.4 GHz band
+        * actual range is 2.400GHz to 2.4835GHz
+
+    * 5 GHzband
+        * the actual range is from 5.150 GHz to 5.825 GHz
+        * Divided into four smaller bands: 5.150GHz to 5.250GHz, 5.250 GHz to 5.350 GHz
+**Wi-Fi Standards**
+* WiFi 6 (802.11ax) has expanded the spectrum range to include a band in the 6GHz range 
+* Each band is divided up into multiple channels 
+    * devices are configured to transmit and receive traffic on one (or more devices ) of these channels 
+    * The 2.4 GHz band is divided into several channels, each with a 22 MHz range 
+* In small wireless LAN with only a single AP we can use any channel but in largers WLANs with multiple APs, it's important that adjacent APs don't use overlapping channels, this helps avoid interference 
+* In 2.4GHz band it is recommended to use channel 1, 6 and 11
+* 5 GHz band conists of non overlapping channels 
+* Uing 1, 6 and 11 we can place APs in a honeycomb pattern to provide complete coverage of an area without interference between channels 
+
+![honey comb](images/honey-comb.png)
+
+**Service Sts**
+* 802.11 defines different kinds of service sets which are groups of wireless network devices 
+
+* There are three main types:
+    * Independent 
+    * Infrastructure 
+    * Mesh
+
+* All devices in a service set share the same SSID(service set identifier)
+* The SSID is a human-readable name which identifies the service set 
+* The SSID does not have to be unique 
+* **IBSS (Independent Basic Service Set)**
+* Wireless network in which two or more wireless devices connect directly without using an AP(Access Point)
+* Also called an **ad hoc** network 
+* Can be used for file transfer (i.e AirDrop)
+* Not scalable beyond a few devices 
+* **BSS Basic Service Set**
+* kind of infrastructure Service set in which clients connect to each other via an AP(Access Point), but not directly to each other 
+* A BSSID is used to uniquely identify the AP
+    * Other APs can use the same SSID but not the same BSSID
+    * The BSSID is the MAC address of the AP's radio 
+* wireless device that have associated with the BSS are called 'clients' or 'stations'
+
+* The area around an AP where its signal is usable is called a BSA(Basic Service Area)
+* Traffic must flow through AP 
+* **Extended Service Set**
+    * Used to create larger Wireless LANs beyond the range of a single AP 
+    * APs with their own BSSs are connected by a wired network
+        * Each BSS uses the same SSID
+        * Each BSS has a  unique BSSID
+        * Each BSS uses a different channel to avoid interference 
+* clients can pass between APs without having to reconnect, providing a seamless Wi-Fi experience when moving between APs
+    * This is called roaming 
+
+![extended](images/extended.png)
+
+* **MBSS Mesh Basic Service Set**
+    * Can be used in situations where it's difficult to run an Ethernet connection to every AP 
+    * Mesh APs use two radios: one to provide a BSS to wireless clients and one to form a 'backhaul network' which is used to bridge traffic from AP to AP 
+    * At least one AP is connected to wired network, and it is called the RAP (Root Access Point)
+
+* in 802.11 the upstream wired network is called the DS (Distribution System)
+* **A workgroup bridge (WGB)** operated as a wireless client of another AP and can be used to connect wired devices to the wireless network
+
+** **An Outdoor Bridge** can be used to connect networks over long distances without a physical cable connecting them
+
+![wireless summary](images/wireless-summary.png)
+
+**Quiz**
+1. 2.4 GHz band which channels should be used:
+    * (b) 1,6,11
+
+2. If the enterprise network is mostly wired what is the purpose of an AP in the network 
+    * To connect wireless devices to the wired network
+
+3. Commonly used bands by WLANS:
+    * 2.4 GHz and 5 GHz 
+
+4. statements about ESSs :
+    * Each BSS uses a unique BSSID
+    * Roaming can provide seamless connectivity when moving between APs 
+
+5. AP that provides multiple BSSs :
+    * Each BSS doesn't share the same BSSID
