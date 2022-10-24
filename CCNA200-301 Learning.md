@@ -2927,3 +2927,71 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 
 5. WPA3 security features that protects the four-way handshake when using personal mode authentication:
     * SAE 
+
+### Wireless Configuration
+* WLCs only support static LAG (Link Aggregration Group), no PAgP or LACP 
+
+* WLC Initial Setup 
+
+![WLC](images/wlc.png)
+
+* Network Name (SSID): Internal
+* Configure DHCP Bridging Mode : No
+* Allow Static IP addresses : yes 
+* configure a RADIUS server now ?: no 
+* Enter country code list : US 
+
+* WLC ports are the physical ports that cables connect to 
+* WLC interfaces are the logical interfaces within the WLC (i.e SVIs on a switch)
+* WLC have a few different kinds of ports 
+    * **Service port**: A dedicated management port.
+        * used for out-of-band management. Must connect to a switch access port because it only supports one VLAN
+        * This port can be used to connect to the device while it is booting, perform system recovery etc 
+
+    * **Distribution System Port**: These are the standard network ports that connect to the distribution system (wired network) and are used for data traffic.
+        * These portts usually connect to switch trunk ports, and if multiple distribution ports are used they can form a LAG 
+    
+    * Console port 
+    * Redundancy port : This port is used to connect to another WLC to form a high availability (HA) pair 
+
+* WLCs have a few different kinds of interfaces:
+    * Management interface 
+        * Used for management traffic such as Telnet, SSH, HTTP, HTTPS, RADIUS, authentication, NTP, Syslog etc 
+        * CAPWAP tunnels are also formed to/from the WLC's management interface 
+    
+    * Redundancy Management Interface 
+        * When two WLCs are connected by their redundancy ports, one WLC is active and other is standby. This interface can be used to connect to and manage the standby WLC 
+
+    * Virtual interface :
+        * This interface is used when communicating with wireless clients to relay DHCP requests , perform client web authentication etc 
+    
+    * Service port ineterface :
+        * If the service port is used, this interface is bound to it and used for out-of-band management 
+    
+    * Dynamic interface: These are the interface used to map a WLAN to VLAN
+        * For example, traffic from the internal WLAN will be sent to the wired network from the WLC's internal dynamic interface 
+    
+* Web Authentication :
+    * After the wireless clients gets an IP address and tries to access a web page, they will have to enter a username and password to authenticate 
+
+* Web Passthrough:
+    * Similar to the above, but no username or password are required. A warning or statement is displayed and the client simply has to agree to gain access to the internet 
+
+* The conditional and Splash page web redirect options are similar, but additionally require 802.1X layer 2 authentication
+
+**Quiz**
+1. WLC port that can be used to form an HA Pair with anothre WLC 
+    * Redundancy port 
+
+2. WLC interace type that maps a WLAN to a VLAN 
+    * Dynamic interface 
+
+3. type of Layer 3 authentication 
+    * Web Authentication 
+
+4. WLC QoS setting should be used for video traffic 
+    * Gold 
+
+5. WLC port type that can form a LAG to pass standard traffic
+    * Distribution System Port 
+    
