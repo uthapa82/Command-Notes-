@@ -2790,3 +2790,114 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 
 5. WLC deployments supports the greatest number of APs 
     * Unified 
+
+
+### Wireless Security
+**intro to wireless network security**
+* A MIC (Message encryption methods)
+* MIC helps to determine the integrity of the message 
+
+**Authentcation**
+* Open Authentication
+    * included in 802.11 
+    * client sends an authentication request, and the AP accepts it
+    * Not  a secure authentication method 
+
+* WEP (Wired Equivalent Privacy)
+    * included in 802.11
+    * use to provide both authentication and encryption of wireless traffic 
+    * WEP uses the **RC4 algorithm**
+    * shared-key protocol, requiring sender and receiver to have the same key 
+    * can be 40bits and 104bits in length
+    * combined with a 24-bit 'IV' (Initialization Vetor)
+    * not secure and can be easily cracked 
+
+* EAP (Extensible Authentication Protocol)
+    * authentication framework 
+    * defines a standard set of authentication functions that are used by various EAP methods 
+    * 802.1X port based network access control 
+        * Supplicant : device that wants to connect 
+        * Authenticator: The device that provides access to the network
+        * Authentication server (AS): the device that receives client credentials and permits/denies access 
+            * usually a RADIUS server 
+
+    * LEAP (Lightweight EAP)
+        * Cisco's improvement over WEP 
+        * Clients must provide a username and password to authenticate 
+        * mutual authentication is provided by both the client and server sending a challenge phrase to each other 
+        * Dynamic WEP keys are used, meaning that WEP keys are changed frequently 
+        * It's vulnerable and should not be used anymore 
+
+    * EAP-FAST (EAP Flexible Authentication via Secure Tunneling)
+        * Also developed by Cisco 
+        * Consists of three phases:
+            1. A PAC (Protected Access Credential) is generated and passed from the server to the client
+            2. A secure TLS tunnel is established between the client and authentication server 
+            3. Inside of the secure (encrypted) TLS tunnel, the client and server communicate further to authenticate/authorize the client 
+
+    * PEAP (Protected EAP)
+        * inolving establishing a secure TLS tunnel between the client and server 
+        * instead of a PAC, the server has a digital certificate 
+        * The client uses this digitial certificate to authenticate the server 
+        * The certificate is also used to establish a TLS tunnel 
+        * Because only the server provides a certificate for authentication, the client must still be authenticated within the secure tunnel, for example by using MS-CHAP (Microsoft Challenge-Handshake Authentication Protocol)
+
+    * EAP-TLS(EAP Transport Layer Security)
+        * EAP-TLS requires a certificate on the AS and on every single client 
+        * Is the most secure wireless authentication method, but it is more difficult to implement than PEAP because every client device needs a certificate 
+        * Because the client and server authenticate each other with digital certificates, there is no need to authenticate the client within the TLS tunnel 
+        * The TLS tunnel is still used to exchange encryption key information (encryption methods will be discussed next)
+
+
+**Encryption/Integrity methods**
+* TKIP (Temporary Key Integrity Protocol)
+    * WEP was found to be vulnerable, but wireless hardware at the time was built to use WEP 
+    * A temporary solution was needed until a new standard was created and new hardware was built 
+    * TKIP adds various security features: 
+        * A MIC is added to protect the integrity of message 
+        * A key mixing algorithm is used to create a unique WEP key for every frame 
+        * The initialization vector is doubled in length from 24 bits to 48 bits making brute-force attacks much more difficult
+        * The MIC includes the sender MAC address to identify the frame's sender 
+        * A timestmap is added to the MIC to prevent replay attacks . Replay attacks involve re-sending a frame that has already been transmitted 
+        * A TKIP sequence number is used to keep track of frames sent from each source MAC  address. This also protects against replay attacks
+
+* CCMP (Counter/CBC-MAC Protocol)
+    * More secure than TKIP
+    * Used in WPA2
+    * To use CCMP, it must be supported by the device's hardware. Old hardware built only to use WEP/TKIP cannot use CCMP 
+    * CCMP consists of two different algorithms to provide encryption and MIC 
+        1. **AES (Advanced Encryption Standard) counter mode encryption** 
+            * Most secure encryption protocol currently available. It is widely used all over the world 
+            * Multiple modes of operation for AES. CCMP uses 'counter mode'
+        2. CBC-MAC (Cipher Block Chaining Message Authentication Code) is used as a MIC to ensure the integrity of message 
+        
+* GCMP (Galois/Counter Mode Protocol) 
+    * GCMP is more secure and efficient than CCMP
+    * Its increased effciency allows higher data throughput than CCMP
+    * It is used in WPA3
+    * GCMP consists of two algorithms:
+        1. AES Counter mode encryption
+        2. GMAC (Galois Message Authentication Code) is used as a MIC to ensure the integrity of messages 
+        
+    ![images](images/authentication-methods.png)
+
+
+**WiFi protected Access (WPA)**
+* Three WPA certifications for wireless devices:
+    * WPA 
+    * WPA2
+    * WPA3
+* To be WPA-certified, equipment must be tested in authorized testing lab
+* All of the above support two authentication modes :
+    * Personal mode: A pre-shared key (PSK) is used for authentication. when you connect to a home Wi-Fi network, enter the password and are authenticated, that is personal mode.
+    This is common in small networks
+        * The PSK itself is not sent over the air. A four-way handshake is used for authentication and the PSK is used to generate encryption keys 
+
+    * Enterprise mode: 802.1X is used with an authentication server (RADIUS server)
+    * No specific EAP method is specified, so all are supported (PEAP, EAP-TLS etc)
+* WPA was developed after WEP was proven to be vulnerable and includes the following protocols 
+    * TKIP (based on WEP) provides encryption/MIC
+    * 802.1X authentication (Enterprise mode) or PSK (Personla mode)
+* WPA2 was released in 2004 and includes the following protocols 
+    * CCMP provides encryption/MIC
+    *
