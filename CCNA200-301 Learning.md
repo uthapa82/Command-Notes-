@@ -2897,7 +2897,33 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
     * No specific EAP method is specified, so all are supported (PEAP, EAP-TLS etc)
 * WPA was developed after WEP was proven to be vulnerable and includes the following protocols 
     * TKIP (based on WEP) provides encryption/MIC
-    * 802.1X authentication (Enterprise mode) or PSK (Personla mode)
+    * 802.1X authentication (Enterprise mode) or PSK (Personal mode)
 * WPA2 was released in 2004 and includes the following protocols 
     * CCMP provides encryption/MIC
-    *
+    * 802.1X authentication (Enterprise Mode) or PSK(Personal mode)
+
+* WPA3 was released in 2018 and includes the following protocols:
+    * GCMP provides encryption/MIC
+    * 802.1X authentication(Enterprise mode) or PSK(Personal mode)
+    * Several additional security features for example:
+        * PMF(Protected Management Frames), protecting 802.11 management frames from eavesdropping/forging
+        * SAE (Simultaneous Authentication of Equals) protects four way handshake when using personal mode authentication 
+        * Forward Secrecy prevents data from being decrypted after it has been transmitted over the air. So, an attacker can't capture wireless frames and then try to decrypt them later 
+    
+**Quiz**
+1. What does GMAC provide to secure wireless connection ?
+    * MIC (Message Integrity Check)
+
+2. Part of 802.1X authentication architecture :
+    * Supplicant
+    * Authenticator
+    * Authenticator Server 
+
+3. Most secure encryption/integrity method
+    * GCMP
+
+4. AES method that requires a certificate on both the supplicant and the AS :
+    * EAP-TLS
+
+5. WPA3 security features that protects the four-way handshake when using personal mode authentication:
+    * SAE 
