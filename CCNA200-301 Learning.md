@@ -2994,4 +2994,103 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 
 5. WLC port type that can form a LAG to pass standard traffic
     * Distribution System Port 
+
+
+### Network Automation
+* Time consuming and very inefficiet in large scale networks 
+* Difficult to ensure that all devices adhere to the organization's standard configurations 
+* Networks become much more scalable. New deployments, network wide changes and troubleshooting can be implemented in a fraction of the time 
+* Network wide policy compliance can be assured 
+* The improved efficiency of network operations reduces the opex (operating expenses)
+
+**Software Defined Network**
+* Various functions of network devices can be logically divided up into planes :
+    * **Data plane**
+        * tasks involved in forwarding user data/traffic from one interface to another are part of the data plane
+        * encapsulation, deencapsulations, 802.1q VLAN tags of switches 
+        * NAT (changing the src/dst addresses before forwarding)
+        * Deciding to forward or discard messages due to ACLs, port security etc 
+        * The data plane is also called the 'forwarding plane'
+
+    * **Control plane**
+        * How a devices's data plane make its forwarding decisions ?
+            * rouing table, MAC address table, ARP table, STP etc 
+        * functions that build these tables (and other functions that influence the data plane) are part of the control plane 
+        * The control plane controls what the data plane does for example by building the router's routing table 
+        * The control plane performs overhead work
+        
+    * **Management plane**
+        * Performs overhead work
+        * Doesn't directly affect the forwarding of messages in the data plane 
+        * The management plane consists of protocols that are used to manage devices 
+            * SSH/Telnet used to connet to the CLI of a device to configure/manage it 
+            * Syslog, used to keep logs of events that occur on the device 
+            * SNMP, used to monitor the operations of the device 
+            * NTP, used to maintain accurate time on the device 
+
+    **The operations of the Mgmt and control plane are usually manged by CPU, however this is not desirable for data plane operations because CPU processing is slow, instead a specialized hardware ASIC (Application-Specific Integrated Circuit) is used. ASICs are chips built for specific purposes.**
+    * MAC also called CAM table  address table stored in kind of memory called TCAM (Ternary Content-Addressable Memory) 
+    * In short when a device receives control/mgmt traffic it will be processed in the CPU 
+    * When a device receives data traffic which should pass through the device it is processed by the ASIC for maximum speed 
+
+### Software-Defined Networking 
+* Approach to networking that centralizes the control plane into an application called a controller 
+* Also called Software-Defined Architecture (SDA) or Controller-Based Networking 
+* An SDN controller centralizes control plane functions like calculating routes 
+* Controller can interact programmatically with the network devices using APIs(Application Programming Interface)
+* The communication between the devices and controller can be done via **Southbound Interface(SBI)**
+    * SBI used for communication between the controller and the network devices it controls 
+        * The devices in the network
+        * The topology ( how devices are connected together)
+        * The available interfaces on each device 
+        * Their configurations 
+
+    * It typically consists of a communication protocol and API (Application Programming Interface)
+    * APIs facilitate data exchanges between programs 
+        * Data is exchanged between the controller and the network devices
+        * An API on the network devices allows the controller to access information on the devices, control their data plane tables etc 
+
+    * Examples of SBIs:
+        * OpenFlow
+        * Cisco OpFlex 
+        * Cisco onePK (Open Network Environment Platform Kit)
+        * NETCONF
     
+**Nortbound Interface(NBI)**
+* Allows us to interact with the controller, access the data it gathers about the network, program it, and make changes in the network via the SBI
+
+* A REST API is used on the controller as an interface for apps to interact with it 
+    * REST => Representational State Transfer 
+* Data is sent in structured (serialized) format such as JSON or XML
+    * makes it much easier for programs to use the data 
+
+![NBI](images/nbi.png)
+
+#### Atuomation in traditional networks vs SDN
+* The robust and centralized data collected by SDN controllers greatly facilitates these functions
+    * The controller collects information about all devices in the network
+    * Northbound APIs allow apps to access information in a format that is easy for programs to understand (i.e JSON, XML)
+    * The centralized data facilitates network-wide analytics 
+* Automation without the requirement of third-party scripts and apps 
+
+**Quiz**
+1. Network Automation 
+    * Reduced human error 
+    * Reduced OpEx
+
+2. SBIs
+    * OpenFlow
+    * OpFlex
+
+3. functions centralized in SDN
+    * Calculating routes
+
+4. Purpose of SBI in SDN architecture 
+    * To facilitate data exchange between the controller and network devices
+
+5. NTP functions fit in 
+    * Management plane 
+    
+
+
+
