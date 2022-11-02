@@ -3092,5 +3092,19 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
     * Management plane 
     
 
+### JSON, XML and YAML 
+**Data Serialization**
+* The process of converting data into a atandardized format/structure that can be stored (in a file) or transmitted (over a network) and reconstructed later(i.e by a different application)
+    * allows the data to be communicated between applications in a way both applications understand 
+* Allows us to represent variables with text 
+
+**JSON**
+* Javascript Objext Notation is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects 
+* It is standardized in RFC 8259 (https://datatracker.ietf.org/doc/html/rfc8259)
+* Whitespace is insignificant
+* Four primitive data types :- string, number, boolean, null
+* Structured data types :- object (key-->string,:  value) and array 
+* 
+
 
 
