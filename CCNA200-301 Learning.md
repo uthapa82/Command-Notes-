@@ -3104,7 +3104,30 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 * Whitespace is insignificant
 * Four primitive data types :- string, number, boolean, null
 * Structured data types :- object (key-->string,:  value) and array 
-* 
+
+**XML**
+* Extensible Markup Language 
+* used to format text(font, size, color, headings, etc)
+* XML is generally less human-readable than JSON
+* Whtiespace is insignificant
+* Often used by REST APIs
+
+* `<key>value</key>`
+
+* `show ip interface brief | format`
+
+**YAML**
+* Yet Another Markup Language ----> YAML Aint Markup Language 
+* Used by the network automation tool Ansible 
+* Very human-readable 
+* Whitespace is significant
+    * indentation is very important 
+* YAML files start with ---
+* - is used to indicate a list 
+* keys and values are represented as key:value 
+
+![yaml](images/yaml.png)
+
 
 
 
