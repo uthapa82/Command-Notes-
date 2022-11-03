@@ -3227,7 +3227,50 @@ Script App   Direct via DNAC GUI then -------> REST API [DNA Center] -----> Fabr
     * All switches are Layer 3 and use IS-IS as their routing protocol 
     * All links between switches are routed ports. This means STP is not needed
     * Edge nodes (access switches) act as the default gateway of end hosts(routed access layer)
-    
 
+**SD-Access Overlay**
+* LISP provides the control plane of SD-Acess
+    * A list of mappings of EIDs(endpoint identifiers) to RLOCs(routing locators) is kept
+    * EIDs identify end hosts connected to edge switches and RLOCs identify the edge switch which can be used to reach the end host
+    
+* Cisco TrustSec(CTS) provides policy control (QoS, security policy, etc)
+* VXLAN provides the data plane of SD-Access
+
+**Cisco DNA Center**
+* Has two main roles:
+    * The SDN controller in SD-Access
+    * A network manager in a traditional network(non-SD-Access)
+
+* DNA center is an application installed on Cisco UCS server hardware 
+* It has a REST API which can be used to interact with DNA center 
+* The SBI supports protocols such as NETCONF and RESTCONF(as well as traditional protocols like Telnet, SSH, SNMP)
+* Enables Intent-Based Networking (IBN)
+    * Allows the engineer to communicate their intent for network behavior to DNA center and then DNA center will take care of the details of the actual configurations and policies on devices 
+     
+| Traditional Network Management   |    DNA Center-based network Management  |
+| -------------------------------- |    -------------------------------------|
+| Configured one-by-one via SSH or console connection | devices are centrally managed and monitored from the DNA center GUI or other applications using REST API |
+| Manually configured via console connection before being deployed |  |
+| configurations and policies are managed per-device. (distributed) | The administrator communicated their intended network behavior to DNA center, which changes those intentions into configurations on the managed network devices |
+|    |  Configurations and policies are centrally managed |
+| New network deployments can take a long time due to the manual labor required | Software versions are also centrally manged. DNA center can monitor cloud servers from new versions and then update the managed devices |
+| Errors and failures are more likely due to increased manual effort | New network deployments are much quicker, New devices can automatically receive their configurations from DNA center without manual configuration | 
+
+
+**Quiz**
+1. Network of devices and physical connections 
+    * Underlay (underlaying physical network)
+
+2. Layer where Scripts that interact with the controller are located 
+    * Application 
+
+3. characteristic of an optimal SD-Access underlay network as configured by DNA-Center 
+    * All links between switches are Layer 3
+
+4. Protocol used to create virtual tunnels in the SD-Access overlay 
+    * VXLAN 
+
+5. Valid switch roles in Cisco SD-Access 
+    * Control, Border and Edge node 
 
 
