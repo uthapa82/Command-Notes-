@@ -3274,3 +3274,89 @@ Script App   Direct via DNAC GUI then -------> REST API [DNA Center] -----> Fabr
     * Control, Border and Edge node 
 
 
+### Ansible, Puppet, Chef 
+* Configuration Management Mechanisms
+* Configuration drift is when individual changes made over time causes a device's configuration to deviate from the standard/correct configurations as defined by the company 
+    * Although each device will have unique parts of its configuration(IP addresses, host name, etc), most of a device's configuration is usually defined in standard templates designed by the network architects/engineers of the company 
+* Best to have standard configuration management practices 
+    * When a change is made, save the config as a text file and place it in a shared folder 
+    * example: hostname_yyyymmdd
+
+**Configuration Provisioning**
+* How config chages are applied to devices 
+* Traditionally, config provisioning is done by connecting to devices one-by-one via SSH
+* Config mgmt tools like Ansible, Puppet and Chef allow us to make changes to devices on a mass scale with a fraction of time/effort 
+* Two essential components: templates and variables 
+
+![config](images/config-provisioning.png)
+
+* facilitate the centralized control of large number of network devices 
+* Order is Ansible, Puppet and Chef 
+* Originally developed to enable server system admins to automate the process of creating, configuring and removing VMs
+
+* These tools can be used to perform tasks like : 
+    1. Generate configurations for new devices on a large scale
+    2. Perform configurations changes on devices (all devices in our network, or a certain subset of devices)
+    3. Check device configurations for compliance with defined standards 
+    4. Compare configuration between devices and betweek different versions of configurations on  the same device 
+
+**Ansible**
+* Configuration management tool owned by Red Hat 
+* Written in Python
+* Agentless 
+    * doesn't require any special software to run on the managed devices 
+
+* Ansible uses SSH to connect to devices, make configuration changes, extract information, etc 
+* Uses push model. The Ansible server(control node) uses SSH to connect to managed devices and push configuration changes to them   
+    * Puppet and chef use a pull model
+
+* Playbooks: are the files (blueprints of automation tasks)
+    * They outline the logic and actions of the tasks that Ansible should do. Written in YAML 
+    * Inventory: list of devices that will be managed by Ansible as well as characteristics of each device such as their device role(access switch, core switch, WAN router, firewall etc). Written in INI, YAML or other formats 
+    * Templates: Device config files, but specific values for variables are not provided written in Jinja2 format 
+    * Variables: files list variables and their values. These values are substituted into the template to create complete configuration files. Written in YAML 
+
+**Puppet**
+* written in Ruby 
+* Agent based 
+    * Specific software must be installed on the managed devices 
+    * Not all cisco devices support a Puppet agent 
+* Can be run agentless, in which a proxy agent runs on an external host, and the proxy agent used SSH to connect to the manged devices and communicate with them 
+* The puppet server is called " the pupper master"
+* Used Pull model (clients 'pull' configurations from the puppet master)
+    * clients use TCP 8140 to communicate with the Puppet master 
+* Instead of YAML, it uses a proprietary language for files
+* *Manifest*: defines the desired config state of a network device
+* *Templates*: similar to Ansible templates. Used to generate Manifests 
+
+**Chef**
+* written in Ruby
+* Agent-based 
+    * Specific software must be installed on the managed devices
+    * Not all cisco devices support a chef agent 
+* Chef use a pull model 
+* The server uses TCP 10002 to send configurations to clients 
+* Files use a DSL(Domain-Specific Language) based on Ruby 
+* Text files used by chef include:
+    * *Resources*: Configuration objects managed by chef (ingredients in a recipe)
+    * *Recipes*: outline the logic and actions of the tasks performed on the resources (recipes in a cookbook)
+    * *Cookbooks*:A set of related recipes grouped together 
+    * *Run-list* :An ordered list of recipes that are run to bring a device to the desired configuration state 
+
+![config-mgmt](images/config-mgmt.png)
+
+**Quiz**
+1. Config mgmt tools that connect to devices using SSH 
+    * Ansible 
+
+2. Tools that use pull model
+    * Chef and Puppet
+
+3. Client-server model 
+    * chef, ansible and puppet 
+
+4. written in Ruby
+    * puppet and chef
+
+5. uses playbooks
+    * Ansible
