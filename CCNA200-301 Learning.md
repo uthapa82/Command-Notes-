@@ -3094,7 +3094,7 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 
 ### JSON, XML and YAML 
 **Data Serialization**
-* The process of converting data into a atandardized format/structure that can be stored (in a file) or transmitted (over a network) and reconstructed later(i.e by a different application)
+* The process of converting data into a standardized format/structure that can be stored (in a file) or transmitted (over a network) and reconstructed later(i.e by a different application)
     * allows the data to be communicated between applications in a way both applications understand 
 * Allows us to represent variables with text 
 
@@ -3127,6 +3127,65 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 * keys and values are represented as key:value 
 
 ![yaml](images/yaml.png)
+
+### REST APIs (CRUD, HTTP verbs and data encoding)
+* commonly used for Northbound interface in SDN Architecture 
+* Application Programming Interface
+    * software interface that allows two applications to communicate with each other 
+* APIs are essential not just for network automation, but for all kinds of applications 
+* In SDN architecture, APIs are used to communicate between apps and the SDN controller (via the NBI), and between the SDN controller and the network devices (via the SBI)
+* NETCONF and RESTCONF are popular southbound APIs
+* Uniform Resource Identifier 
+
+![http](images/http.png)
+
+* scheme----> authority ----> path 
+* example of http request message 
+* IP header ------> TCP header ----> verb ----> URI ----> Additional headers ----> Data 
+* When a REST client makes an API call (request) to a REST server, it will send an HTTP request 
+
+**HTTP Response**
+* The server's response will include a status code indicating if the request succedded or failed, as well as other details 
+* The first digit indicates the class of the response 
+    * 1xx informational --> the request was received, continuing process
+        * 102 Processing
+
+    * 2xx successful ---> the request was successfully received, understood, and accepted 
+        * 200 OK
+        * 201 Created 
+
+    * 3xx redirection --> further action needs to be taken in order to complete the request 
+        * 301 Moved Permanently 
+
+    * 4xx client error --> the request contains bad syntax or cannot be fulfilled 
+        * 403 Unauthorized means the client must authenticate to get a response
+        * 404 Not Found means the requested resources was not found 
+
+    * 5xx Server Error 
+        * 500 Internal Server Error means the server encountered somthing unexpected that it doesn't know how to handle 
+
+**Characteristics of REST**
+* Representational State Transfer
+* REST APIs are also known as REST-based APIs or RESTful APIS
+* Six constraints of RESTful architecture are:
+    * Uniform interface 
+    * Client-server
+    * stateless
+        * means that each API exchange is a separate event, independent of all past exchanges between the client and server 
+        * the server does not store information about previous requests from the client to determine how it should respond to new requests 
+        * If authentication is required, this means that the client must authenticate with the server for each request it makes 
+        * TCP is stateful protocol 
+        * UDP is stateless protocol --> data is simply sent from host A to host B 
+
+    * Cacheable or non-cacheable
+        * REST APIs must support caching of data 
+        * storing data for future use 
+        * improves performance for the client and reduces the load on the server 
+
+    * Layered System 
+    * Code-on-demand(optional)
+    * https://developer.cisco.com/docs/dna-center/#!getting-started 
+    
 
 
 
