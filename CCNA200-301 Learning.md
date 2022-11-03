@@ -3187,6 +3187,47 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
     * https://developer.cisco.com/docs/dna-center/#!getting-started 
     
 
+### SDN Networking 
+* Traditional control planes use a distributed architecture 
+* The controller can interact programmatically with the network devices using APIs
+* The SBI is used for communications between the controller and the network devices it controls 
+* The NBI is what allows us to interact with the controller with our scripts and applications 
+
+![SDN arch](images/sdn-arch.png)
+
+* Cisco SD-Access is cisco's SDN solution for automating campus LANs
+    - ACI(Application Centric Infrastructure) is their SDN solution for automating data center networks
+    - SD-WAN is their SDN solution for automating WANs 
+
+* Cisco DNA(Digital Network Architecture) Center is the controller at the center of SD-Access
+
+Script App   Direct via DNAC GUI then -------> REST API [DNA Center] -----> Fabric Switches 
+
+* **Fabric** 
+    * Underlay is the underlying physical network of devices and connections(including wired and wireless) which provide IP connectivity (i.e. using IS-IS)
+        * Multilayer switches and their connections 
+    
+    * The overlay is the virtual network built on top of the physical underlay network.
+        * SD-Access uses VXLAN(Virtual Extensible LAN) to build tunnels 
+    
+    * The fabric is the combination of the overlay and underlay, the physical and virtual network as a whole 
+
+**Underlay**
+* Purpose is to support the VXLAN tunnels of the overlay 
+* Three different roles for switches in SD-Access 
+    * Edge nodes : Connect to end hosts 
+
+    * Border nodes : Connect to devices outside of the SD-Access domain i.e. WAN routers
+
+    * Control nodes : Use LISP (Locator ID Separation Protocol) to perform various control plane functions 
+
+* Can add SD-Access on top of an existing network (*brownfield deployment*) if our network hardware and software supports it 
+
+* A new deployment(*greenfield deployment*) will be configured by DNA Center to use the optimal SD-Access underlay:
+    * All switches are Layer 3 and use IS-IS as their routing protocol 
+    * All links between switches are routed ports. This means STP is not needed
+    * Edge nodes (access switches) act as the default gateway of end hosts(routed access layer)
+    
 
 
 
