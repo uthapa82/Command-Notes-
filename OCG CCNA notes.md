@@ -1,7 +1,7 @@
 ### Securing Switch CLI 
  
 #### Basic Password Configuration 
-```
+```bat
 switch(config)# username admin secret "password"
 switch # config t
 switch(config)# line console 0
@@ -11,7 +11,7 @@ switch(config)# line vty 0 15
 switch(config-)# login local
 ```
 #### SSH specific Configuration
-```
+```bat
 switch(config)# hostname sw1
 switch(config)#ip domain-name example.com
 switch(config)#crypto key generate rsa 

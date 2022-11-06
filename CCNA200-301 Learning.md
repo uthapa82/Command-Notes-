@@ -2994,4 +2994,369 @@ SW1(config)# ip arp inspection validate ip src-mac dst-mac
 
 5. WLC port type that can form a LAG to pass standard traffic
     * Distribution System Port 
+
+
+### Network Automation
+* Time consuming and very inefficiet in large scale networks 
+* Difficult to ensure that all devices adhere to the organization's standard configurations 
+* Networks become much more scalable. New deployments, network wide changes and troubleshooting can be implemented in a fraction of the time 
+* Network wide policy compliance can be assured 
+* The improved efficiency of network operations reduces the opex (operating expenses)
+
+**Software Defined Network**
+* Various functions of network devices can be logically divided up into planes :
+    * **Data plane**
+        * tasks involved in forwarding user data/traffic from one interface to another are part of the data plane
+        * encapsulation, deencapsulations, 802.1q VLAN tags of switches 
+        * NAT (changing the src/dst addresses before forwarding)
+        * Deciding to forward or discard messages due to ACLs, port security etc 
+        * The data plane is also called the 'forwarding plane'
+
+    * **Control plane**
+        * How a devices's data plane make its forwarding decisions ?
+            * rouing table, MAC address table, ARP table, STP etc 
+        * functions that build these tables (and other functions that influence the data plane) are part of the control plane 
+        * The control plane controls what the data plane does for example by building the router's routing table 
+        * The control plane performs overhead work
+        
+    * **Management plane**
+        * Performs overhead work
+        * Doesn't directly affect the forwarding of messages in the data plane 
+        * The management plane consists of protocols that are used to manage devices 
+            * SSH/Telnet used to connet to the CLI of a device to configure/manage it 
+            * Syslog, used to keep logs of events that occur on the device 
+            * SNMP, used to monitor the operations of the device 
+            * NTP, used to maintain accurate time on the device 
+
+    **The operations of the Mgmt and control plane are usually manged by CPU, however this is not desirable for data plane operations because CPU processing is slow, instead a specialized hardware ASIC (Application-Specific Integrated Circuit) is used. ASICs are chips built for specific purposes.**
+    * MAC also called CAM table  address table stored in kind of memory called TCAM (Ternary Content-Addressable Memory) 
+    * In short when a device receives control/mgmt traffic it will be processed in the CPU 
+    * When a device receives data traffic which should pass through the device it is processed by the ASIC for maximum speed 
+
+### Software-Defined Networking 
+* Approach to networking that centralizes the control plane into an application called a controller 
+* Also called Software-Defined Architecture (SDA) or Controller-Based Networking 
+* An SDN controller centralizes control plane functions like calculating routes 
+* Controller can interact programmatically with the network devices using APIs(Application Programming Interface)
+* The communication between the devices and controller can be done via **Southbound Interface(SBI)**
+    * SBI used for communication between the controller and the network devices it controls 
+        * The devices in the network
+        * The topology ( how devices are connected together)
+        * The available interfaces on each device 
+        * Their configurations 
+
+    * It typically consists of a communication protocol and API (Application Programming Interface)
+    * APIs facilitate data exchanges between programs 
+        * Data is exchanged between the controller and the network devices
+        * An API on the network devices allows the controller to access information on the devices, control their data plane tables etc 
+
+    * Examples of SBIs:
+        * OpenFlow
+        * Cisco OpFlex 
+        * Cisco onePK (Open Network Environment Platform Kit)
+        * NETCONF
     
+**Nortbound Interface(NBI)**
+* Allows us to interact with the controller, access the data it gathers about the network, program it, and make changes in the network via the SBI
+
+* A REST API is used on the controller as an interface for apps to interact with it 
+    * REST => Representational State Transfer 
+* Data is sent in structured (serialized) format such as JSON or XML
+    * makes it much easier for programs to use the data 
+
+![NBI](images/nbi.png)
+
+#### Atuomation in traditional networks vs SDN
+* The robust and centralized data collected by SDN controllers greatly facilitates these functions
+    * The controller collects information about all devices in the network
+    * Northbound APIs allow apps to access information in a format that is easy for programs to understand (i.e JSON, XML)
+    * The centralized data facilitates network-wide analytics 
+* Automation without the requirement of third-party scripts and apps 
+
+**Quiz**
+1. Network Automation 
+    * Reduced human error 
+    * Reduced OpEx
+
+2. SBIs
+    * OpenFlow
+    * OpFlex
+
+3. functions centralized in SDN
+    * Calculating routes
+
+4. Purpose of SBI in SDN architecture 
+    * To facilitate data exchange between the controller and network devices
+
+5. NTP functions fit in 
+    * Management plane 
+    
+
+### JSON, XML and YAML 
+**Data Serialization**
+* The process of converting data into a standardized format/structure that can be stored (in a file) or transmitted (over a network) and reconstructed later(i.e by a different application)
+    * allows the data to be communicated between applications in a way both applications understand 
+* Allows us to represent variables with text 
+
+**JSON**
+* Javascript Objext Notation is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects 
+* It is standardized in RFC 8259 (https://datatracker.ietf.org/doc/html/rfc8259)
+* Whitespace is insignificant
+* Four primitive data types :- string, number, boolean, null
+* Structured data types :- object (key-->string,:  value) and array 
+
+**XML**
+* Extensible Markup Language 
+* used to format text(font, size, color, headings, etc)
+* XML is generally less human-readable than JSON
+* Whtiespace is insignificant
+* Often used by REST APIs
+
+* `<key>value</key>`
+
+* `show ip interface brief | format`
+
+**YAML**
+* Yet Another Markup Language ----> YAML Aint Markup Language 
+* Used by the network automation tool Ansible 
+* Very human-readable 
+* Whitespace is significant
+    * indentation is very important 
+* YAML files start with ---
+* - is used to indicate a list 
+* keys and values are represented as key:value 
+
+![yaml](images/yaml.png)
+
+### REST APIs (CRUD, HTTP verbs and data encoding)
+* commonly used for Northbound interface in SDN Architecture 
+* Application Programming Interface
+    * software interface that allows two applications to communicate with each other 
+* APIs are essential not just for network automation, but for all kinds of applications 
+* In SDN architecture, APIs are used to communicate between apps and the SDN controller (via the NBI), and between the SDN controller and the network devices (via the SBI)
+* NETCONF and RESTCONF are popular southbound APIs
+* Uniform Resource Identifier 
+
+![http](images/http.png)
+
+* scheme----> authority ----> path 
+* example of http request message 
+* IP header ------> TCP header ----> verb ----> URI ----> Additional headers ----> Data 
+* When a REST client makes an API call (request) to a REST server, it will send an HTTP request 
+
+**HTTP Response**
+* The server's response will include a status code indicating if the request succedded or failed, as well as other details 
+* The first digit indicates the class of the response 
+    * 1xx informational --> the request was received, continuing process
+        * 102 Processing
+
+    * 2xx successful ---> the request was successfully received, understood, and accepted 
+        * 200 OK
+        * 201 Created 
+
+    * 3xx redirection --> further action needs to be taken in order to complete the request 
+        * 301 Moved Permanently 
+
+    * 4xx client error --> the request contains bad syntax or cannot be fulfilled 
+        * 403 Unauthorized means the client must authenticate to get a response
+        * 404 Not Found means the requested resources was not found 
+
+    * 5xx Server Error 
+        * 500 Internal Server Error means the server encountered somthing unexpected that it doesn't know how to handle 
+
+**Characteristics of REST**
+* Representational State Transfer
+* REST APIs are also known as REST-based APIs or RESTful APIS
+* Six constraints of RESTful architecture are:
+    * Uniform interface 
+    * Client-server
+    * stateless
+        * means that each API exchange is a separate event, independent of all past exchanges between the client and server 
+        * the server does not store information about previous requests from the client to determine how it should respond to new requests 
+        * If authentication is required, this means that the client must authenticate with the server for each request it makes 
+        * TCP is stateful protocol 
+        * UDP is stateless protocol --> data is simply sent from host A to host B 
+
+    * Cacheable or non-cacheable
+        * REST APIs must support caching of data 
+        * storing data for future use 
+        * improves performance for the client and reduces the load on the server 
+
+    * Layered System 
+    * Code-on-demand(optional)
+    * https://developer.cisco.com/docs/dna-center/#!getting-started 
+    
+
+### SDN Networking 
+* Traditional control planes use a distributed architecture 
+* The controller can interact programmatically with the network devices using APIs
+* The SBI is used for communications between the controller and the network devices it controls 
+* The NBI is what allows us to interact with the controller with our scripts and applications 
+
+![SDN arch](images/sdn-arch.png)
+
+* Cisco SD-Access is cisco's SDN solution for automating campus LANs
+    - ACI(Application Centric Infrastructure) is their SDN solution for automating data center networks
+    - SD-WAN is their SDN solution for automating WANs 
+
+* Cisco DNA(Digital Network Architecture) Center is the controller at the center of SD-Access
+
+Script App   Direct via DNAC GUI then -------> REST API [DNA Center] -----> Fabric Switches 
+
+* **Fabric** 
+    * Underlay is the underlying physical network of devices and connections(including wired and wireless) which provide IP connectivity (i.e. using IS-IS)
+        * Multilayer switches and their connections 
+    
+    * The overlay is the virtual network built on top of the physical underlay network.
+        * SD-Access uses VXLAN(Virtual Extensible LAN) to build tunnels 
+    
+    * The fabric is the combination of the overlay and underlay, the physical and virtual network as a whole 
+
+**Underlay**
+* Purpose is to support the VXLAN tunnels of the overlay 
+* Three different roles for switches in SD-Access 
+    * Edge nodes : Connect to end hosts 
+
+    * Border nodes : Connect to devices outside of the SD-Access domain i.e. WAN routers
+
+    * Control nodes : Use LISP (Locator ID Separation Protocol) to perform various control plane functions 
+
+* Can add SD-Access on top of an existing network (*brownfield deployment*) if our network hardware and software supports it 
+
+* A new deployment(*greenfield deployment*) will be configured by DNA Center to use the optimal SD-Access underlay:
+    * All switches are Layer 3 and use IS-IS as their routing protocol 
+    * All links between switches are routed ports. This means STP is not needed
+    * Edge nodes (access switches) act as the default gateway of end hosts(routed access layer)
+
+**SD-Access Overlay**
+* LISP provides the control plane of SD-Acess
+    * A list of mappings of EIDs(endpoint identifiers) to RLOCs(routing locators) is kept
+    * EIDs identify end hosts connected to edge switches and RLOCs identify the edge switch which can be used to reach the end host
+    
+* Cisco TrustSec(CTS) provides policy control (QoS, security policy, etc)
+* VXLAN provides the data plane of SD-Access
+
+**Cisco DNA Center**
+* Has two main roles:
+    * The SDN controller in SD-Access
+    * A network manager in a traditional network(non-SD-Access)
+
+* DNA center is an application installed on Cisco UCS server hardware 
+* It has a REST API which can be used to interact with DNA center 
+* The SBI supports protocols such as NETCONF and RESTCONF(as well as traditional protocols like Telnet, SSH, SNMP)
+* Enables Intent-Based Networking (IBN)
+    * Allows the engineer to communicate their intent for network behavior to DNA center and then DNA center will take care of the details of the actual configurations and policies on devices 
+     
+| Traditional Network Management   |    DNA Center-based network Management  |
+| -------------------------------- |    -------------------------------------|
+| Configured one-by-one via SSH or console connection | devices are centrally managed and monitored from the DNA center GUI or other applications using REST API |
+| Manually configured via console connection before being deployed |  |
+| configurations and policies are managed per-device. (distributed) | The administrator communicated their intended network behavior to DNA center, which changes those intentions into configurations on the managed network devices |
+|    |  Configurations and policies are centrally managed |
+| New network deployments can take a long time due to the manual labor required | Software versions are also centrally manged. DNA center can monitor cloud servers from new versions and then update the managed devices |
+| Errors and failures are more likely due to increased manual effort | New network deployments are much quicker, New devices can automatically receive their configurations from DNA center without manual configuration | 
+
+
+**Quiz**
+1. Network of devices and physical connections 
+    * Underlay (underlaying physical network)
+
+2. Layer where Scripts that interact with the controller are located 
+    * Application 
+
+3. characteristic of an optimal SD-Access underlay network as configured by DNA-Center 
+    * All links between switches are Layer 3
+
+4. Protocol used to create virtual tunnels in the SD-Access overlay 
+    * VXLAN 
+
+5. Valid switch roles in Cisco SD-Access 
+    * Control, Border and Edge node 
+
+
+### Ansible, Puppet, Chef 
+* Configuration Management Mechanisms
+* Configuration drift is when individual changes made over time causes a device's configuration to deviate from the standard/correct configurations as defined by the company 
+    * Although each device will have unique parts of its configuration(IP addresses, host name, etc), most of a device's configuration is usually defined in standard templates designed by the network architects/engineers of the company 
+* Best to have standard configuration management practices 
+    * When a change is made, save the config as a text file and place it in a shared folder 
+    * example: hostname_yyyymmdd
+
+**Configuration Provisioning**
+* How config chages are applied to devices 
+* Traditionally, config provisioning is done by connecting to devices one-by-one via SSH
+* Config mgmt tools like Ansible, Puppet and Chef allow us to make changes to devices on a mass scale with a fraction of time/effort 
+* Two essential components: templates and variables 
+
+![config](images/config-provisioning.png)
+
+* facilitate the centralized control of large number of network devices 
+* Order is Ansible, Puppet and Chef 
+* Originally developed to enable server system admins to automate the process of creating, configuring and removing VMs
+
+* These tools can be used to perform tasks like : 
+    1. Generate configurations for new devices on a large scale
+    2. Perform configurations changes on devices (all devices in our network, or a certain subset of devices)
+    3. Check device configurations for compliance with defined standards 
+    4. Compare configuration between devices and betweek different versions of configurations on  the same device 
+
+**Ansible**
+* Configuration management tool owned by Red Hat 
+* Written in Python
+* Agentless 
+    * doesn't require any special software to run on the managed devices 
+
+* Ansible uses SSH to connect to devices, make configuration changes, extract information, etc 
+* Uses push model. The Ansible server(control node) uses SSH to connect to managed devices and push configuration changes to them   
+    * Puppet and chef use a pull model
+
+* Playbooks: are the files (blueprints of automation tasks)
+    * They outline the logic and actions of the tasks that Ansible should do. Written in YAML 
+    * Inventory: list of devices that will be managed by Ansible as well as characteristics of each device such as their device role(access switch, core switch, WAN router, firewall etc). Written in INI, YAML or other formats 
+    * Templates: Device config files, but specific values for variables are not provided written in Jinja2 format 
+    * Variables: files list variables and their values. These values are substituted into the template to create complete configuration files. Written in YAML 
+
+**Puppet**
+* written in Ruby 
+* Agent based 
+    * Specific software must be installed on the managed devices 
+    * Not all cisco devices support a Puppet agent 
+* Can be run agentless, in which a proxy agent runs on an external host, and the proxy agent used SSH to connect to the manged devices and communicate with them 
+* The puppet server is called " the pupper master"
+* Used Pull model (clients 'pull' configurations from the puppet master)
+    * clients use TCP 8140 to communicate with the Puppet master 
+* Instead of YAML, it uses a proprietary language for files
+* *Manifest*: defines the desired config state of a network device
+* *Templates*: similar to Ansible templates. Used to generate Manifests 
+
+**Chef**
+* written in Ruby
+* Agent-based 
+    * Specific software must be installed on the managed devices
+    * Not all cisco devices support a chef agent 
+* Chef use a pull model 
+* The server uses TCP 10002 to send configurations to clients 
+* Files use a DSL(Domain-Specific Language) based on Ruby 
+* Text files used by chef include:
+    * *Resources*: Configuration objects managed by chef (ingredients in a recipe)
+    * *Recipes*: outline the logic and actions of the tasks performed on the resources (recipes in a cookbook)
+    * *Cookbooks*:A set of related recipes grouped together 
+    * *Run-list* :An ordered list of recipes that are run to bring a device to the desired configuration state 
+
+![config-mgmt](images/config-mgmt.png)
+
+**Quiz**
+1. Config mgmt tools that connect to devices using SSH 
+    * Ansible 
+
+2. Tools that use pull model
+    * Chef and Puppet
+
+3. Client-server model 
+    * chef, ansible and puppet 
+
+4. written in Ruby
+    * puppet and chef
+
+5. uses playbooks
+    * Ansible
