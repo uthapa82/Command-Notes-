@@ -37,3 +37,10 @@ SW1#show ssh
 ! disable DNS resolve in switch 
 switch(config)#no up domain-lookup 
 ```
+
+#### EXEC command Reference 
+| Command  | Purpose |
+| ---------|---------|
+| `$ write erase` 
+| `$ erase startup-config ` | these enable mode EXEC commands erase the startup-config file | 
+| `$ erase nvram:` 
