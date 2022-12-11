@@ -38,4 +38,18 @@
     * Ext4 Journaling file System 
     * mount point /home
 
+
+#### Auto shutdown 
+* Shutdown after 20 minutes 
+
+  `$ shutdown +20 `
+
+* listing the port number in user to determine PID 
+
+  `$ sudo netstat -lpn | grep :port_number `
+
+* killing the running process
+
+    `$ kill -9 PID `
+
   
