@@ -65,3 +65,11 @@ switch(config)#no up domain-lookup
 | `$ show ip default-gateway` | Lists the switch's setting for its IPv4 default gateway |
 | `$ terminal history size x` | Changes the length of history buffer for the current user only, only for the current login to the switch |
 | `$ show history  `| Lists the commands in the current history buffer | 
+
+#### Configuring and Verifying Switch Interface 
+| Command | Mode/Purpose/Description |
+|---------|--------------------------|
+| `$ interface type port-number ` | Changes context to interface mode. Fast Ethernet or Gigabit ethernet | 
+| `$ interface range type port-number - end-port number ` | Changes the context tot interface mode for a range of consecutively numbered interfaces |
+| `$ description text  `| Interface mode. Helps by providing information needed to track for the interfaces | 
+| `$ show running-config interfacc type number ` | Displays the running-configuration excerpt of the listed interface and its subcommands only |
