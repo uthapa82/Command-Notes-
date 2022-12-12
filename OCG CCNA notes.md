@@ -54,6 +54,7 @@ switch(config)#no up domain-lookup
 | `$ show interfaces status` | list one line per interface on the switch, with basic status and operating information for each |
 | `$ clear mac address-table dynamic [vlan vlan-number] [interface interface-id][address mac-address]` | clears(removes) dynamic MAC table entries:either all(with no paramters), or a subset based on VLAN ID, interface ID, or a specific MAC address |
 
+
 #### Basic Switch Management 
 | Command  | Purpose |
 | ---------|---------|
@@ -66,6 +67,7 @@ switch(config)#no up domain-lookup
 | `$ terminal history size x` | Changes the length of history buffer for the current user only, only for the current login to the switch |
 | `$ show history  `| Lists the commands in the current history buffer | 
 
+
 #### Configuring and Verifying Switch Interface 
 | Command | Mode/Purpose/Description |
 |---------|--------------------------|
@@ -73,6 +75,7 @@ switch(config)#no up domain-lookup
 | `$ interface range type port-number - end-port number ` | Changes the context tot interface mode for a range of consecutively numbered interfaces |
 | `$ description text  `| Interface mode. Helps by providing information needed to track for the interfaces | 
 | `$ show running-config interfacc type number ` | Displays the running-configuration excerpt of the listed interface and its subcommands only |
+
 
 #### Trunking Operational Mode Based on the configured Administrative Modes 
 | Administrative Mode  | Access  | Dynamic Auto | Trunk | Dynamic Desirable |
