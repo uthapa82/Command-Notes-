@@ -73,3 +73,12 @@ switch(config)#no up domain-lookup
 | `$ interface range type port-number - end-port number ` | Changes the context tot interface mode for a range of consecutively numbered interfaces |
 | `$ description text  `| Interface mode. Helps by providing information needed to track for the interfaces | 
 | `$ show running-config interfacc type number ` | Displays the running-configuration excerpt of the listed interface and its subcommands only |
+
+#### Trunking Operational Mode Based on the configured Administrative Modes 
+| Administrative Mode  | Access  | Dynamic Auto | Trunk | Dynamic Desirable |
+| ---------|---------|-----------|---------|----------|
+|access | Access | Access | Do Not Use | Access |
+|dynamic auto | Access | Access | Trunk | Trunk |
+|trunk | Do Not Use | Trunk | Trunk | Trunk |
+|dynamic desirable | Access | Trunk | Trunk | Trunk| 
+*When two switches configure mode of "access" on one end and "trunk" on the other, problem occurs so Avoid the combination*
