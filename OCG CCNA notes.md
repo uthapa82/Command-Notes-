@@ -53,3 +53,15 @@ switch(config)#no up domain-lookup
 | `$ clear mac address-table dynamic` | Empties the MAC table of all dynamic entries |
 | `$ show interfaces status` | list one line per interface on the switch, with basic status and operating information for each |
 | `$ clear mac address-table dynamic [vlan vlan-number] [interface interface-id][address mac-address]` | clears(removes) dynamic MAC table entries:either all(with no paramters), or a subset based on VLAN ID, interface ID, or a specific MAC address |
+
+#### Basic Switch Management 
+| Command  | Purpose |
+| ---------|---------|
+| `$ show dhcp lease ` | Lists any information the switch acquires as a DHCP client. This includes  IP address, subnet mask, and default gateway information |
+| `$ show crypto key mypublickey rsa` | Lists the public and shared key created for use with SSH using the crypto key generate rsa global configuration command. |
+| `$ show ip ssh ` | Lists status information for the SSH server, including the SSH version |
+| `$ show ssh ` | Lists status information for current SSH connection into and out of the local switch |
+| `$ show intefaces vlan number ` | Lists the interface status, the switch's IPv4 address and mask etc |
+| `$ show ip default-gateway` | Lists the switch's setting for its IPv4 default gateway |
+| `$ terminal history size x` | Changes the length of history buffer for the current user only, only for the current login to the switch |
+| `$ show history  `| Lists the commands in the current history buffer | 
