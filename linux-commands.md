@@ -43,3 +43,24 @@
 * [https://docs.nvidia.com/networking/display/MLNXENv543681LTS/Installing+MLNX_EN]( Nvidia driver)
 
 * [https://network.nvidia.com/products/ethernet-drivers/linux/mlnx_en/#tabs-1](driver download)
+
+```
+$ fdisk -l
+
+$ mkdir /media/usbfile
+
+$ mount /dev/sdb<name> /media/usbfile/
+
+$ mount | grep sdb1
+
+$ cp /media/usbfile/<filename> /home/admin1/
+
+$ lsmod | grep loop
+
+$ mkdir -p /mnt/driver (no need)
+
+$ mount -o ro,loop <mlnx-en>.iso /mnt
+
+$ /mnt/install 
+
+$ mount -l or cat /proc/mounts
