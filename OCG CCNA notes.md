@@ -37,3 +37,51 @@ SW1#show ssh
 ! disable DNS resolve in switch 
 switch(config)#no up domain-lookup 
 ```
+
+#### EXEC command Reference 
+| Command  | Purpose |
+| ---------|---------|
+| `$ write erase` 
+| `$ erase startup-config ` | these enable mode EXEC commands erase the startup-config file | 
+| `$ erase nvram:` 
+| `$ show mac address-table ` | shows all MAC table entries of all types |
+| `$ show mac address-table dynamic ` | shows all dyamically learned MAC table entries |
+| `$ show mac address-table dynamic vlan <vlan-id> ` | shows the dynamically learned MAC table entries in that VLAN | 
+| `$ show mac address-table dynamic interface <interface-id> ` | shows all dynamically learned MAC table entries associated with that interface | 
+| `$ show mac address-table count ` | Shows the number of entries in the MAC table and the total number of remaining empty slots in the MAC table |
+| `$ show mac address-table aging-time ` | shows the global and per-VLAN aging timeout for inactive MAC table entries |
+| `$ clear mac address-table dynamic` | Empties the MAC table of all dynamic entries |
+| `$ show interfaces status` | list one line per interface on the switch, with basic status and operating information for each |
+| `$ clear mac address-table dynamic [vlan vlan-number] [interface interface-id][address mac-address]` | clears(removes) dynamic MAC table entries:either all(with no paramters), or a subset based on VLAN ID, interface ID, or a specific MAC address |
+
+
+#### Basic Switch Management 
+| Command  | Purpose |
+| ---------|---------|
+| `$ show dhcp lease ` | Lists any information the switch acquires as a DHCP client. This includes  IP address, subnet mask, and default gateway information |
+| `$ show crypto key mypublickey rsa` | Lists the public and shared key created for use with SSH using the crypto key generate rsa global configuration command. |
+| `$ show ip ssh ` | Lists status information for the SSH server, including the SSH version |
+| `$ show ssh ` | Lists status information for current SSH connection into and out of the local switch |
+| `$ show intefaces vlan number ` | Lists the interface status, the switch's IPv4 address and mask etc |
+| `$ show ip default-gateway` | Lists the switch's setting for its IPv4 default gateway |
+| `$ terminal history size x` | Changes the length of history buffer for the current user only, only for the current login to the switch |
+| `$ show history  `| Lists the commands in the current history buffer | 
+
+
+#### Configuring and Verifying Switch Interface 
+| Command | Mode/Purpose/Description |
+|---------|--------------------------|
+| `$ interface type port-number ` | Changes context to interface mode. Fast Ethernet or Gigabit ethernet | 
+| `$ interface range type port-number - end-port number ` | Changes the context tot interface mode for a range of consecutively numbered interfaces |
+| `$ description text  `| Interface mode. Helps by providing information needed to track for the interfaces | 
+| `$ show running-config interfacc type number ` | Displays the running-configuration excerpt of the listed interface and its subcommands only |
+
+
+#### Trunking Operational Mode Based on the configured Administrative Modes 
+| Administrative Mode  | Access  | Dynamic Auto | Trunk | Dynamic Desirable |
+| ---------|---------|-----------|---------|----------|
+|access | Access | Access | Do Not Use | Access |
+|dynamic auto | Access | Access | Trunk | Trunk |
+|trunk | Do Not Use | Trunk | Trunk | Trunk |
+|dynamic desirable | Access | Trunk | Trunk | Trunk| 
+*When two switches configure mode of "access" on one end and "trunk" on the other, problem occurs so Avoid the combination*
