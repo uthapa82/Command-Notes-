@@ -1,5 +1,5 @@
 #### Timeshift backups 
-* Dlete the directory (empty)
+* Delete the directory (empty)
  
   `$ sudo rm -d <file name> `
  
@@ -64,3 +64,9 @@ $ mount -o ro,loop <mlnx-en>.iso /mnt
 $ /mnt/install 
 
 $ mount -l or cat /proc/mounts
+
+$ ifconfig -a doesn't show anything then next command
+
+$ /etc/init.d/mlnx-en.d restart
+
+```
