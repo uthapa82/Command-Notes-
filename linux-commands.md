@@ -42,7 +42,6 @@
     * Ext4 Journaling file System 
     * mount point /home
 
-<<<<<<< HEAD
 
 #### Auto shutdown 
 * Shutdown after 20 minutes 
@@ -61,7 +60,7 @@
 #### Toubleshooting Wired Ethernet Connection in Ubuntu 20.04 
 * show the network interface information
 
-  `$ ifconig `
+  `$ ifconfig `
 
 * Show hardware/Ethernet controller information 
 
@@ -75,7 +74,6 @@
     $ sudo /etc/init.d/network-manager  restart 
 
   ``` 
-=======
 * [https://docs.nvidia.com/networking/display/MLNXENv543681LTS/Ethernet+Driver+Usage+and+Configuration ] (NVIDIA Config)
 
 * [https://docs.nvidia.com/networking/display/MLNXENv543681LTS/Installing+MLNX_EN]( Nvidia driver)
@@ -108,4 +106,3 @@ $ ifconfig -a doesn't show anything then next command
 $ /etc/init.d/mlnx-en.d restart
 
 ```
->>>>>>> 90ed800d95622b63dca0a9ad6a2980b20a174363
