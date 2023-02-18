@@ -1,9 +1,6 @@
 #### Timeshift backups 
-<<<<<<< HEAD
 * Dlete the directory (empty)
-=======
 * Delete the directory (empty)
->>>>>>> 90ed800d95622b63dca0a9ad6a2980b20a174363
  
   `$ sudo rm -d <file name> `
  
