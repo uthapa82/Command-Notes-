@@ -1,3 +1,11 @@
+* git rename current branch 
+
+	`$ git branch -m <newname>
+
+* git rename a branch while pointed to any branch 
+
+	`$ git branch -m <oldname> <newname> `
+	
 =====================Android Studio ====================================
 cd <Android Studio project folder> 
 git init 
