@@ -85,3 +85,7 @@ switch(config)#no up domain-lookup
 |trunk | Do Not Use | Trunk | Trunk | Trunk |
 |dynamic desirable | Access | Trunk | Trunk | Trunk| 
 *When two switches configure mode of "access" on one end and "trunk" on the other, problem occurs so Avoid the combination*
+
+| `$ show mac address-table dynamic [interface type number] [vlan vlan-id] ` | Lists the dynamically learned entries in the switch's address(forwarding) table, with subsets by interface and/or VLAN |
+
+| `$ show mac address-table static [interface type number]` | Lists the static MAC addresses and MAC addresses Learned or defined with port security  |
