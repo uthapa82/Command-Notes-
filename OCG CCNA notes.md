@@ -86,6 +86,22 @@ switch(config)#no up domain-lookup
 |dynamic desirable | Access | Trunk | Trunk | Trunk| 
 *When two switches configure mode of "access" on one end and "trunk" on the other, problem occurs so Avoid the combination*
 
+| Command | Description |
+|---------|--------------------------|
 | `$ show mac address-table dynamic [interface type number] [vlan vlan-id] ` | Lists the dynamically learned entries in the switch's address(forwarding) table, with subsets by interface and/or VLAN |
 
 | `$ show mac address-table static [interface type number]` | Lists the static MAC addresses and MAC addresses Learned or defined with port security  |
+
+#### Virtual LANs 
+| Command | Description |
+|---------|--------------------------|
+| `$ vlan vlan-id` | Global config command that both creates the VLAN and puts the CLI into VLAN configuration mode|
+| `$ name vlan-name` | VLAN subcommand that names the VLAN |
+| `$ shutdown vlan vlan-id` | Global config command that has the same effect as the [no] shutdown VLAN mode subcommands |
+| `$ switchport mode [access | dynamic {auto |desirable }| trunk]` | Interface subcommand that configures thetrunking administrative mode on the interface |
+| `$ switchport access vlan vlan-id` | Interface subcommand that statically configures the interface into that one VLAN | 
+| `$ switchport trunk encapsulation [dot1q | isl | negotiate]` | Interface subcommand that defines which type of trunking to use, assuming that trunking is configured or negotiated |
+| `$ switchport trunk native vlan vlan-id` | Interface subcommand that defines the native VLAN for a trunk port |
+| `$ switchport nonegotiate` | Interface subcommand that disables the negotiation of VLAN trunking |
+| `$ switchport voice vlan vlan-id` | Interface subcommand that defines the voice VLAN on a port meaning that the switch uses 802.1Q tagging for frames in this VLAN |
+     
