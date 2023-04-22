@@ -86,11 +86,11 @@ switch(config)#no up domain-lookup
 |dynamic desirable | Access | Trunk | Trunk | Trunk| 
 *When two switches configure mode of "access" on one end and "trunk" on the other, problem occurs so Avoid the combination*
 
+
 | Command | Description |
 |---------|--------------------------|
 | `$ show mac address-table dynamic [interface type number] [vlan vlan-id] ` | Lists the dynamically learned entries in the switch's address(forwarding) table, with subsets by interface and/or VLAN |
-
-| `$ show mac address-table static [interface type number]` | Lists the static MAC addresses and MAC addresses Learned or defined with port security  |
+| `$ show mac address-table static [interface type number]` | Lists the static MAC addresses and MAC addresses Learned or defined with port security|
 
 
 #### Virtual LANs 
@@ -105,3 +105,9 @@ switch(config)#no up domain-lookup
 | `$ switchport trunk native vlan vlan-id` | Interface subcommand that defines the native VLAN for a trunk port |
 | `$ switchport nonegotiate` | Interface subcommand that disables the negotiation of VLAN trunking |
 | `$ switchport voice vlan vlan-id` | Interface subcommand that defines the voice VLAN on a port meaning that the switch uses 802.1Q tagging for frames in this VLAN |
+| `$ switchport trunk allowed vlan {add or all or except or remove} vlan-list` | Interface subcommand that defines the list of allowed VLANs|
+| `$ show interfaces interface-id switchport` | Lists information about any interface regarding administrative settings and operational state |
+| `$ show interfaces interface-id trunk` | Lists information about all operational trunk but no other interfaces, including the lists of VLANs that can be forwarded over the trunk|  
+| `$ show vlan [brief or id vlan -id or name vlan-nameor summary]` | Lists information about the VLANs|
+
+ 
