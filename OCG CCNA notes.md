@@ -114,11 +114,20 @@ switch(config)#no up domain-lookup
 #### Configuration Command Reference 
 | Command | Description |
 |---------|--------------------------|
-|`$ spanning-tree mode {pvst or rapid-pvst or mst}` | Gloabl configuration command to set the STP mode |
+|`$ spanning-tree mode {pvst or rapid-pvst or mst}` | Global configuration command to set the STP mode |
 |`$ spanning-tree [vlan vlan-number] root primary` | Global configuration command that changes this switch to the root switch. The switch's priority is changed to the lower of either 24,576 or 4096 less than the priority of the current root bridge when the command was issued|
 `$ spanning-tree [vlan vlan-number] root secondary ` | Global configuation command that sets this switch's STP base priority to 28,672 |   
 `$ spanning-tree vlan vlan-id priority priority` | Global configuation command that changes the bridge priority of this switch for the specified VLAN |
 `$ spanning-tree [vlan vlan-number] cost cost ` | Interface subcommand that changes the STP cost to the configured value  |  
 `$ spanning-tree [vlan vlan-number] port-priority priority ` | Interface subcommand that changes the STP port priority in that VLAN (0 to 240, in increments of 16) |
 `$ channel-group channel-group-number mode {auto or diserable or active or passive or on }` | Interface subcommand that enables EhterChannel on the interface |  
+
+
+#### EXEC Command Reference 
+| Command | Description |
+|---------|--------------------------|
+|`$ show spanning-tree` | Lists details about the state of STP on the switch including the state of each port |
+|`$ show spanning-tree vlan vlan-id` | Lists STP information for the specified VLAN |
+|`$ show etherchannel [channel-group-number] {brief or detail or port or port-channel or summary}` | Lists information about the state of EtherChannels on this switch |
+
 
