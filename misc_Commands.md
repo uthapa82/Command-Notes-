@@ -10,3 +10,11 @@
     
     `$ pip install -r requirements.txt`
 
+* ip configuration on windows device 
+    
+    `C:>ipconfig /ip <ip-address> <subnet-mask>`
+
+* Default gateway on windows device 
+    
+    `C:>ipconfig /dg <default-gateway-ip-address>`
+    
