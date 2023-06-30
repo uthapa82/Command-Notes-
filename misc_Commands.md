@@ -12,9 +12,9 @@
 
 * ip configuration on windows device 
     
-    `C:>ipconfig /ip <ip-address> <subnet-mask>`
+    `C:>netsh interface ipv4 set address name="Ethernet" static <ip-address> <subnet-mask> <gateway>`
 
-* Default gateway on windows device 
+* Change DNS server on windows device 
     
-    `C:>ipconfig /dg <default-gateway-ip-address>`
+    `C:>netsh interface ipv4 set dns name="Ethernet" static <ip-address> `
     
