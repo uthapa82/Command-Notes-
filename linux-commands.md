@@ -103,3 +103,10 @@ $ ifconfig -a doesn't show anything then next command
 $ /etc/init.d/mlnx-en.d restart
 
 ```
+
+#### Unadble to access External Harddisk
+
+`$ lsblk `
+
+`$ sudo ntfsfix /dev/sdb1` 
+
