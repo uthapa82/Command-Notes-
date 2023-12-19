@@ -17,4 +17,9 @@
 * Change DNS server on windows device 
     
     `C:>netsh interface ipv4 set dns name="Ethernet" static <ip-address> `
+
+* save the output of ipconfig in a file Windows 
+
+    `> ipconfig /all >$env:USERPROFILE:DESKTOP\ipconfig.txt`
+
     
