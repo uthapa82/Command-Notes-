@@ -110,3 +110,7 @@ $ /etc/init.d/mlnx-en.d restart
 
 `$ sudo ntfsfix /dev/sdb1` 
 
+
+#### Wireshark not running with root privileges 
+
+`$ sudo dpkg-reconfigure wireshark-common`
