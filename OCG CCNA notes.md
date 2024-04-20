@@ -130,4 +130,35 @@ switch(config)#no up domain-lookup
 |`$ show spanning-tree vlan vlan-id` | Lists STP information for the specified VLAN |
 |`$ show etherchannel [channel-group-number] {brief or detail or port or port-channel or summary}` | Lists information about the state of EtherChannels on this switch |
 
+#### Rip Configuration 
 
+```
+# router rip 
+# version 2
+# no auto-summary 
+# network <ip-address> eg. 10.0.0.0
+# network <ip-address> eg. 172.16.0.0
+(config-router)# passive-interface <interface-name> eg. g2/0
+
+! command to tell about the default route 
+(config-router)# default-information originate 
+# show ip protocols 
+```
+
+#### Rip Configuration
+
+```
+# router eigrp <AS number> eg 1
+# no auto-summary
+# passive-interface g2/0
+# network <ip-address>
+# network <ip-address> can specify wildcard mask <0.0.0.15>
+
+# eigrp router-id <id eg 1.1.1.1>
+
+# show ip protocol
+
+# show ip eigrp neighbors 
+# show ip route eigrp 
+# show ip eigrp topology 
+```
