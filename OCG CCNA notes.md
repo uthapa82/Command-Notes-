@@ -162,3 +162,27 @@ switch(config)#no up domain-lookup
 # show ip route eigrp 
 # show ip eigrp topology 
 ```
+
+#### OSPF Configuration
+
+```
+# router ospf process-id
+# router ospf 1 <area_id >
+# network <ip> <wildcard> area <area number>
+# default-information originate 
+# passive-interface <interface name>
+
+# show ip ospf database 
+# show ip ospf neighbor 
+# show ip ospf interface 
+# show ip ospf interface <interface-name>
+(config-if)# auto-cost reference-bandwidth megabits-per-second
+(config-if)# ip ospf cost <cost>
+# show ip ospf brief 
+
+! Activate OSPF directly on an interface 
+# ip ospf process-id area <area>
+# passive-interface default ---> for all interface 
+# int g0/0
+# ip ospf 1 area 0
+```
