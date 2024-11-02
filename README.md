@@ -3,3 +3,4 @@
 * Ubuntu issues and solution documentation
 * Learning vPC commands in Cisco Modeling Lab (CML)
 * Cisco CCNA Jeremy's IT Lab Notes 
+* Nokia Service Router Learning (SR 7750)
