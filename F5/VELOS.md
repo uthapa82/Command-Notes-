@@ -44,4 +44,34 @@
 * At chassi level F5OS configuration data includes dns, ntp server setting, Auth server , logging, HA, product licensing etc 
     - System Setting >> configuration Backup >> Name ___ >> create 
 
-    
+* During Rolling upgrade process the standby controller is upgraded first and when completed the standby contoller goes into the active state and the second controller will then be upgraded.
+
+#### TMOS Tenant Deployment 
+* System Controller User 
+    - Creates and manages chassis partitions 
+    - Configure management interfaces 
+    - Install system controller level software 
+    - Modify syste settings, activate licensing 
+    - Set up high availability for the two system controllers
+    - Perform user management for the system controllers 
+
+* Chassis Partition User 
+    - Create and Manage VLANs
+    - Create and manage LAGs
+    - Manage interfaces 
+    - Manage port groups, as needed 
+    - Displays VLAN listeners, if necessary 
+
+* Command to show chassis partition redundancy 
+
+    `Partition-1# show system redundancy `
+
+* Chassis partition administrator is responsible for configuring tenant deployments within chassis partition 
+
+* A tenant is a guest system running software in a chassis partition. we can run several tenants within same chassis partition. Each blade has 128G  (CX410) of memory of which 95G is reserved for tenant. **Max number of lightweight tenants that can be cleared on a single blade is 22**
+
+* A big-ip tenant on the velos is  managed similarly how vCMP guest is managed in VIPRION. Can connect via CLI, RESTAPI or GUI
+
+* A tenant is assigned dedicate VCP and memory resources and is restricted to specific VLANs for network connectivity.
+
+
