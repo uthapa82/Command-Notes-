@@ -23,7 +23,7 @@ Notes of the learning bash script refresher.
 
 * Conditionals- if/else statements 
 
-    ```
+    ```bash
     if [ $var -eq $var2 ] --> bracket test expression. More info:- man test 
     then
         do something 
@@ -39,7 +39,7 @@ Notes of the learning bash script refresher.
 * Exit codes
     - helps determine if the command was successful or not 
 
-    ```
+    ```bash
     echo $?
     sudo apt install $package >> package_install_results.log 
     -d --> checks for the existense of the directory 
@@ -66,7 +66,7 @@ Notes of the learning bash script refresher.
 
 * Example, distro update script 
 
-    ```
+    ```bash
     if [ -d /etc/pacman.d ] -->  checks if Linux distro is Arch based 
 
     if [ -d /etc/apt ] --> checks if Linux distro is Debian based
@@ -78,7 +78,7 @@ Notes of the learning bash script refresher.
 
 * For loops 
 
-    ```
+    ```bash
     for some_var in {1..10}
     do 
         echo $some_var
@@ -103,5 +103,10 @@ Notes of the learning bash script refresher.
     - `find /etc -type f &> /dev/null` --> send both stdr output and error 
     - `find /etc -type f 1> results-file.txt & 2> errors-file.txt`
     - 1 -> Standard output, 2-> standard error 
-    - standard output, standard error, & 
+    - 1 is default and automatically implied even if we don't have it specified 
+    - > overwrite, >> will append in the file 
+    - standard output, standard error and standard input: using read to read from user
+    
+
+
 
