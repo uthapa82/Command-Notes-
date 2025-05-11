@@ -106,7 +106,84 @@ Notes of the learning bash script refresher.
     - 1 is default and automatically implied even if we don't have it specified 
     - > overwrite, >> will append in the file 
     - standard output, standard error and standard input: using read to read from user
+
+* Functions 
+    
+    ```bash
+        check_exit_status() {
+        if [ $? -ne 0 ]
+        then
+            echo "An error occured, please check the $errorlog file."
+        fi
+        }
+
+        # function call 
+        check_exit_status
+    ```
+
+* Case 
+
+    ```bash
+        read distro;
+        Same command, but ends with a semicolon.
+        The semicolon doesn’t change how the command runs — it just means:
+        “End of this command; next command can come after this on the same line.”
+
+        #!/bin/bash
+
+        finished=0
+
+        while [ $finished -ne 1 ]
+        do
+            echo "What is your favorite Linux distribution?"
+
+            echo "1 - Arch"
+            echo "2 - CentOS"
+            echo "3 - Debian"
+            echo "4 - Mint"
+            echo "5 - Ubuntu"
+            echo "6 - Something else.."
+            echo "7 - Exit the script."
+
+            read distro;
+
+            case $distro in 
+                1) echo "Arch is a rolling relase.";;
+                2) echo "CentOS is popular on servers.";;
+                3) echo "Debian is  a community distribution.";;
+                4) echo "Mint is popular on desktops and laptops.";;
+                5) echo "Ubuntu is popular on both servers and computers.";;
+                6) echo "There are many distributions out there.";;
+                7) finished=1 ;;
+                *) echo "You didn't enter an appropriate choice."
+            esac
+        done
+
+        echo "Thankyou for using the script."
+    ```
+
+    - The ;; ensures that no other cases are evaluated once one matches — kind of like a break in a C-style switch statement.
+
+
+* Scheduling Jobs
+    
+    ```bash
+    need at command 
+    sudo apt install at 
+    which at
+
+    # scheduling military time 24 hours 
+    at 09:34 -f ./scheduled-job-1.sh 
+
+    # cancells the job
+    artrm # - number from at queue 
+
+    # crontab 
+    crontab -e
+
+    # m h  dom mon dow   command
     
 
-
-
+    # edit someone else cron tab 
+    sudo crontab -u username <eg. bob> -e
+    ```
