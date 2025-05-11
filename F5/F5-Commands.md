@@ -100,3 +100,67 @@
     root@(bigip16-1)(cfg-sync Standalone)(Active)(/Common)(tmos)# save /sys config
     ```
 
+* Configure Management IP address
+
+    - Can use `config` command from bash in F5 BIG-IP CLI 
+
+    
+    ```bash 
+    tmsh 
+    create /sys management-ip [ip address/netmask]
+
+    or 
+
+    create /sys management-ip [ip address /prefixlen]
+    For example:
+    create /sys management-ip 192.168.1.245/255.255.255.0
+    or
+    create /sys management-ip 192.168.1.245/24
+
+    # configure a default management gateway 
+    create /sys management-route default gateway <gateway ip address>
+    For example:
+    create sys management-route default gateway 192.168.1.254
+
+    save /sys config partitions all 
+
+    # IPv6 address configuration examples 
+    create /sys management-ip 2001:db8::2/FFFF:FFFF:FFFF:FFFF:0000:0000:0000:0000
+    create /sys management-ip 2001:db8::2/64
+
+    # configure a default ipv6 management gateway
+    create /sys management-route default-inet6 gateway <gateway ip address>
+    For example:
+    create /sys management-route default-inet6 gateway 2001:db8::1
+    ```
+
+* Show Management IP address 
+
+    ```bash
+    tmsh list /sys management-ip
+
+    sys management-ip 192.168.1.245/24 {
+    description configured-statically
+    }
+    tmsh list /sys management-route
+
+    sys management-route default {
+    description configured-statically
+    gateway 192.168.1.254
+    network default
+    }
+
+    # using iControl REST interface 
+    # management ip
+    curl -sk -u <username>:<password> -H "Content-Type: application/json" -X GET https://<big-ip ip address>/mgmt/tm/sys/management-ip  | jq -M .
+
+    # management route 
+    curl -sk -u <username>:<password> -H "Content-Type: application/json" -X GET https://<big-ip ip address>/mgmt/tm/sys/management-route  | jq -M .
+    ```
+
+* View the services that are listening 
+
+    `netstat -ltu or ss -ltu `
+
+
+
