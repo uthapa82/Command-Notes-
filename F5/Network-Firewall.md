@@ -12,4 +12,15 @@
         * Are list of rules that are not session-based and applies to all packets 
         * These rules are also used to mitigate DOS attacks 
 
-* Deploy and Configure Firewall 
+* Packet Filtering Firewalls 
+    - Basic IP address / TCP/UDP port checking 
+
+* Stateful Firewalls
+    - 3 way Handshake 
+    - Establish session and allows the return communication
+    - Monitors the traffic 
+
+* Application Firewalls
+    - OSI 5-7 Application Layer 
+    - Rules based on application eg. block facebook games, allow facebook chat
+
