@@ -162,5 +162,34 @@
 
     `netstat -ltu or ss -ltu `
 
+```bash
+    tmsh list net self-allow 
+    tmsh modify /net self <self_IP_name> allow-service Allow | default | Allow All | Allow None | allow Custom
+    tmsh list /sys sshd allow
+    tmsh modify /sys sshd allow add | delete { <ip_addr> or <ip_range> }
+    tmsh list /security firewall management-ip-rules 
+    tmsh modify /auth password-policy <min-duration, max-duration, max-login-failure...> duration 
+    tmsh modify /sys db systemauth.disablemanuallock value <true | false>
+    tmsh list /auth password-policy all-properties
+
+    tmsh list /sys management-ip 
+    tmsh list /sys management-route
+    tmsh create /sys management-ip [ip address/netmask ]
+    tmsh create /sys management-route default gateway <gateway ip address>
+    tmsh create /sys management-route default-inet6 gateway <gateway ip address>
+
+    tmsh list /net interface mgmt media-active
+
+    tmsh show /sys license 
+    tmsh /sys license registration-key <License-Key>
+    tmsh install /sys license add-on-keys { <Add-On-Key> }
+    tmsh /sys license registration-key <license-key> add-on-keys { <add-on-key> }
+
+    tmsh show sys provision or ltm or ltm afm
+    cat /config/bigip_base.license
+
+    tmsh load sys config verify 
+    
+```
 
 
